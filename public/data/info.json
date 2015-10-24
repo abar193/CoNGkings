@@ -1,0 +1,18 @@
+{
+  "player": "Tal-Darim",
+  "race": "Protoss",
+  "constellation": "1/1",
+  "planets": "3/14",
+  "tunnels": "15/92",
+  "population": 9001,
+  "homeworld": "Алтарь",
+  "rating": 100500,
+  "state": {},
+  "diplomacy": {
+    "allies": ["Alfa", "Betta", "Slowpoke"],
+    "citizens": ["Zetta"],
+    "enemies": ["Rafis"],
+    "unknown": ["Кириллица"],
+    "neutral": ["Beaglez", "Marsiano4ka"]
+  }
+}

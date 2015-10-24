@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="conkingsui">
+<head>
+    <meta charset="utf-8">
+    <title>CoNGkings</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/stars.css">
+    <link rel="stylesheet" href="/stylesheets/stars-small.css">
+
+    <script src="angular/angular.js"></script>
+    <script src="angular-route/angular-route.js"></script>
+    <script src="angular-bootstrap/ui-bootstrap.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/smallstars.js"></script>
+    <script src="js/controllers.js"></script>
+</head>
+<body>
+    <div style="background-color: gray">
+        Сюда пойдут ресурсы, время, и еще все, что надо будет
+    </div>
+    <div style="width: 851px; height: 651px; float: left" ng-view></div>
+    <div style="background-color: midnightblue; color: white; float: left" ng-controller="InfoCtrl">
+        Игрок: {{info.player}} <br/>
+        Раса: {{info.race}} <br/>
+        Созвездия: {{info.constellation}} <br/>
+        Планеты:	{{info.planets}} <br/>
+        Туннели:	{{info.tunnels}} <br/>
+        Население:	{{info.population}} <br/>
+        Домашний мир:	{{info.homeworld}} <br/>
+        Рейтинг:	{{info.rating}}
+    </div>
+</body>
+<script>
+    var imgSystemBack = new Image();
+    var imgStars = new Image();
+    var imgStarsSmall = new Image();
+    imgSystemBack.onload = function () { console.log("back loaded")};
+    imgSystemBack.src = '/images/starmap_bg.jpg';
+    imgStars.src = '/images/stars.png';
+    imgStarsSmall.src = '/images/stars-small.png';
+</script>
+</html>

@@ -1,0 +1,21 @@
+    <div style="width:651px; height: 651px; float: left">
+    <canvas width="651px" height="651px" sector-canvas="galaxy.systems"></canvas>
+</div>
+<div style="width: 200px; height: 651px; background-color: black; color: white; float: left">
+    <b>Под курсором:</b>
+    <div style="height: 100px; border: double 1px">
+        <span style="float: left;" class="star-small star-small-{{selectedStar.type}}"></span>
+        Система: {{selectedStar.loc}} <br/>
+        Тип: {{selectedStar.type}} <br/>
+        Масса: {{selectedStar.mass}} <br/>
+        Температура: {{selectedStar.temp}}
+    </div>
+    <b>Были выбраны ранее:</b>
+    <div ng-repeat="system in selectedSystems" style="width: 200px; height: 100px; border: dotted;">
+        <span style="float: left;" class="star-small star-small-{{system.type}}"></span>
+        Система: {{system.loc}} <br/>
+        Тип: {{system.type}} <br/>
+        Масса: {{system.mass}} <br/>
+        Температура: {{system.temp}}
+    </div>
+</div>

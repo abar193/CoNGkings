@@ -60,12 +60,13 @@ conkingsui.directive('sectorCanvas', function() {
                 for(var i = 0; i < tunnels.length; i++) {
                     var cFrom = locToCoordinates(tunnels[i].from);
                     var cTo = locToCoordinates(tunnels[i].to);
-
-                    if(cFrom.sector == sector || cTo.sector == sector) {
-                        ctx.moveTo((cFrom.sector == sector) ? cFrom.x * 21 + 31 : (cFrom.sector > sector) ? 651 : 0,
-                            (cFrom.sector == sector) ? cFrom.y * 21 + 31 : cTo.y * 21 + 35);
-                        ctx.lineTo((cTo.sector == sector) ? cTo.x * 21 + 31 : (cTo.sector > sector) ? 651 : 0,
-                            (cTo.sector == sector) ? cTo.y * 21 + 31 : cFrom.y * 21 + 35);
+                    if(cTo && cFrom) {
+                        if(cFrom.sector == sector || cTo.sector == sector) {
+                            ctx.moveTo((cFrom.sector == sector) ? cFrom.x * 21 + 31 : (cFrom.sector > sector) ? 651 : 0,
+                                (cFrom.sector == sector) ? cFrom.y * 21 + 31 : cTo.y * 21 + 35);
+                            ctx.lineTo((cTo.sector == sector) ? cTo.x * 21 + 31 : (cTo.sector > sector) ? 651 : 0,
+                                (cTo.sector == sector) ? cTo.y * 21 + 31 : cFrom.y * 21 + 35);
+                        }
                     }
                 }
                 ctx.strokeStyle="#3333BB";

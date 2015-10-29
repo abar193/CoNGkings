@@ -38,8 +38,8 @@ for(var sysNum = 0; sysNum < 5; sysNum++) {
 
 for(var i = 0; i < tempStars.length / 4; i++) {
     var a = Math.floor(Math.random() * tempStars.length);
-    var b = a;
-    while(b == a) b = Math.floor(Math.random() * tempStars.length);
+    var b = a + Math.floor(Math.random() * 20 - 10);
+    if(b == a) b = (a > 0) ? a - 1 : a + 1;
     galaxy.tunnels.push({from: tempStars[a], to: tempStars[b]});
 }
 

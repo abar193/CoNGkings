@@ -38,7 +38,6 @@ conkingsui.directive('sectorCanvas', function() {
         function drawStars() {
             if(stars) {
                 console.log("drawing");
-                gstars = stars;
                 ctx.drawImage(imgSystemBack, 0, 0, 651, 651);
                 for(var y = 0; y < stars.length; y++) {
                     for(var x = 0; x < stars[y].length; x++) {

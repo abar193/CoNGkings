@@ -1,4 +1,5 @@
 /**
+ * Frontend AngularJS controllers
  * Created by Abar on 18-Oct-15.
  */
 
@@ -17,11 +18,13 @@ function locToCoordinates(loc) {
 }
 
 uiControllers.controller('GalaxyController', function ($scope, $http) {
-    $scope.galaxy = {t: "esT"};
+    $scope.systems = {};
+    $scope.system = [];
     $scope.selectedStar = { name: "S1/1(14:5)", loc: "S1/1(14:5)", type: "star11_4", mass: 39, temp: 65 };
     $scope.selectedSystems = [];
-    $http.get('/api/galaxy').success(function(data){ $scope.galaxy = data;
-        $scope.mouseoverStar(data.systems[0][2].loc);
+    $http.get('/api/sector/0/stars').success(function(data){
+        $scope.systems['sector0'] = data;
+        $scope.system = data;
     });
 
     $scope.mouseoverStar = function mouseoverStar(loc) {
@@ -48,7 +51,17 @@ uiControllers.controller('GalaxyController', function ($scope, $http) {
 
     function findByCoodrinates(loc) {
         if(!loc) return null;
-        return $scope.galaxy.systems[loc.y][loc.x];
+        return $scope.systems['sector'+loc.sector][loc.y][loc.x];
     }
 
+});
+
+uiControllers.filter('systype', function() {
+    return function(input) {
+        if(!input) return;
+
+        var r = /[a-z]+/;
+        var a = r.exec(input)[0];
+        return a.charAt(0).toUpperCase() + a.slice(1);
+    };
 });

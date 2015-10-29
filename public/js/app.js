@@ -68,7 +68,7 @@ conkingsui.directive('sectorCanvas', function() {
                             (cTo.sector == sector) ? cTo.y * 21 + 31 : cFrom.y * 21 + 35);
                     }
                 }
-                ctx.strokeStyle="#FF0000";
+                ctx.strokeStyle="#3333BB";
                 ctx.stroke();
             }
         }

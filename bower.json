@@ -1,6 +1,7 @@
 {
   "name": "angular",
   "version": "1.0.0",
+  "directory": "./bower_components/",
   "dependencies": {
     "angular": "latest",
     "angular-bootstrap": "~0.14.2",

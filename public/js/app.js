@@ -54,9 +54,10 @@ conkingsui.directive('sectorCanvas', function() {
         }
         element.bind('mousemove', function(event){
             var sc = starCoordinates(event, 21, 21, 21, 21);
-            scope.$apply(function() {
-                scope.mouseoverStar(stars[sc.y][sc.x].loc);
-            });
+            if(sc.x >= 0 && sc.y >= 0)
+                scope.$apply(function() {
+                    scope.mouseoverStar(stars[sc.y][sc.x].loc);
+                });
         });
         element.bind('mouseup', function(event){
             var sc = starCoordinates(event, 21, 21, 21, 21);

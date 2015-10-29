@@ -18,13 +18,13 @@ function locToCoordinates(loc) {
 }
 
 uiControllers.controller('GalaxyController', function ($scope, $http) {
-    $scope.systems = {};
-    $scope.system = [];
+    $scope.sectors = [[], [], [], [], []];
+    $scope.sector = [];
     $scope.selectedStar = { name: "S1/1(14:5)", loc: "S1/1(14:5)", type: "star11_4", mass: 39, temp: 65 };
     $scope.selectedSystems = [];
     $http.get('/api/sector/0/stars').success(function(data){
-        $scope.systems['sector0'] = data;
-        $scope.system = data;
+        $scope.sectors[0] = data;
+        $scope.sector = data;
     });
 
     $scope.mouseoverStar = function mouseoverStar(loc) {
@@ -49,9 +49,20 @@ uiControllers.controller('GalaxyController', function ($scope, $http) {
             $scope.selectedSystems = $scope.selectedSystems.slice(0, 3);
     };
 
+    $scope.selectSector = function selectSector(id) {
+        if($scope.sectors[id].length != 0) {
+            $scope.sector = $scope.sectors[id];
+        }  else {
+            $http.get('/api/sector/' + id + '/stars').success(function(data){
+                $scope.sectors[id] = data;
+                $scope.sector = data;
+            });
+        }
+    };
+
     function findByCoodrinates(loc) {
         if(!loc) return null;
-        return $scope.systems['sector'+loc.sector][loc.y][loc.x];
+        return $scope.sectors[loc.sector][loc.y][loc.x];
     }
 
 });

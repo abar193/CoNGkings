@@ -4,6 +4,7 @@
 <div style="width: 200px; height: 651px; background-color: black; color: white; float: left">
     <b>Сектора</b><br/>
     <a ng-repeat="s in sectors" ng-click="selectSector($index)" style="padding: 0 2px 0 2px">{{$index + 1}}</a>
+    <label>Show tunnels <input type="checkbox" ng-model="showTunnels"/></label>
     <br/>
     <b>Под курсором:</b>
     <div style="height: 100px; border: double 1px">

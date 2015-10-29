@@ -22,6 +22,12 @@ uiControllers.controller('GalaxyController', function ($scope, $http) {
     $scope.sector = [];
     $scope.selectedStar = { name: "S1/1(14:5)", loc: "S1/1(14:5)", type: "star11_4", mass: 39, temp: 65 };
     $scope.selectedSystems = [];
+    $scope.tunnels = [];
+    $scope.showTunnels = true;
+
+    $http.get('/api/tunnels').success(function(data){
+        $scope.tunnels = data;
+    });
     $http.get('/api/sector/0/stars').success(function(data){
         $scope.sectors[0] = data;
         $scope.sector = data;
@@ -50,6 +56,7 @@ uiControllers.controller('GalaxyController', function ($scope, $http) {
     };
 
     $scope.selectSector = function selectSector(id) {
+        $scope.lala = "lolo" + id;
         if($scope.sectors[id].length != 0) {
             $scope.sector = $scope.sectors[id];
         }  else {

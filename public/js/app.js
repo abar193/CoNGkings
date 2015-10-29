@@ -32,17 +32,19 @@ function starCoordinates(event, offsetX, offsetY, cellWidth, cellHeight) {
 
 conkingsui.directive('sectorCanvas', function() {
     function link(scope, element, attrs) {
-        var stars;
+        var stars, tunnels;
+        var showTunnels = true;
         ctx = element[0].getContext("2d");
 
         function drawStars() {
+            var lastStar = {};
             if(stars) {
-                console.log("drawing");
                 ctx.drawImage(imgSystemBack, 0, 0, 651, 651);
                 for(var y = 0; y < stars.length; y++) {
                     for(var x = 0; x < stars[y].length; x++) {
                         if(stars[y][x].type && small_stars['star_small_' + stars[y][x].type]) {
                             var coords = small_stars['star_small_' + stars[y][x].type];
+                            lastStar = stars[y][x]; // TODO: refractor, make normal service
                             ctx.drawImage(imgStarsSmall, coords.x, coords.y, coords.width, coords.height,
                                 21 + x * 21, 21 + y * 21, 20, 20);
                         } else {
@@ -50,6 +52,24 @@ conkingsui.directive('sectorCanvas', function() {
                         }
                     }
                 }
+            }
+            if(tunnels && showTunnels) {
+                console.log(lastStar);
+                var sector = locToCoordinates(lastStar.loc).sector;
+                ctx.beginPath();
+                for(var i = 0; i < tunnels.length; i++) {
+                    var cFrom = locToCoordinates(tunnels[i].from);
+                    var cTo = locToCoordinates(tunnels[i].to);
+
+                    if(cFrom.sector == sector || cTo.sector == sector) {
+                        ctx.moveTo((cFrom.sector == sector) ? cFrom.x * 21 + 31 : (cFrom.sector > sector) ? 651 : 0,
+                            (cFrom.sector == sector) ? cFrom.y * 21 + 31 : cTo.y * 21 + 35);
+                        ctx.lineTo((cTo.sector == sector) ? cTo.x * 21 + 31 : (cTo.sector > sector) ? 651 : 0,
+                            (cTo.sector == sector) ? cTo.y * 21 + 31 : cFrom.y * 21 + 35);
+                    }
+                }
+                ctx.strokeStyle="#FF0000";
+                ctx.stroke();
             }
         }
         element.bind('mousemove', function(event){
@@ -66,7 +86,12 @@ conkingsui.directive('sectorCanvas', function() {
             });
         });
         scope.$watch(attrs.sectorCanvas, function(value) {
+            tunnels = scope.tunnels;
             stars = value;
+            drawStars();
+        });
+        scope.$watch('showTunnels', function(newValue){
+            showTunnels = newValue;
             drawStars();
         });
     }

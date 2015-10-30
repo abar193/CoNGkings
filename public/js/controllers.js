@@ -3,7 +3,7 @@
  * Created by Abar on 18-Oct-15.
  */
 
-var uiControllers = angular.module('UIControllers', []);
+var uiControllers = angular.module('UIControllers', ['uiServices']);
 
 uiControllers.controller('InfoCtrl', function ($scope, $http) {
     $scope.info = {"player": "unknown"};
@@ -17,21 +17,11 @@ function locToCoordinates(loc) {
     return {galaxy: matches[1], sector: matches[2], x: matches[3], y: matches[4]};
 }
 
-uiControllers.controller('GalaxyController', function ($scope, $http) {
-    $scope.sectors = [[], [], [], [], []];
-    $scope.sector = [];
-    $scope.selectedStar = { name: "S1/1(14:5)", loc: "S1/1(14:5)", type: "star11_4", mass: 39, temp: 65 };
+uiControllers.controller('GalaxyController', function ($scope, $http, galaxyHolder) {
+    $scope.selectedStar = {  };
+    $scope.tmpsectors = [0, 1, 2, 3, 4];
     $scope.selectedSystems = [];
-    $scope.tunnels = [];
     $scope.showTunnels = true;
-
-    $http.get('/api/tunnels').success(function(data){
-        $scope.tunnels = data;
-    });
-    $http.get('/api/sector/0/stars').success(function(data){
-        $scope.sectors[0] = data;
-        $scope.sector = data;
-    });
 
     $scope.mouseoverStar = function mouseoverStar(loc) {
         $scope.selectedStar = findByCoodrinates(locToCoordinates(loc));
@@ -55,21 +45,13 @@ uiControllers.controller('GalaxyController', function ($scope, $http) {
             $scope.selectedSystems = $scope.selectedSystems.slice(0, 3);
     };
 
-    $scope.selectSector = function selectSector(id) {
-        $scope.lala = "lolo" + id;
-        if($scope.sectors[id].length != 0) {
-            $scope.sector = $scope.sectors[id];
-        }  else {
-            $http.get('/api/sector/' + id + '/stars').success(function(data){
-                $scope.sectors[id] = data;
-                $scope.sector = data;
-            });
-        }
+    $scope.selectSector = function(id) {
+        galaxyHolder.selectSector(id);
     };
 
     function findByCoodrinates(loc) {
         if(!loc) return null;
-        return $scope.sectors[loc.sector][loc.y][loc.x];
+        return galaxyHolder.sectors()[loc.sector][loc.y][loc.x];
     }
 
 });

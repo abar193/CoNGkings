@@ -1,0 +1,605 @@
+.planet {
+    background-image: url('/images/spritesheet.png');
+    background-repeat: no-repeat;
+    display: block;
+}
+
+.planet-anomaly {
+    width: 32px;
+    height: 32px;
+    background-position: 0 0;
+}
+
+.planet-asteroids {
+    width: 32px;
+    height: 32px;
+    background-position: -32px 0;
+}
+
+.planet-fake {
+    width: 16px;
+    height: 16px;
+    background-position: -64px 0;
+}
+
+.planet-gasgiant {
+    width: 32px;
+    height: 32px;
+    background-position: -80px 0;
+}
+
+.planet-gasgiant2 {
+    width: 32px;
+    height: 32px;
+    background-position: -112px 0;
+}
+
+.planet-gasgiant3 {
+    width: 32px;
+    height: 32px;
+    background-position: -144px 0;
+}
+
+.planet-gasgiant4 {
+    width: 32px;
+    height: 32px;
+    background-position: -176px 0;
+}
+
+.planet-moon1 {
+    width: 32px;
+    height: 32px;
+    background-position: -208px 0;
+}
+
+.planet-moon2 {
+    width: 32px;
+    height: 32px;
+    background-position: -240px 0;
+}
+
+.planet-moon3 {
+    width: 32px;
+    height: 32px;
+    background-position: -272px 0;
+}
+
+.planet-moon4 {
+    width: 32px;
+    height: 32px;
+    background-position: -304px 0;
+}
+
+.planet-moon5 {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -32px;
+}
+
+.planet-moon6 {
+    width: 32px;
+    height: 32px;
+    background-position: -32px -32px;
+}
+
+.planet-moon7 {
+    width: 32px;
+    height: 32px;
+    background-position: -64px -32px;
+}
+
+.planet-moon8 {
+    width: 32px;
+    height: 32px;
+    background-position: -96px -32px;
+}
+
+.planet-moon9 {
+    width: 32px;
+    height: 32px;
+    background-position: -128px -32px;
+}
+
+.planet-pl1_1 {
+    width: 32px;
+    height: 32px;
+    background-position: -160px -32px;
+}
+
+.planet-pl1_10 {
+    width: 32px;
+    height: 32px;
+    background-position: -192px -32px;
+}
+
+.planet-pl1_11 {
+    width: 32px;
+    height: 32px;
+    background-position: -224px -32px;
+}
+
+.planet-pl1_12 {
+    width: 32px;
+    height: 32px;
+    background-position: -256px -32px;
+}
+
+.planet-pl1_14 {
+    width: 32px;
+    height: 32px;
+    background-position: -288px -32px;
+}
+
+.planet-pl1_15 {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -64px;
+}
+
+.planet-pl1_2 {
+    width: 32px;
+    height: 32px;
+    background-position: -32px -64px;
+}
+
+.planet-pl1_3 {
+    width: 32px;
+    height: 32px;
+    background-position: -64px -64px;
+}
+
+.planet-pl1_4 {
+    width: 32px;
+    height: 32px;
+    background-position: -96px -64px;
+}
+
+.planet-pl1_5 {
+    width: 32px;
+    height: 32px;
+    background-position: -128px -64px;
+}
+
+.planet-pl1_6 {
+    width: 32px;
+    height: 32px;
+    background-position: -160px -64px;
+}
+
+.planet-pl1_7 {
+    width: 32px;
+    height: 32px;
+    background-position: -192px -64px;
+}
+
+.planet-pl1_8 {
+    width: 32px;
+    height: 32px;
+    background-position: -224px -64px;
+}
+
+.planet-pl1_9 {
+    width: 32px;
+    height: 32px;
+    background-position: -256px -64px;
+}
+
+.planet-pl2_1 {
+    width: 32px;
+    height: 32px;
+    background-position: -288px -64px;
+}
+
+.planet-pl2_10 {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -96px;
+}
+
+.planet-pl2_11 {
+    width: 32px;
+    height: 32px;
+    background-position: -32px -96px;
+}
+
+.planet-pl2_12 {
+    width: 32px;
+    height: 32px;
+    background-position: -64px -96px;
+}
+
+.planet-pl2_14 {
+    width: 32px;
+    height: 32px;
+    background-position: -96px -96px;
+}
+
+.planet-pl2_15 {
+    width: 32px;
+    height: 32px;
+    background-position: -128px -96px;
+}
+
+.planet-pl2_2 {
+    width: 32px;
+    height: 32px;
+    background-position: -160px -96px;
+}
+
+.planet-pl2_3 {
+    width: 32px;
+    height: 32px;
+    background-position: -192px -96px;
+}
+
+.planet-pl2_4 {
+    width: 32px;
+    height: 32px;
+    background-position: -224px -96px;
+}
+
+.planet-pl2_5 {
+    width: 32px;
+    height: 32px;
+    background-position: -256px -96px;
+}
+
+.planet-pl2_6 {
+    width: 32px;
+    height: 32px;
+    background-position: -288px -96px;
+}
+
+.planet-pl2_7 {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -128px;
+}
+
+.planet-pl2_8 {
+    width: 32px;
+    height: 32px;
+    background-position: -32px -128px;
+}
+
+.planet-pl2_9 {
+    width: 32px;
+    height: 32px;
+    background-position: -64px -128px;
+}
+
+.planet-pl3_1 {
+    width: 32px;
+    height: 32px;
+    background-position: -96px -128px;
+}
+
+.planet-pl3_10 {
+    width: 32px;
+    height: 32px;
+    background-position: -128px -128px;
+}
+
+.planet-pl3_11 {
+    width: 32px;
+    height: 32px;
+    background-position: -160px -128px;
+}
+
+.planet-pl3_12 {
+    width: 32px;
+    height: 32px;
+    background-position: -192px -128px;
+}
+
+.planet-pl3_14 {
+    width: 32px;
+    height: 32px;
+    background-position: -224px -128px;
+}
+
+.planet-pl3_15 {
+    width: 32px;
+    height: 32px;
+    background-position: -256px -128px;
+}
+
+.planet-pl3_2 {
+    width: 32px;
+    height: 32px;
+    background-position: -288px -128px;
+}
+
+.planet-pl3_3 {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -160px;
+}
+
+.planet-pl3_4 {
+    width: 32px;
+    height: 32px;
+    background-position: -32px -160px;
+}
+
+.planet-pl3_5 {
+    width: 32px;
+    height: 32px;
+    background-position: -64px -160px;
+}
+
+.planet-pl3_6 {
+    width: 32px;
+    height: 32px;
+    background-position: -96px -160px;
+}
+
+.planet-pl3_7 {
+    width: 32px;
+    height: 32px;
+    background-position: -128px -160px;
+}
+
+.planet-pl3_8 {
+    width: 32px;
+    height: 32px;
+    background-position: -160px -160px;
+}
+
+.planet-pl3_9 {
+    width: 32px;
+    height: 32px;
+    background-position: -192px -160px;
+}
+
+.planet-pl4_1 {
+    width: 32px;
+    height: 32px;
+    background-position: -224px -160px;
+}
+
+.planet-pl4_10 {
+    width: 32px;
+    height: 32px;
+    background-position: -256px -160px;
+}
+
+.planet-pl4_11 {
+    width: 32px;
+    height: 32px;
+    background-position: -288px -160px;
+}
+
+.planet-pl4_12 {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -192px;
+}
+
+.planet-pl4_14 {
+    width: 32px;
+    height: 32px;
+    background-position: -32px -192px;
+}
+
+.planet-pl4_15 {
+    width: 32px;
+    height: 32px;
+    background-position: -64px -192px;
+}
+
+.planet-pl4_2 {
+    width: 32px;
+    height: 32px;
+    background-position: -96px -192px;
+}
+
+.planet-pl4_3 {
+    width: 32px;
+    height: 32px;
+    background-position: -128px -192px;
+}
+
+.planet-pl4_4 {
+    width: 32px;
+    height: 32px;
+    background-position: -160px -192px;
+}
+
+.planet-pl4_5 {
+    width: 32px;
+    height: 32px;
+    background-position: -192px -192px;
+}
+
+.planet-pl4_6 {
+    width: 32px;
+    height: 32px;
+    background-position: -224px -192px;
+}
+
+.planet-pl4_7 {
+    width: 32px;
+    height: 32px;
+    background-position: -256px -192px;
+}
+
+.planet-pl4_8 {
+    width: 32px;
+    height: 32px;
+    background-position: -288px -192px;
+}
+
+.planet-pl4_9 {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -224px;
+}
+
+.planet-rainbow {
+    width: 32px;
+    height: 32px;
+    background-position: -32px -224px;
+}
+
+.planet-rainbow_1 {
+    width: 32px;
+    height: 32px;
+    background-position: -64px -224px;
+}
+
+.planet-rainbow_2 {
+    width: 32px;
+    height: 32px;
+    background-position: -96px -224px;
+}
+
+.planet-rainbow_3 {
+    width: 32px;
+    height: 32px;
+    background-position: -128px -224px;
+}
+
+.planet-rainbow_4 {
+    width: 32px;
+    height: 32px;
+    background-position: -160px -224px;
+}
+
+.planet-rainbow_5 {
+    width: 32px;
+    height: 32px;
+    background-position: -192px -224px;
+}
+
+.planet-rainbow_6 {
+    width: 32px;
+    height: 32px;
+    background-position: -224px -224px;
+}
+
+.planet-rainbow_7 {
+    width: 32px;
+    height: 32px;
+    background-position: -256px -224px;
+}
+
+.planet-rainbow_8 {
+    width: 32px;
+    height: 32px;
+    background-position: -288px -224px;
+}
+
+.planet-rainbow_9 {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -256px;
+}
+
+.planet-rings {
+    width: 64px;
+    height: 64px;
+    background-position: -32px -256px;
+}
+
+.planet-rings {
+    width: 32px;
+    height: 32px;
+    background-position: -96px -256px;
+}
+
+.planet-rings2 {
+    width: 32px;
+    height: 32px;
+    background-position: -128px -256px;
+}
+
+.planet-rings2 {
+    width: 64px;
+    height: 64px;
+    background-position: -160px -256px;
+}
+
+.planet-rings3 {
+    width: 32px;
+    height: 32px;
+    background-position: -224px -256px;
+}
+
+.planet-rings3 {
+    width: 64px;
+    height: 64px;
+    background-position: -256px -256px;
+}
+
+.planet-rings4 {
+    width: 32px;
+    height: 32px;
+    background-position: -336px 0;
+}
+
+.planet-rings4 {
+    width: 64px;
+    height: 64px;
+    background-position: -368px 0;
+}
+
+.planet-ringsb {
+    width: 96px;
+    height: 32px;
+    background-position: -320px -64px;
+}
+
+.planet-ringsb2 {
+    width: 96px;
+    height: 32px;
+    background-position: -320px -96px;
+}
+
+.planet-ringsb3 {
+    width: 96px;
+    height: 32px;
+    background-position: -320px -128px;
+}
+
+.planet-ringsb4 {
+    width: 96px;
+    height: 32px;
+    background-position: -320px -160px;
+}
+
+.planet-steelplanet1 {
+    width: 32px;
+    height: 32px;
+    background-position: -320px -192px;
+}
+
+.planet-steelplanet1a {
+    width: 32px;
+    height: 32px;
+    background-position: -352px -192px;
+}
+
+.planet-steelplanet2 {
+    width: 32px;
+    height: 32px;
+    background-position: -384px -192px;
+}
+
+.planet-steelplanet3 {
+    width: 32px;
+    height: 32px;
+    background-position: -320px -224px;
+}
+
+.planet-steelplanet4 {
+    width: 32px;
+    height: 32px;
+    background-position: -352px -224px;
+}
+
+.planet-steelplanet5 {
+    width: 32px;
+    height: 32px;
+    background-position: -384px -224px;
+}

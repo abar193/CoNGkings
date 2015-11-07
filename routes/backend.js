@@ -2,10 +2,12 @@ var express = require('express');
 var router = express.Router();
 
 var stars = require("../public/js/smallstars");
+var planets = require("../public/js/planets");
 var info = require("../public/data/info.json");
 var galaxy = {};
 
 var keys = Object.keys(stars);
+var keys_planets = Object.keys(planets);
 galaxy.sectors = [];
 galaxy.tunnels = [];
 var tempStars = [];
@@ -59,6 +61,12 @@ router.get('/sector/:sectorId/stars', function(req, res, next) {
 
 router.get('/tunnels', function(req, res) {
     res.json(galaxy.tunnels);
+});
+
+router.get('/system/:systemId', function(req, res) {
+    return {
+        star: ""
+    }
 });
 
 module.exports = router;

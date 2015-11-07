@@ -56,6 +56,14 @@ uiControllers.controller('GalaxyController', function ($scope, $http, galaxyHold
 
 });
 
+uiControllers.controller('SystemController', function ($scope, $http, $routeParams) {
+    $scope.system = undefined;
+    $http.get('api/system/' + $routeParams.systemId).success(function(data) {
+        $scope.system = data;
+    });
+
+});
+
 uiControllers.filter('systype', function() {
     return function(input) {
         if(!input) return;

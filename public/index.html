@@ -14,12 +14,14 @@
     <script src="js/app.js"></script>
     <script src="js/services.js"></script>
     <script src="js/smallstars.js"></script>
+    <script src="js/stars.js"></script>
+    <script src="js/planets.js"></script>
     <script src="js/canvas.js"></script>
     <script src="js/controllers.js"></script>
 </head>
 <body>
     <div style="background-color: gray">
-        Сюда пойдут ресурсы, время, и еще все, что надо будет
+
     </div>
     <div style="width: 851px; height: 651px; float: left" ng-view></div>
     <div style="background-color: midnightblue; color: white; float: left" ng-controller="InfoCtrl">
@@ -34,16 +36,21 @@
     </div>
 </body>
 <script>
-    var imgSystemBack = new Image();
-    var imgStars = new Image();
-    var imgStarsSmall = new Image();
-    var imgStarsSmallAltered = new Image();
-    var imgStarsSmallAltered2 = new Image();
-    imgSystemBack.onload = function () { console.log("back loaded")};
-    imgSystemBack.src = '/images/starmap_bg.jpg';
-    imgStars.src = '/images/stars.png';
-    imgStarsSmall.src = '/images/stars-small.png';
-    imgStarsSmallAltered.src = '/images/stars-small-altered.png';
-    imgStarsSmallAltered2.src = '/images/stars-small-altered2.png';
+    var imgRes = {
+        imgSectorBack: new Image(),
+        imgSystemBack: new Image(),
+        imgStars: new Image(),
+        imgPlanets: new Image(),
+        imgStarsSmall: new Image(),
+        imgStarsSmallAltered: new Image(),
+        imgStarsSmallAltered2: new Image()
+    };
+    imgRes.imgSectorBack.src = '/images/starmap_bg.jpg';
+    imgRes.imgSystemBack.src = '/images/star_back4v.jpg';
+    imgRes.imgPlanets.src = '/images/planets.png';
+    imgRes.imgStars.src = '/images/stars.png';
+    imgRes.imgStarsSmall.src = '/images/stars-small.png';
+    imgRes.imgStarsSmallAltered.src = '/images/stars-small-altered.png';
+    imgRes.imgStarsSmallAltered2.src = '/images/stars-small-altered2.png';
 </script>
 </html>

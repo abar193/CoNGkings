@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-var stars = require("../public/js/smallstars");
+var smallStars = require("../public/js/smallstars");
 var planets = require("../public/js/planets");
+var bigStars = require("../public/js/stars");
 var info = require("../public/data/info.json");
 var galaxy = {};
 
-var keys = Object.keys(stars);
+var keys = Object.keys(smallStars);
 var keys_planets = Object.keys(planets);
 galaxy.sectors = [];
 galaxy.tunnels = [];
@@ -64,9 +65,17 @@ router.get('/tunnels', function(req, res) {
 });
 
 router.get('/system/:systemId', function(req, res) {
-    return {
-        star: ""
+    var planets = [];
+    for(var i = 0; i < Math.floor(Math.random() * 10); i++) {
+        var x = Math.floor(Math.random() * 19);
+        var y = Math.floor(Math.random() * 19);
+        if(x >= 8 && x <= 11 && y >= 8 && y <= 11) y += 4;
+        planets.push({x: x, y: y, type: keys_planets[Math.floor(Math.random() * keys_planets.length)]});
     }
+    res.json({
+        star: Object.keys(bigStars)[Math.floor((Math.random() * Object.keys(bigStars).length))],
+        planets: planets
+    });
 });
 
 module.exports = router;

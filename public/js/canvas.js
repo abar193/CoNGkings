@@ -23,17 +23,18 @@ uiCanvas.directive('sectorCanvas', ['galaxyHolder', function(galaxyHolder) {
 
         function drawStars() {
             if(scope.stars) {
-                ctx.drawImage(imgSystemBack, 0, 0, 651, 651);
+                ctx.drawImage(imgRes.imgSectorBack, 0, 0, 651, 651);
                 for(var y = 0; y < scope.stars.length; y++) {
                     for(var x = 0; x < scope.stars[y].length; x++) {
                         if(scope.stars[y][x].type && small_stars['star_small_' + scope.stars[y][x].type]) {
                             var coords = small_stars['star_small_' + scope.stars[y][x].type];
-                            var img = (Math.random() < 0.3) ? imgStarsSmall :
-                                ((Math.random() < 0.5) ? imgStarsSmallAltered : imgStarsSmallAltered2);
+                            var img = (Math.random() < 0.8) ? imgRes.imgStarsSmall :
+                                ((Math.random() < 0.5) ? imgRes.imgStarsSmallAltered : imgRes.imgStarsSmallAltered2);
                             ctx.drawImage(img, coords.x, coords.y, coords.width, coords.height,
                                 21 + x * 21, 21 + y * 21, 20, 20);
                         } else {
-                            if(scope.stars[y][x].type) console.log("No json-location defined for small-star of type: ", scope.stars[y][x].type);
+                            if(scope.stars[y][x].type)
+                                console.log("No json-location defined for small-star of type:", scope.stars[y][x].type);
                         }
                     }
                 }
@@ -90,7 +91,47 @@ uiCanvas.directive('sectorCanvas', ['galaxyHolder', function(galaxyHolder) {
             scope.showTunnels = newValue;
             drawStars();
         });
-        var intervalID = setInterval(function(){drawStars()}, 1000  );
+        var intervalID = setInterval(function(){drawStars()}, 500);
+        scope.$on('$destroy', function() {
+            clearInterval(intervalID);
+        });
+    }
+    return {
+        restrict: "A",
+        link: link
+    };
+}]);
+
+uiCanvas.directive('systemCanvas', [function() {
+    function link(scope, element) {
+        var ctx = element[0].getContext("2d");
+
+        function drawSystem() {
+            ctx.drawImage(imgRes.imgSystemBack, 0, 0, 651, 651);
+            if(scope.system) {
+                var coords = stars_big[scope.system.star];
+                ctx.drawImage(imgRes.imgStars, coords.x, coords.y, coords.width, coords.height,
+                    8 * 32, 8 * 32, coords.width, coords.height);
+                for(var i = 0; i < scope.system.planets.length; i++) {
+                    var planet = scope.system.planets[i];
+                    coords = planets[planet.type];
+                    var img = imgRes.imgPlanets;
+                    console.log(planet.x * 32, planet.y * 32);
+                    ctx.drawImage(img,
+                        coords.x,
+                        coords.y,
+                        coords.width,
+                        coords.height,
+                        planet.x * 32,
+                        planet.y * 32,
+                        coords.width,
+                        coords.height);
+                }
+            }
+        }
+        scope.$watch('system', function(value) {
+            drawSystem();
+        });
     }
     return {
         restrict: "A",

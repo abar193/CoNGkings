@@ -28,7 +28,9 @@ uiCanvas.directive('sectorCanvas', ['galaxyHolder', function(galaxyHolder) {
                     for(var x = 0; x < scope.stars[y].length; x++) {
                         if(scope.stars[y][x].type && small_stars['star_small_' + scope.stars[y][x].type]) {
                             var coords = small_stars['star_small_' + scope.stars[y][x].type];
-                            ctx.drawImage(imgStarsSmall, coords.x, coords.y, coords.width, coords.height,
+                            var img = (Math.random() < 0.3) ? imgStarsSmall :
+                                ((Math.random() < 0.5) ? imgStarsSmallAltered : imgStarsSmallAltered2);
+                            ctx.drawImage(img, coords.x, coords.y, coords.width, coords.height,
                                 21 + x * 21, 21 + y * 21, 20, 20);
                         } else {
                             if(scope.stars[y][x].type) console.log("No json-location defined for small-star of type: ", scope.stars[y][x].type);
@@ -88,6 +90,7 @@ uiCanvas.directive('sectorCanvas', ['galaxyHolder', function(galaxyHolder) {
             scope.showTunnels = newValue;
             drawStars();
         });
+        var intervalID = setInterval(function(){drawStars()}, 1000  );
     }
     return {
         restrict: "A",

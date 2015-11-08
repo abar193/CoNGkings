@@ -66,7 +66,7 @@ router.get('/tunnels', function(req, res) {
 
 router.get('/system/:systemId', function(req, res) {
     var planets = [];
-    for(var i = 0; i < Math.floor(Math.random() * 10); i++) {
+    for(var i = 0; i < Math.floor(Math.random() * 35) + 1; i++) {
         var x = Math.floor(Math.random() * 19);
         var y = Math.floor(Math.random() * 19);
         if(x >= 8 && x <= 11 && y >= 8 && y <= 11) y += 4;

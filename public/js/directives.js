@@ -109,7 +109,7 @@ uiCanvas.directive('systemCanvas', [function() {
                     var planet = scope.system.planets[i];
                     coords = planets[planet.type];
                     var img = imgRes.imgPlanets;
-                    planetsCtx.putImageData((planet.data) ? Filters.none(img, coords) : Filters.bright(img, coords, 15),
+                    planetsCtx.putImageData((planet.data) ? Filters.none(img, coords) : Filters.grayscaled(img, coords),
                         (coords.width > 32) ? planet.x * 32 - ((coords.width - 32) / 2) : planet.x * 32,
                         (coords.height > 32) ? planet.y * 32 - ((coords.height - 32) / 2) : planet.y * 32
                         );

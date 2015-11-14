@@ -64,13 +64,22 @@ router.get('/tunnels', function(req, res) {
     res.json(galaxy.tunnels);
 });
 
+function random(a) {
+    return Math.floor(Math.random() * a);
+}
+
 router.get('/system/:systemId', function(req, res) {
     var planets = [];
     for(var i = 0; i < Math.floor(Math.random() * 35) + 1; i++) {
         var x = Math.floor(Math.random() * 19);
         var y = Math.floor(Math.random() * 19);
         if(x >= 8 && x <= 11 && y >= 8 && y <= 11) y += 4;
-        planets.push({x: x, y: y, type: keys_planets[Math.floor(Math.random() * keys_planets.length)]});
+        var planet = {x: x, y: y, type: keys_planets[Math.floor(Math.random() * keys_planets.length)]};
+        if(Math.random() > 0.55) {
+            planet.data = {mass: random(10), temp: random(99) + 5,
+                oil: random(100), carbon: random(100), iron: random(100), food: random(100), rad: random(5)};
+        }
+        planets.push(planet);
     }
     res.json({
         star: Object.keys(bigStars)[Math.floor((Math.random() * Object.keys(bigStars).length))],

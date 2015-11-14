@@ -17,10 +17,11 @@ function locToCoordinates(loc) {
     return {galaxy: matches[1], sector: matches[2], x: matches[3], y: matches[4]};
 }
 
-uiControllers.controller('GalaxyController', function ($scope, $http, galaxyHolder) {
+uiControllers.controller('GalaxyController', function ($scope, $http, $location, galaxyHolder) {
     $scope.selectedStar = {  };
+    $scope.highlightedStar = { };
     $scope.tmpsectors = [0, 1, 2, 3, 4];
-    $scope.selectedSystems = [];
+    $scope.selectedSystems = galaxyHolder.systems();
     $scope.showTunnels = true;
 
     $scope.mouseoverStar = function mouseoverStar(loc) {
@@ -45,6 +46,11 @@ uiControllers.controller('GalaxyController', function ($scope, $http, galaxyHold
             $scope.selectedSystems = $scope.selectedSystems.slice(0, 3);
     };
 
+    $scope.openStar = function openStar(loc) {
+        galaxyHolder.systems($scope.selectedSystems);
+        $location.path("/system/" + loc.replace(/\//g, "_"));
+    };
+
     $scope.selectSector = function(id) {
         galaxyHolder.selectSector(id);
     };
@@ -56,18 +62,24 @@ uiControllers.controller('GalaxyController', function ($scope, $http, galaxyHold
 
 });
 
-uiControllers.controller('SystemController', function ($scope, $http, $routeParams) {
+uiControllers.controller('SystemController', function ($scope, $http, $routeParams, $location, galaxyHolder) {
     $scope.system = undefined;
+    $scope.selectedSystems = galaxyHolder.systems();
     $http.get('api/system/' + $routeParams.systemId).success(function(data) {
         $scope.system = data;
     });
+    $scope.back = function() {
+        $location.path("/sector");
+    };
+    $scope.openStar = function openStar(loc) {
+        $location.path("/system/" + loc.replace(/\//g, "_"));
+    };
 
 });
 
 uiControllers.filter('systype', function() {
     return function(input) {
         if(!input) return;
-
         var r = /[a-z]+/;
         var a = r.exec(input)[0];
         return a.charAt(0).toUpperCase() + a.slice(1);

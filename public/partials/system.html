@@ -1,6 +1,15 @@
 <div style="width:651px; height: 651px; float: left">
-    <canvas width="651px" height="651px" system-canvas></canvas>
+    <div ng-click="back()" style="float: left; background-color: red; width: 11px; height: 651px">
+        <br/><br/><br/>T<br/>O<br/><br/>S<br/>E<br/>C<br/>T<br/>O<br/>R
+    </div>
+    <canvas style="float: left" width="640px" height="651px" system-canvas></canvas>
 </div>
-<div style="width: 200px; height: 651px; background-color: black; color: white; float: left">
-    Bla bla bla
+<div style="width: 200px; height: 651px; background-color: grey; color: white; float: left">
+    <b><u>Системы</u> / Планета</b>
+    <br/>
+    <b>Были выбраны ранее:</b>
+    <div ng-repeat="system in selectedSystems" class="system-button-out">
+        <system-button>
+        </system-button>
+    </div>
 </div>

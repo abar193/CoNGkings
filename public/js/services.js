@@ -7,6 +7,7 @@ uiServices.factory('galaxyHolder', ['$http', function($http) {
     var sectors = [[], [], [], [], []];
     var tunnels = [];
     var selectedSector = -1;
+    var systems = [];
     $http.get('/api/tunnels').success(function(data){
         tunnels = data;
     });
@@ -33,7 +34,14 @@ uiServices.factory('galaxyHolder', ['$http', function($http) {
         sectors: getSectors,
         tunnels: getTunnels,
         selectedSector: getSelectedSector,
-        selectSector: selectSector
+        selectSector: selectSector,
+        systems: function systemsGetterSetter(arg) {
+            if(arg) {
+                systems = arg;
+            } else {
+                return systems;
+            }
+        }
     };
 }]);
 

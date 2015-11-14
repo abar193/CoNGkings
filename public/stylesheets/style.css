@@ -7,5 +7,13 @@ a {
   color: #00B7FF;
 }
 
-canvas {
- }
+.system-button-out {
+    width: 195px;
+    height: 95px;
+    border: thin solid;
+    margin-left: 1px;
+}
+
+.system-button-out div {
+    height: 100%;
+}

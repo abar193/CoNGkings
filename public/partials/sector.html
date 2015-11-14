@@ -1,5 +1,6 @@
 <div style="width:651px; height: 651px; float: left">
-    <canvas width="651px" height="651px" sector-canvas></canvas>
+    <div sector-canvas style="position: relative; width: 651px; height: 651px">
+    </div>
 </div>
 <div style="width: 200px; height: 651px; background-color: black; color: white; float: left">
     <b>Сектора</b><br/>
@@ -7,19 +8,18 @@
     <label>Show tunnels <input type="checkbox" ng-model="showTunnels"/></label>
     <br/>
     <b>Под курсором:</b>
-    <div style="height: 100px; border: double 1px">
-        <span style="float: left;" class="star-small star-small-{{selectedStar.type}}"></span>
-        Система: {{selectedStar.loc}} <br/>
-        Тип: {{selectedStar.type | systype}} <br/>
-        Масса: {{selectedStar.mass}} <br/>
-        Температура: {{selectedStar.temp}}
+    <div class="system-button-out">
+        <div ng-mouseover="highlightedStar.loc = selectedStar.loc" ng-mouseleave="highlightedStar.loc = undefined" ng-click="openStar(selectedStar.loc)">
+            <span style="float: left;" class="star-small star-small-{{selectedStar.type}}"></span>
+            Система: {{selectedStar.loc}} <br/>
+            Тип: {{selectedStar.type | systype}} <br/>
+            Масса: {{selectedStar.mass}} <br/>
+            Температура: {{selectedStar.temp}}
+        </div>
     </div>
     <b>Были выбраны ранее:</b>
-    <div ng-repeat="system in selectedSystems" style="width: 200px; height: 100px; border: dotted;">
-        <span style="float: left;" class="star-small star-small-{{system.type}}"></span>
-        Система: {{system.loc}} <br/>
-        Тип: {{system.type | systype}} <br/>
-        Масса: {{system.mass}} <br/>
-        Температура: {{system.temp}}
+    <div ng-repeat="system in selectedSystems" class="system-button-out">
+        <system-button>
+        </system-button>
     </div>
 </div>

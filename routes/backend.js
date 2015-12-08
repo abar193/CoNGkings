@@ -68,7 +68,7 @@ function random(a) {
     return Math.floor(Math.random() * a);
 }
 
-router.get('/system/:systemId', function(req, res) {
+router.get('/system/:systemId/static', function(req, res) {
     var planets = [];
     for(var i = 0; i < Math.floor(Math.random() * 35) + 1; i++) {
         var x = Math.floor(Math.random() * 19);
@@ -77,13 +77,34 @@ router.get('/system/:systemId', function(req, res) {
         var planet = {x: x, y: y, type: keys_planets[Math.floor(Math.random() * keys_planets.length)]};
         if(Math.random() > 0.55) {
             planet.data = {mass: random(10), temp: random(99) + 5,
-                oil: random(100), carbon: random(100), iron: random(100), food: random(100), rad: random(5)};
+                carbon: random(100),
+                silicon: random(100),
+                ore: random(100),
+                bean: random(100),
+                radiation: random(19)};
         }
         planets.push(planet);
     }
     res.json({
         star: Object.keys(bigStars)[Math.floor((Math.random() * Object.keys(bigStars).length))],
         planets: planets
+    });
+});
+
+router.get('/system/:systemId/', function(req, res) {
+    var fog = [];
+    for(var y = 0; y < 20; y++) {
+        var row = [];
+        for(var x = 0; x < 20; x++) {
+            if(x >= 8 && x <= 11 && y >= 8 && y <= 11)
+                row.push(1);
+            else
+                row.push((Math.random()) > 0.5 ? 1 : 0);
+        }
+        fog.push(row);
+    }
+    res.json({
+        fog: fog
     });
 });
 

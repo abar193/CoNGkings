@@ -1,8 +1,8 @@
-<div style="width:651px; height: 651px; float: left">
+<div class="centerview">
     <div sector-canvas style="position: relative; width: 651px; height: 651px">
     </div>
 </div>
-<div style="width: 200px; height: 651px; background-color: black; color: white; float: left">
+<div class="rightview">
     <b>Сектора</b><br/>
     <a ng-repeat="s in tmpsectors" ng-click="selectSector($index)" style="padding: 0 2px 0 2px">{{$index + 1}}</a>
     <label>Show tunnels <input type="checkbox" ng-model="showTunnels"/></label>
@@ -10,7 +10,7 @@
     <b>Под курсором:</b>
     <div class="system-button-out">
         <div ng-mouseover="highlightedStar.loc = selectedStar.loc" ng-mouseleave="highlightedStar.loc = undefined" ng-click="openStar(selectedStar.loc)">
-            <span style="float: left;" class="star-small star-small-{{selectedStar.type}}"></span>
+            <span style="float: left;" class="star star-{{selectedStar.type}}"></span>
             Система: {{selectedStar.loc}} <br/>
             Тип: {{selectedStar.type | systype}} <br/>
             Масса: {{selectedStar.mass}} <br/>

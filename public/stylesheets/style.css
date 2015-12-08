@@ -1,6 +1,6 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  margin: 0px;
+  margin: 0;
 }
 
 a {
@@ -17,3 +17,98 @@ a {
 .system-button-out div {
     height: 100%;
 }
+
+table.smallbuildings {
+    padding-top: 38px;
+    width: 100%;
+    height: 100px;
+}
+
+table.full {
+    width: 100%;
+    height: 100%;
+}
+
+.globalview {
+    width: 870px;
+    height: 651px;
+    float: left;
+}
+
+.centerview {
+    width:651px; height: 651px; float: left;
+}
+
+.rightview {
+    width: 219px; height: 651px; background-color: black; color: white; float: left
+}
+
+.buttonlink {
+    text-align: right;
+}
+
+.buttonlink b {
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px  1px 0 #000,
+    1px  1px 0 #000;
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    /* Rules below not implemented in browsers yet */
+    -o-user-select: none;
+    user-select: none;
+}
+
+.buttonlink.disabled {
+    background-color:rgba(1,1,1,0.3);
+}
+
+.buttonlink.disabled:hover {
+    background-color:rgba(255,0,0,0.5);
+}
+
+.buttonlink:hover {
+    background-color:rgba(0,0,0,0.5);
+    border-radius: 35%;
+    border-width: 0;
+}
+
+.buttonlink:active {
+    background-color:rgba(1,1,1,0.5);
+    border-radius: 35%;
+    border-width: 0;
+}
+
+span.respanel {
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: 20;
+    text-align: right;
+    background-color: black;
+}
+
+span.respanel span.carbon {
+    color:#6f6f6f;
+}
+
+span.respanel span.silicon{
+    color:#a576d3;
+}
+
+span.respanel span.ore{
+    color:#cfcfdf;
+}
+
+span.respanel span.bean{
+    color:#5ee440;
+}
+span.respanel span.radiation{
+    color:#ff5500;
+}
+span.respanel span {
+    display: inline-block;
+}
+

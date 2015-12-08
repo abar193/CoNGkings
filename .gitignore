@@ -3,3 +3,6 @@ node_modules
 .idea
 ConKingsUI.iml
 *.log
+public/images/tilesets/
+public/js/tilesets/
+public/stylesheets/tilesets/

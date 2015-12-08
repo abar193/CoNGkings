@@ -1,3 +1,11 @@
+function fog_name(fog, x, y) {
+    var top = (y > 0) ? fog[y - 1][x] : 0;
+    var right = (x < 19) ? fog[y][x + 1] : 0;
+    var bottom = (y < 19) ? fog[y + 1][x] : 0;
+    var left = (x > 0) ? fog[y][x - 1] : 0;
+    return 'fog_f' + top + right + bottom + left;
+}
+
 
 SectorCanvas = {};
 SectorCanvas.drawStars = function drawStars(ctx, stars, highlightedStar) {
@@ -62,7 +70,7 @@ SectorCanvas.redrawHighlighted = function redrawHighlighted(ctx, loc1, loc2, hig
             var img = imgRes.imgStarsSmall;
             ctx.clearRect(21 + x * 21, 21 + y * 21, 21, 21);
             if (highlightedStar && highlightedStar.loc == stars[y][x].loc) {
-                ctx.putImageData(Filters.messed(img, coords, 0, 75, 30),
+                ctx.putImageData(Filters.messed(img, coords, 50, 75, 50),
                     21 + x * 21, 21 + y * 21);
             } else {
                 ctx.drawImage(img,
@@ -140,3 +148,4 @@ Filters.messed = function none(image, coordinates, ammountRed, ammountGreen, amm
     }
     return data;
 };
+

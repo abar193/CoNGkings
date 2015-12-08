@@ -109,15 +109,45 @@ uiCanvas.directive('systemCanvas', [function() {
                     var planet = scope.system.planets[i];
                     coords = planets[planet.type];
                     var img = imgRes.imgPlanets;
+                    if(scope.dynamic)
+                        if(!planet.data)
+                            scope.dynamic.fog[planet.y][planet.x] = 0;
+                        else
+                            scope.dynamic.fog[planet.y][planet.x] = 1;
                     planetsCtx.putImageData((planet.data) ? Filters.none(img, coords) : Filters.grayscaled(img, coords),
                         (coords.width > 32) ? planet.x * 32 - ((coords.width - 32) / 2) : planet.x * 32,
                         (coords.height > 32) ? planet.y * 32 - ((coords.height - 32) / 2) : planet.y * 32
                         );
                 }
+                console.log("0");
+                if(scope.dynamic) {
+                    console.log("Fog");
+                    var f = scope.dynamic.fog;
+                    for(var y = 0; y < 20; y++) {
+                        for(var x = 0; x < 20; x++) {
+                            if(f[y][x] == 0) {
+                                coords = fog[fog_name(f, x, y)];
+                                //console.log(y, x, coords);
+                                planetsCtx.drawImage(imgRes.fog,
+                                    coords.x,
+                                    coords.y,
+                                    coords.width,
+                                    coords.height,
+                                    x * 32,
+                                    y * 32,
+                                    coords.width,
+                                    coords.height);
+                            }
+                        }
+                    }
+                }
                 ctx.drawImage(c, 0, 0);
             }
         }
         scope.$watch('system', function(value) {
+            drawSystem();
+        });
+        scope.$watch('dynamic', function(value) {
             drawSystem();
         });
     }

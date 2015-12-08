@@ -3,7 +3,7 @@ var stars_big = {
         width: 128,
         height: 128,
         x: 5,
-        y:5
+        y: 5
     },
     star_blackhole_old: {
         width: 128,

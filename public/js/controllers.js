@@ -62,11 +62,51 @@ uiControllers.controller('GalaxyController', function ($scope, $http, $location,
 
 });
 
+function random(a) {
+    return Math.floor(Math.random() * a);
+}
+
 uiControllers.controller('SystemController', function ($scope, $http, $routeParams, $location, galaxyHolder) {
     $scope.system = undefined;
+    $scope.dynamic = undefined;
     $scope.selectedSystems = galaxyHolder.systems();
-    $http.get('api/system/' + $routeParams.systemId).success(function(data) {
+    $scope.righttab = "planet";
+    $scope.planet = {
+        mass: random(10),
+        temp: random(99) + 5,
+        carbon: (Math.random() > 0.3) ? random(100) : undefined,
+        silicon: (Math.random() > 0.3) ? random(100) : undefined,
+        ore: (Math.random() > 0.3) ? random(100) : undefined,
+        bean: (Math.random() > 0.3) ? random(100) : undefined,
+        radiation: (Math.random() > 0.5) ? random(20) : undefined
+    };
+    $scope.parsedPlanet = {
+        cities: 10,
+        head: true  ,
+        buildings: [
+            [
+                {type: 1, count: 12},
+                {type: 2, count: 8},
+                {type: 3, count: 15},
+                {type: 18, count: 7}
+            ], [
+                {type: 10, count: 10},
+                {type: 8, count: 0},
+                {type: 7, count: 3},
+                {type: 9, count: -1}
+            ], [
+                {},
+                {type: 17, count: 0},
+                {type: 4, count: -1},
+                {}
+            ]
+        ]
+    };
+    $http.get('api/system/' + $routeParams.systemId + '/static').success(function(data) {
         $scope.system = data;
+    });
+    $http.get('api/system/' + $routeParams.systemId).success(function(data) {
+        $scope.dynamic = data;
     });
     $scope.back = function() {
         $location.path("/sector");
@@ -74,6 +114,9 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
     $scope.openStar = function openStar(loc) {
         $location.path("/system/" + loc.replace(/\//g, "_"));
     };
+    $scope.toggleTab = function toggleTab(value) {
+        $scope.righttab = value;
+    }
 
 });
 

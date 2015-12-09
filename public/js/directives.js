@@ -78,7 +78,7 @@ uiCanvas.directive('sectorCanvas', ['galaxyHolder', function(galaxyHolder) {
     };
 }]);
 
-uiCanvas.directive('systemCanvas', [function() {
+uiCanvas.directive('systemCanvas', ['resourcesHolder', function(resourcesHolder) {
     function link(scope, element) {
         var ctx = element[0].getContext("2d");
 
@@ -119,14 +119,12 @@ uiCanvas.directive('systemCanvas', [function() {
                         (coords.height > 32) ? planet.y * 32 - ((coords.height - 32) / 2) : planet.y * 32
                         );
                 }
-                console.log("0");
-                if(scope.dynamic) {
-                    console.log("Fog");
+                if(scope.dynamic && resourcesHolder.fog()) {
                     var f = scope.dynamic.fog;
                     for(var y = 0; y < 20; y++) {
                         for(var x = 0; x < 20; x++) {
                             if(f[y][x] == 0) {
-                                coords = fog[fog_name(f, x, y)];
+                                coords = resourcesHolder.fog()[fog_name(f, x, y)];
                                 //console.log(y, x, coords);
                                 planetsCtx.drawImage(imgRes.fog,
                                     coords.x,
@@ -140,6 +138,8 @@ uiCanvas.directive('systemCanvas', [function() {
                             }
                         }
                     }
+                } else {
+                    console.log("Fog");
                 }
                 ctx.drawImage(c, 0, 0);
             }

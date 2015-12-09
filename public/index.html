@@ -23,11 +23,11 @@
     <script src="js/directives.js"></script>
     <script src="js/controllers.js"></script>
 </head>
-<body>
+<body ng-cloak>
     <div style="background-color: gray">
 
     </div>
-    <div class="globalview" ng-view></div>
+    <div class="globalview" ng-cloak ng-view></div>
     <div style="background-color: midnightblue; color: white; float: left" ng-controller="InfoCtrl">
         Игрок: {{info.player}} <br/>
         Раса: {{info.race}} <br/>
@@ -52,7 +52,7 @@
     imgRes.imgBholeBack.src = '/images/blackhole_back.jpg';
     imgRes.imgPlanets.src = '/images/planets.png';
     imgRes.imgStars.src = '/images/stars.png';
-    imgRes.fog.src = '/images/fog.png';
+    imgRes.fog.src = '/images/tilesets/fog.png';
     imgRes.imgStarsSmall.src = '/images/stars-small.png';
     Array.prototype.swap = function (x,y) {
         var b = this[x];

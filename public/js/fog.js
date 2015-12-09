@@ -3,7 +3,7 @@ var fog = {
         width: 32,
         height: 32,
         x: 0,
-        y:0
+        y: 0
     },
     fog_f0001: {
         width: 32,

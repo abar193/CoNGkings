@@ -3,7 +3,7 @@ function fog_name(fog, x, y) {
     var right = (x < 19) ? fog[y][x + 1] : 0;
     var bottom = (y < 19) ? fog[y + 1][x] : 0;
     var left = (x > 0) ? fog[y][x - 1] : 0;
-    return 'fog_f' + top + right + bottom + left;
+    return 'f' + top + right + bottom + left;
 }
 
 
@@ -29,6 +29,17 @@ SectorCanvas.drawStars = function drawStars(ctx, stars, highlightedStar) {
                             21 + y * 21,
                             coords.width,
                             coords.height);
+                    }
+                    if(stars[y][x].discovered) {
+                        ctx.fillStyle = '#777';
+                        ctx.beginPath();
+                        var ox = 21 + x * 21;
+                        var oy = 21 + y * 21;
+                        ctx.moveTo(ox, oy + 16);
+                        ctx.lineTo(ox + 5, oy + 21);
+                        ctx.lineTo(ox, oy + 21);
+                        ctx.closePath();
+                        ctx.fill();
                     }
                 } else {
                     if(stars[y][x].type)

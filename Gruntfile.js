@@ -26,8 +26,6 @@ module.exports = function(grunt) {
                 dest: 'public/images/tilesets/fog.png',
                 destCss: 'public/js/tilesets/fog.json',
                 imgPath: '/images/tilesets/fog.png'
-                //cssTemplate: 'src/templates/mycss.handlebars',
-                //cssHandlebarsHelpers: {header: function() {return "widgets"}}
             }
         }
     });

@@ -10,8 +10,8 @@
     <b>Под курсором:</b>
     <div class="system-button-out">
         <div ng-mouseover="highlightedStar.loc = selectedStar.loc" ng-mouseleave="highlightedStar.loc = undefined" ng-click="openStar(selectedStar.loc)">
-            <span style="float: left;" class="star star-{{selectedStar.type}}"></span>
-            Система: {{selectedStar.loc}} <br/>
+            <div style="float: left;" class="star-small star-small-nebula"></div>
+            Система: {{selectedStar.name}} <br/>
             Тип: {{selectedStar.type | systype}} <br/>
             Масса: {{selectedStar.mass}} <br/>
             Температура: {{selectedStar.temp}}

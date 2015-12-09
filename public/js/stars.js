@@ -347,6 +347,12 @@ var stars_big = {
         x: 419,
         y:971
     },
+    star_star3_0: {
+        width: 128,
+        height: 128,
+        x: 557,
+        y:971
+    },
     star_star3_1: {
         width: 128,
         height: 128,

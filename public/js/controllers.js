@@ -14,7 +14,10 @@ function locToCoordinates(loc) {
     if(!loc) return null;
     var exp = /S(\d+)\/(\d+)\((\d+):(\d+)\)/g;
     var matches = exp.exec(loc);
-    return {galaxy: matches[1], sector: matches[2], x: matches[3], y: matches[4]};
+    if(matches != null)
+        return {galaxy: matches[1], sector: matches[2], x: matches[3], y: matches[4]};
+    else
+        console.log("Incorrect location format!", loc);
 }
 
 uiControllers.controller('GalaxyController', function ($scope, $http, $location, galaxyHolder) {

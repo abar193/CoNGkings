@@ -45,3 +45,14 @@ uiServices.factory('galaxyHolder', ['$http', function($http) {
     };
 }]);
 
+uiServices.factory('resourcesHolder', ['$http', function($http) {
+    var fog = undefined;
+    $http.get('/js/tilesets/fog.json').success(function(data){
+        fog = data;
+    });
+    return {
+        fog: function () {
+            return fog;
+        }
+    }
+}]);

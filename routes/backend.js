@@ -12,6 +12,8 @@ var keys_planets = Object.keys(planets);
 galaxy.sectors = [];
 galaxy.tunnels = [];
 var tempStars = [];
+var discoveredStars = [];
+var words = "A star is a luminous sphere of plasma held together by its own gravity.".split(" ");
 
 for(var sysNum = 0; sysNum < 5; sysNum++) {
     var system = [];
@@ -20,16 +22,29 @@ for(var sysNum = 0; sysNum < 5; sysNum++) {
         for (var x = 0; x < 30; x++) {
             if (Math.random() >= 0.5) {
                 var r = Math.floor((Math.random() * keys.length));
-                var nme = "S1/" + sysNum + "(" + x + ":" + y + ")";
+                var loc = "S1/" + sysNum + "(" + x + ":" + y + ")";
+                var nme = (Math.random() < 0.2) ? words[random(words.length)] + " " + words[random(words.length)] : loc;
+                var discovered = Math.random() < 0.4 && sysNum == 0;
                 arr.push({
-                    "name": nme,
-                    loc: nme,
+                    name: nme,
+                    loc: loc,
                     type: keys[r].substr(11),
-                    "mass": Math.floor(Math.random() * 100),
-                    "temp": Math.floor(Math.random() * 100)
+                    mass: Math.floor(Math.random() * 100),
+                    temp: Math.floor(Math.random() * 100),
+                    discovered: discovered
                 });
                 if(Math.random() < 0.2)
-                    tempStars.push(nme);
+                    tempStars.push(loc);
+                if(discovered) {
+                    discoveredStars.push({
+                        name: nme,
+                        loc: loc,
+                        type: keys[r].substr(11),
+                        mass: Math.floor(Math.random() * 100),
+                        temp: Math.floor(Math.random() * 100),
+                        discovered: discovered
+                    })
+                }
             } else {
                 arr.push({});
             }
@@ -68,40 +83,78 @@ function random(a) {
     return Math.floor(Math.random() * a);
 }
 
+function locToCoordinates(loc) {
+    if(!loc) return null;
+    var exp = /S(\d+)[_/](\d+)\((\d+):(\d+)\)/g;
+    var matches = exp.exec(loc);
+    if(matches != null)
+        return {galaxy: matches[1], sector: matches[2], x: matches[3], y: matches[4]};
+    else
+        return null;
+}
+
+
 router.get('/system/:systemId/static', function(req, res) {
     var planets = [];
-    for(var i = 0; i < Math.floor(Math.random() * 35) + 1; i++) {
-        var x = Math.floor(Math.random() * 19);
-        var y = Math.floor(Math.random() * 19);
-        if(x >= 8 && x <= 11 && y >= 8 && y <= 11) y += 4;
-        var planet = {x: x, y: y, type: keys_planets[Math.floor(Math.random() * keys_planets.length)]};
-        if(Math.random() > 0.55) {
-            planet.data = {mass: random(10), temp: random(99) + 5,
-                carbon: random(100),
-                silicon: random(100),
-                ore: random(100),
-                bean: random(100),
-                radiation: random(19)};
+    var loc = locToCoordinates(req.params.systemId);
+    if(!loc) {
+        res.status(500).send("Wrong location " + req.params.systemId);
+    }
+    var sys = galaxy.sectors[loc.sector][loc.y][loc.x];
+    if(sys.discovered) {
+        for (var i = 0; i < Math.floor(Math.random() * 35) + 1; i++) {
+            var x = Math.floor(Math.random() * 19);
+            var y = Math.floor(Math.random() * 19);
+            if (x >= 8 && x <= 11 && y >= 8 && y <= 11) y += 4;
+            var planet = {x: x, y: y, type: keys_planets[Math.floor(Math.random() * keys_planets.length)]};
+            if (Math.random() > 0.55) {
+                planet.data = {
+                    mass: random(10), temp: random(99) + 5,
+                    carbon: random(100),
+                    silicon: random(100),
+                    ore: random(100),
+                    bean: random(100),
+                    radiation: random(19)
+                };
+            }
+            planets.push(planet);
         }
-        planets.push(planet);
     }
     res.json({
-        star: Object.keys(bigStars)[Math.floor((Math.random() * Object.keys(bigStars).length))],
+        star: "star_" + sys.type,
         planets: planets
     });
 });
 
 router.get('/system/:systemId/', function(req, res) {
     var fog = [];
-    for(var y = 0; y < 20; y++) {
-        var row = [];
-        for(var x = 0; x < 20; x++) {
-            if(x >= 8 && x <= 11 && y >= 8 && y <= 11)
-                row.push(1);
-            else
-                row.push((Math.random()) > 0.5 ? 1 : 0);
+    var loc = locToCoordinates(req.params.systemId);
+    if(!loc) {
+        res.status(500).send("Wrong location " + req.params.systemId);
+    }
+    var sys = galaxy.sectors[loc.sector][loc.y][loc.x];
+    if(sys.discovered) {
+        for (var y = 0; y < 20; y++) {
+            var row = [];
+            for (var x = 0; x < 20; x++) {
+                if (x >= 8 && x <= 11 && y >= 8 && y <= 11)
+                    row.push(1);
+                else
+                    row.push((Math.random()) > 0.5 ? 1 : 0);
+            }
+            fog.push(row);
         }
-        fog.push(row);
+    } else {
+        for (var y = 0; y < 20; y++) {
+            var row = [];
+            for (var x = 0; x < 20; x++) {
+                if (x >= 8 && x <= 11 && y >= 8 && y <= 11)
+                    row.push(0);
+                else
+                    row.push(0);
+            }
+            fog.push(row);
+        }
     }
     res.json({
         fog: fog

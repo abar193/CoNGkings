@@ -2,17 +2,19 @@ var express = require('express');
 var router = express.Router();
 
 var smallStars = require("../public/js/smallstars");
-var planets = require("../public/js/planets");
+var resplanets = require("../public/js/planets");
 var bigStars = require("../public/js/stars");
 var info = require("../public/data/info.json");
 var galaxy = {};
 
 var keys = Object.keys(smallStars);
-var keys_planets = Object.keys(planets);
+var keys_planets = Object.keys(resplanets);
 galaxy.sectors = [];
 galaxy.tunnels = [];
 var tempStars = [];
 var discoveredStars = [];
+var planets = [];
+
 var words = "A star is a luminous sphere of plasma held together by its own gravity.".split(" ");
 
 for(var sysNum = 0; sysNum < 5; sysNum++) {
@@ -25,25 +27,19 @@ for(var sysNum = 0; sysNum < 5; sysNum++) {
                 var loc = "S1/" + sysNum + "(" + x + ":" + y + ")";
                 var nme = (Math.random() < 0.2) ? words[random(words.length)] + " " + words[random(words.length)] : loc;
                 var discovered = Math.random() < 0.4 && sysNum == 0;
-                arr.push({
+                var newSystem = {
                     name: nme,
                     loc: loc,
                     type: keys[r].substr(11),
                     mass: Math.floor(Math.random() * 100),
                     temp: Math.floor(Math.random() * 100),
                     discovered: discovered
-                });
+                };
+                arr.push(newSystem);
                 if(Math.random() < 0.2)
                     tempStars.push(loc);
                 if(discovered) {
-                    discoveredStars.push({
-                        name: nme,
-                        loc: loc,
-                        type: keys[r].substr(11),
-                        mass: Math.floor(Math.random() * 100),
-                        temp: Math.floor(Math.random() * 100),
-                        discovered: discovered
-                    })
+                    discoveredStars.push(newSystem);
                 }
             } else {
                 arr.push({});
@@ -52,6 +48,33 @@ for(var sysNum = 0; sysNum < 5; sysNum++) {
         system.push(arr);
     }
     galaxy.sectors.push(system);
+}
+
+for(var i = 0; i < discoveredStars.length; i++) {
+    var system = discoveredStars[i];
+    var count = random(10) + 1;
+    var id = 0;
+    var sysPlanets = [];
+    for (var j = 0; j < count; j++) {
+        var x = Math.floor(Math.random() * 19);
+        var y = Math.floor(Math.random() * 19);
+        if (x >= 8 && x <= 11 && y >= 8 && y <= 11) y += 4;
+        var planet = {id: id++, x: x, y: y, type: keys_planets[Math.floor(Math.random() * keys_planets.length)]};
+        if (Math.random() > 0.55) {
+            planet.data = {
+                mass: random(10), temp: random(99) + 5,
+                carbon: random(100),
+                silicon: random(100),
+                ore: random(100),
+                bean: random(100),
+                radiation: random(19)
+            };
+        }
+        planets.push(planet);
+        sysPlanets.push(planet);
+    }
+    system.planets = sysPlanets;
+    system.star = "star_" + system.type;
 }
 
 for(var i = 0; i < tempStars.length / 4; i++) {
@@ -93,7 +116,6 @@ function locToCoordinates(loc) {
         return null;
 }
 
-
 router.get('/system/:systemId/static', function(req, res) {
     var planets = [];
     var loc = locToCoordinates(req.params.systemId);
@@ -102,27 +124,16 @@ router.get('/system/:systemId/static', function(req, res) {
     }
     var sys = galaxy.sectors[loc.sector][loc.y][loc.x];
     if(sys.discovered) {
-        for (var i = 0; i < Math.floor(Math.random() * 35) + 1; i++) {
-            var x = Math.floor(Math.random() * 19);
-            var y = Math.floor(Math.random() * 19);
-            if (x >= 8 && x <= 11 && y >= 8 && y <= 11) y += 4;
-            var planet = {x: x, y: y, type: keys_planets[Math.floor(Math.random() * keys_planets.length)]};
-            if (Math.random() > 0.55) {
-                planet.data = {
-                    mass: random(10), temp: random(99) + 5,
-                    carbon: random(100),
-                    silicon: random(100),
-                    ore: random(100),
-                    bean: random(100),
-                    radiation: random(19)
-                };
+        for(var i = 0; i < discoveredStars.length; i++) {
+            if(discoveredStars[i].loc == sys.loc) {
+                console.log(discoveredStars[i]);
+                res.json(discoveredStars[i]);
             }
-            planets.push(planet);
         }
     }
     res.json({
         star: "star_" + sys.type,
-        planets: planets
+        planets: []
     });
 });
 

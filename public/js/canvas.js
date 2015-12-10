@@ -43,7 +43,7 @@ SectorCanvas.drawStars = function drawStars(ctx, stars, highlightedStar) {
                     }
                 } else {
                     if(stars[y][x].type)
-                        console.log("No json-location defined for small-star of type:", scope.stars[y][x].type);
+                        console.log("No json-location defined for small-star of type:", stars[y][x].type);
                 }
             }
         }

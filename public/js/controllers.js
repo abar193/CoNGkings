@@ -73,15 +73,9 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
     $scope.system = undefined;
     $scope.dynamic = undefined;
     $scope.selectedSystems = galaxyHolder.systems();
-    $scope.righttab = "planet";
+    $scope.righttab = "systems";
     $scope.planet = {
-        mass: random(10),
-        temp: random(99) + 5,
-        carbon: (Math.random() > 0.3) ? random(100) : undefined,
-        silicon: (Math.random() > 0.3) ? random(100) : undefined,
-        ore: (Math.random() > 0.3) ? random(100) : undefined,
-        bean: (Math.random() > 0.3) ? random(100) : undefined,
-        radiation: (Math.random() > 0.5) ? random(20) : undefined
+
     };
     $scope.parsedPlanet = {
         cities: 10,
@@ -105,8 +99,20 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
             ]
         ]
     };
+    $scope.openPlanet  = function(coordinates) {
+        console.log(coordinates);
+        for(var i = 0; i < $scope.system.planets.length; i++) {
+            var planet = $scope.system.planets[i];
+            if(planet.x == coordinates.x && planet.y == coordinates.y) {
+                console.log(planet);
+                $scope.planet = planet;
+                $scope.righttab = "planet";
+            }
+        }
+    };
     $http.get('api/system/' + $routeParams.systemId + '/static').success(function(data) {
         $scope.system = data;
+        console.log($scope.system);
     });
     $http.get('api/system/' + $routeParams.systemId).success(function(data) {
         $scope.dynamic = data;

@@ -49,11 +49,10 @@ for(var sysNum = 0; sysNum < 5; sysNum++) {
     }
     galaxy.sectors.push(system);
 }
-
+var id = 0;
 for(var i = 0; i < discoveredStars.length; i++) {
     var system = discoveredStars[i];
     var count = random(10) + 1;
-    var id = 0;
     var sysPlanets = [];
     for (var j = 0; j < count; j++) {
         var x = Math.floor(Math.random() * 19);

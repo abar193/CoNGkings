@@ -52,12 +52,12 @@
                 </tr>
             </table>
             <span class="respanel" style="bottom: 16px">
-                <span class="ore"><span class="widgets temp"></span>{{planet.temp}}</span>
-                <span class="ore"><span class="widgets mass"></span>{{planet.mass}}</span>
+                <span class="ore"><span class="widgets temp"></span>{{planet.data.temp}}</span>
+                <span class="ore"><span class="widgets mass"></span>{{planet.data.mass}}</span>
             </span>
             <span class="respanel">
-                <span ng-repeat="r in ['carbon', 'silicon', 'ore', 'bean', 'radiation']" ng-if="planet[r]" class="{{r}}">
-                    <span class="widgets res{{r}}"></span>{{planet[r]}}
+                <span ng-repeat="r in ['carbon', 'silicon', 'ore', 'bean', 'radiation']" ng-if="planet.data[r]" class="{{r}}">
+                    <span class="widgets res{{r}}"></span>{{planet.data[r]}}
                 </span>
             </span>
 

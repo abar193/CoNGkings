@@ -144,6 +144,11 @@ uiCanvas.directive('systemCanvas', ['resourcesHolder', function(resourcesHolder)
                 ctx.drawImage(c, 0, 0);
             }
         }
+        element.bind('mouseup', function(event){
+            scope.$apply(function() {
+                scope.openPlanet(starCoordinates(event, 0, 0, 32, 32));
+            });
+        });
         scope.$watch('system', function(value) {
             drawSystem();
         });

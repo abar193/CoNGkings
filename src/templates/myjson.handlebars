@@ -1,0 +1,17 @@
+{{#block "sprites"}}
+{
+{{#foreach sprites}}
+    "{{name}}": {
+        "x": {{x}},
+        "y": {{y}},
+        "width": {{width}},
+        "height": {{height}}
+{{#if $last}}
+    }
+{{else}}
+    },
+{{/if}}
+{{/foreach}}
+
+}
+{{/block}}

@@ -12,8 +12,7 @@ conkingsui.config(['$routeProvider',
             }).when('/test', {
                 templateUrl: 'partials/blank.html',
                 controller: 'GalaxyController'
-            }).
-            otherwise({
+            }).otherwise({
                 redirectTo: '/sector'
             });
     }]);

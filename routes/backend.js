@@ -136,12 +136,15 @@ router.get('/system/:systemId/static', function(req, res) {
 });
 
 router.get('/system/:systemId/', function(req, res) {
+    console.log("Here!");
     var fog = [];
     var loc = locToCoordinates(req.params.systemId);
+    console.log("Coodinates parsed: ",  loc);
     if(!loc || loc.sector < 0 || loc.sector > 4 || loc.x < 0 || loc.x > 29 || loc.y < 0 || loc.y > 29) {
-        res.status(404).send("Wrong location " + req.params.systemId).end();
+        res.json({"status": "err", "reason": "wrong location"});
     }
     var sys = galaxy.sectors[loc.sector][loc.y][loc.x];
+    console.log("Sys found: ",  sys);
     if(sys.discovered) {
         for (var y = 0; y < 20; y++) {
             var row = [];
@@ -162,6 +165,7 @@ router.get('/system/:systemId/', function(req, res) {
             fog.push(row);
         }
     }
+    console.log("Got there just fine");
     res.json({
         fog: fog
     });

@@ -94,8 +94,13 @@ router.get('/galaxy', function(req, res, next) {
 });
 
 router.get('/sector/:sectorId/stars', function(req, res, next) {
-    if(req.para)
-    res.json(galaxy.sectors[req.params.sectorId]);
+    console.log(req.params.sectorId);
+    try {
+        res.json(galaxy.sectors[req.params.sectorId]);
+    } catch(E) {
+        res.json({"status": "error", "reason": "wrong sector location"});
+    }
+
 });
 
 router.get('/tunnels', function(req, res) {

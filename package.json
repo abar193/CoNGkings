@@ -17,8 +17,8 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
-    "grunt-cli": "^0.1.13",
     "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
     "grunt-concat-json": "0.0.10",
     "grunt-contrib-concat": "^0.5.1",
     "grunt-contrib-cssmin": "^0.14.0",

@@ -138,8 +138,8 @@ router.get('/system/:systemId/static', function(req, res) {
 router.get('/system/:systemId/', function(req, res) {
     var fog = [];
     var loc = locToCoordinates(req.params.systemId);
-    if(!loc) {
-        res.status(500).send("Wrong location " + req.params.systemId).end();
+    if(!loc || loc.sector < 0 || loc.sector > 4 || loc.x < 0 || loc.x > 29 || loc.y < 0 || loc.y > 29) {
+        res.status(404).send("Wrong location " + req.params.systemId).end();
     }
     var sys = galaxy.sectors[loc.sector][loc.y][loc.x];
     if(sys.discovered) {
@@ -157,10 +157,7 @@ router.get('/system/:systemId/', function(req, res) {
         for (var y = 0; y < 20; y++) {
             var row = [];
             for (var x = 0; x < 20; x++) {
-                if (x >= 8 && x <= 11 && y >= 8 && y <= 11)
-                    row.push(0);
-                else
-                    row.push(0);
+                row.push(0);
             }
             fog.push(row);
         }

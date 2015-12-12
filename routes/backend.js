@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-var smallStars = require("../public/js/smallstars");
-var resplanets = require("../public/js/planets");
-var bigStars = require("../public/js/stars");
+var combined = require("../public/js/tilesets/combined.json");
+var smallStars = combined.src.tmp.smallstars;
+var resPlanets = combined.src.tmp.planets;
 var info = require("../public/data/info.json");
 var galaxy = {};
 
 var keys = Object.keys(smallStars);
-var keys_planets = Object.keys(resplanets);
+var keys_planets = Object.keys(resPlanets);
 galaxy.sectors = [];
 galaxy.tunnels = [];
 var tempStars = [];
@@ -23,14 +23,14 @@ for(var sysNum = 0; sysNum < 5; sysNum++) {
         var arr = [];
         for (var x = 0; x < 30; x++) {
             if (Math.random() >= 0.5) {
-                var r = Math.floor((Math.random() * keys.length));
+                var r = Math.floor(random(keys.length));
                 var loc = "S1/" + sysNum + "(" + x + ":" + y + ")";
                 var nme = (Math.random() < 0.2) ? words[random(words.length)] + " " + words[random(words.length)] : loc;
                 var discovered = Math.random() < 0.4 && sysNum == 0;
                 var newSystem = {
                     name: nme,
                     loc: loc,
-                    type: keys[r].substr(11),
+                    type: keys[r],
                     mass: Math.floor(Math.random() * 100),
                     temp: Math.floor(Math.random() * 100),
                     discovered: discovered
@@ -58,7 +58,7 @@ for(var i = 0; i < discoveredStars.length; i++) {
         var x = Math.floor(Math.random() * 19);
         var y = Math.floor(Math.random() * 19);
         if (x >= 8 && x <= 11 && y >= 8 && y <= 11) y += 4;
-        var planet = {id: id++, x: x, y: y, type: keys_planets[Math.floor(Math.random() * keys_planets.length)]};
+        var planet = {id: id++, x: x, y: y, type: keys_planets[random(keys_planets.length)]};
         if (Math.random() > 0.55) {
             planet.data = {
                 mass: random(10), temp: random(99) + 5,
@@ -73,7 +73,7 @@ for(var i = 0; i < discoveredStars.length; i++) {
         sysPlanets.push(planet);
     }
     system.planets = sysPlanets;
-    system.star = "star_" + system.type;
+    system.star = system.type;
 }
 
 for(var i = 0; i < tempStars.length / 4; i++) {
@@ -125,13 +125,12 @@ router.get('/system/:systemId/static', function(req, res) {
     if(sys.discovered) {
         for(var i = 0; i < discoveredStars.length; i++) {
             if(discoveredStars[i].loc == sys.loc) {
-                console.log(discoveredStars[i]);
                 res.json(discoveredStars[i]);
             }
         }
     }
     res.json({
-        star: "star_" + sys.type,
+        star: sys.type,
         planets: []
     });
 });
@@ -140,7 +139,7 @@ router.get('/system/:systemId/', function(req, res) {
     var fog = [];
     var loc = locToCoordinates(req.params.systemId);
     if(!loc) {
-        res.status(500).send("Wrong location " + req.params.systemId);
+        res.status(500).send("Wrong location " + req.params.systemId).end();
     }
     var sys = galaxy.sectors[loc.sector][loc.y][loc.x];
     if(sys.discovered) {

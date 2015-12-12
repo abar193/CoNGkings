@@ -15,4 +15,9 @@ conkingsui.config(['$routeProvider',
             }).otherwise({
                 redirectTo: '/sector'
             });
-    }]);
+    }
+]);
+
+conkingsui.run(function(resourcesHolder) {
+
+});

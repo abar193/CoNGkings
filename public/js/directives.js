@@ -17,13 +17,13 @@ function starCoordinates(event, offsetX, offsetY, cellWidth, cellHeight) {
     return {x: x, y: y};
 }
 
-uiCanvas.directive('sectorCanvas', ['galaxyHolder', function(galaxyHolder) {
+uiCanvas.directive('sectorCanvas', ['galaxyHolder', 'resourcesHolder', function(galaxyHolder, resourcesHolder) {
     function link(scope, element, attrs) {
         var ctx = element[0].children[1].getContext("2d");
         var ctxTunnels = element[0].children[2].getContext("2d");
         var drawing = false;
         function drawStars() {
-            SectorCanvas.drawStars(ctx, scope.stars, scope.highlightedStar);
+            SectorCanvas.drawStars(ctx, scope.stars, scope.highlightedStar, resourcesHolder.smallstars());
             SectorCanvas.drawTunnels(ctxTunnels, scope.selectedSector, scope.tunnels, scope.showTunnels);
             ctx.font = "15px Arial";
             ctx.fillStyle = "#3333BB";
@@ -57,14 +57,14 @@ uiCanvas.directive('sectorCanvas', ['galaxyHolder', function(galaxyHolder) {
         });
         scope.$watch(function() { return galaxyHolder.sectors(); }, function(value) {
             scope.stars = galaxyHolder.sectors()[galaxyHolder.selectedSector()];
-            SectorCanvas.drawStars(ctx, scope.stars, scope.highlightedStar);
+            SectorCanvas.drawStars(ctx, scope.stars, scope.highlightedStar, resourcesHolder.smallstars());
         });
         scope.$watch(function() { return galaxyHolder.tunnels(); }, function(value) {
             scope.tunnels = value;
             SectorCanvas.drawTunnels(ctxTunnels, scope.selectedSector, scope.tunnels, scope.showTunnels);
         });
         scope.$watch('highlightedStar.loc', function(value, oldValue) {
-            SectorCanvas.redrawHighlighted(ctx, value, oldValue, scope.highlightedStar, scope.stars);
+            SectorCanvas.redrawHighlighted(ctx, value, oldValue, scope.highlightedStar, scope.stars, resourcesHolder.smallstars());
         });
         scope.$watch('showTunnels', function(newValue){
             scope.showTunnels = newValue;
@@ -88,7 +88,9 @@ uiCanvas.directive('systemCanvas', ['resourcesHolder', function(resourcesHolder)
             c.width = c.height = 651;
             var planetsCtx = c.getContext('2d');
             if(scope.system) {
-                var coords = stars_big[scope.system.star];
+                var coords = resourcesHolder.bigstars()[scope.system.star];
+                if(!coords)
+                    console.log("No location for " + scope.system.star);
                 if(scope.system.star.indexOf("blackhole") > -1)
                     ctx.drawImage(imgRes.imgBholeBack, 0, 0, 651, 651);
                 else
@@ -107,7 +109,7 @@ uiCanvas.directive('systemCanvas', ['resourcesHolder', function(resourcesHolder)
                 //ctx.stroke();
                 for(var i = 0; i < scope.system.planets.length; i++) {
                     var planet = scope.system.planets[i];
-                    coords = planets[planet.type];
+                    coords = resourcesHolder.planets()[planet.type];
                     var img = imgRes.imgPlanets;
                     if(scope.dynamic)
                         if(!planet.data)

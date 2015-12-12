@@ -46,13 +46,27 @@ uiServices.factory('galaxyHolder', ['$http', function($http) {
 }]);
 
 uiServices.factory('resourcesHolder', ['$http', function($http) {
-    var fog = undefined;
-    $http.get('/js/tilesets/fog.json').success(function(data){
-        fog = data;
+    var bigstars, fog, planets, smallstars;
+
+    $http.get('/js/tilesets/combined.json').success(function(data){
+        var root = data.src.tmp;
+        bigstars = root.bigstars;
+        fog = root.fog;
+        planets = root.planets;
+        smallstars = root.smallstars;
     });
     return {
+        bigstars: function() {
+            return bigstars;
+        },
         fog: function () {
             return fog;
+        },
+        planets: function () {
+            return planets;
+        },
+        smallstars: function () {
+            return smallstars;
         }
     }
 }]);

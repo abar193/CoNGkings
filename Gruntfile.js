@@ -1,8 +1,12 @@
 /**
  * Created by Abar on 04-Dec-15.
- * Configuration for Grunt runner. Makes tilesets from a sets of images
+ * Configuration for Grunt runner. Makes tilesets from a sets of images, generates .json or .css mapping files.
+ *
+ * Some tilesets require both .css and .json files - I haven't found a better solution but to specify two sprite
+ * commands to first generate image and .css mapping file, then overwrite image with second generation and create .json
+ * file for it.
  */
-var myforeach = function(arr, options) {
+var myforeach = function(arr, options) { // Allows #foreach command in myjson.handlebars template
     if(options.inverse && !arr.length)
         return options.inverse(this);
 
@@ -34,11 +38,27 @@ module.exports = function(grunt) {
             },
             bigstarsCss: {
                 src: ['src/bigstars/*'],
-                dest: 'public/images/tilesets/bigstars.png', // yes, that overwrites file from bigstars step
+                dest: 'public/images/tilesets/bigstars.png',
                 destCss: 'src/tmpcss/bigstars.css',
                 imgPath: '/images/tilesets/bigstars.png',
                 cssTemplate: 'src/templates/mycss.handlebars',
                 cssHandlebarsHelpers: {header: function() {return "bigstars"}}
+            },
+            planetsCss: {
+                src: ['src/planets/*'],
+                dest: 'public/images/tilesets/planets.png',
+                destCss: 'src/tmpcss/planets.css',
+                imgPath: '/images/tilesets/planets.png',
+                cssTemplate: 'src/templates/mycss.handlebars',
+                cssHandlebarsHelpers: {header: function() {return "planets"}}
+            },
+            planets: {
+                src: ['src/planets/*'],
+                dest: 'public/images/tilesets/bigstars.png',
+                imgPath: '/images/tilesets/planets.png',
+                destCss: 'src/tmp/planets.json',
+                cssTemplate: 'src/templates/myjson.handlebars',
+                cssHandlebarsHelpers: {foreach: myforeach}
             },
             bigstars: {
                 src: ['src/bigstars/*'],

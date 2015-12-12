@@ -4,19 +4,13 @@
     <meta charset="utf-8">
     <title>CoNGkings</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <link rel="stylesheet" href="/stylesheets/stars-scaled.css">
-    <link rel="stylesheet" href="/stylesheets/tilesets/buildings.css">
-    <link rel="stylesheet" href="/stylesheets/tilesets/widgets.css">
+    <link rel="stylesheet" href="/stylesheets/tilesets/tiles.min.css">
 
     <script src="angular/angular.js"></script>
     <script src="angular-route/angular-route.js"></script>
     <script src="angular-bootstrap/ui-bootstrap.js"></script>
 
     <script src="js/canvas.js"></script>
-    <script src="js/fog.js"></script>
-    <script src="js/stars.js"></script>
-    <script src="js/planets.js"></script>
-    <script src="js/smallstars.js"></script>
 
     <script src="js/app.js"></script>
     <script src="js/services.js"></script>
@@ -44,16 +38,16 @@
         imgSystemBack: new Image(),
         imgBholeBack: new Image(),
         imgStars: new Image(),
+        imgStarsSmall: new Image(),
         imgPlanets: new Image(),
-        fog: new Image(),
-        imgStarsSmall: new Image()
+        fog: new Image()
     };
     imgRes.imgSystemBack.src = '/images/star_back4v.jpg';
     imgRes.imgBholeBack.src = '/images/blackhole_back.jpg';
-    imgRes.imgPlanets.src = '/images/planets.png';
-    imgRes.imgStars.src = '/images/stars.png';
+    imgRes.imgPlanets.src = '/images/tilesets/planets.png';
+    imgRes.imgStars.src = '/images/tilesets/bigstars.png';
     imgRes.fog.src = '/images/tilesets/fog.png';
-    imgRes.imgStarsSmall.src = '/images/stars-small.png';
+    imgRes.imgStarsSmall.src = '/images/tilesets/smallstars.png';
     Array.prototype.swap = function (x,y) {
         var b = this[x];
         this[x] = this[y];

@@ -7,14 +7,14 @@ function fog_name(fog, x, y) {
 }
 
 
-SectorCanvas = {};
-SectorCanvas.drawStars = function drawStars(ctx, stars, highlightedStar) {
+SectorCanvas = {}
+SectorCanvas.drawStars = function drawStars(ctx, stars, highlightedStar, small_stars) {
     ctx.clearRect(0, 0, 651, 651);
     if(stars) {
         for(var y = 0; y < stars.length; y++) {
             for(var x = 0; x < stars[y].length; x++) {
-                if(stars[y][x].type && small_stars['star_small_' + stars[y][x].type]) {
-                    var coords = small_stars['star_small_' + stars[y][x].type];
+                if(stars[y][x].type && small_stars[stars[y][x].type]) {
+                    var coords = small_stars[stars[y][x].type];
                     var img = imgRes.imgStarsSmall;
                     if(highlightedStar && highlightedStar.loc == stars[y][x].loc) {
                         ctx.putImageData(Filters.messed(img, coords, 0, 75, 30),
@@ -70,14 +70,14 @@ SectorCanvas.drawTunnels = function drawTunnels(ctx, sector, tunnels, tunnelsEna
         ctx.stroke();
     }
 };
-SectorCanvas.redrawHighlighted = function redrawHighlighted(ctx, loc1, loc2, highlightedStar, stars) {
+SectorCanvas.redrawHighlighted = function redrawHighlighted(ctx, loc1, loc2, highlightedStar, stars, small_stars) {
     var arr = [loc1, loc2];
     for(var i = 0; i < arr.length; i++) {
         if(arr[i]) {
             var location = locToCoordinates(arr[i]);
             var x = location.x;
             var y = location.y;
-            var coords = small_stars['star_small_' + stars[y][x].type];
+            var coords = small_stars[stars[y][x].type];
             var img = imgRes.imgStarsSmall;
             ctx.clearRect(21 + x * 21, 21 + y * 21, 21, 21);
             if (highlightedStar && highlightedStar.loc == stars[y][x].loc) {

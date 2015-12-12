@@ -100,11 +100,9 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
         ]
     };
     $scope.openPlanet  = function(coordinates) {
-        console.log(coordinates);
         for(var i = 0; i < $scope.system.planets.length; i++) {
             var planet = $scope.system.planets[i];
             if(planet.x == coordinates.x && planet.y == coordinates.y) {
-                console.log(planet);
                 $scope.planet = planet;
                 $scope.righttab = "planet";
             }
@@ -112,7 +110,6 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
     };
     $http.get('api/system/' + $routeParams.systemId + '/static').success(function(data) {
         $scope.system = data;
-        console.log($scope.system);
     });
     $http.get('api/system/' + $routeParams.systemId).success(function(data) {
         $scope.dynamic = data;

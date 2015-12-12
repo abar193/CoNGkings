@@ -1,10 +1,10 @@
 {
   "name": "ConKingsUI",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "postinstall": "bower install"
+    "postinstall": "bower install && grunt"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -17,6 +17,7 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "grunt-cli": "^0.1.13",
     "grunt": "^0.4.5",
     "grunt-concat-json": "0.0.10",
     "grunt-contrib-concat": "^0.5.1",

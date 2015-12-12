@@ -50,9 +50,11 @@ if (app.get('env') === 'development') {
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
+    //console.log("Got Error!");
     res.status(500);
-    res.write(err.message);
+    res.write("Some uncaught error");
     res.end();
+    console.log(err);
 });
 
 module.exports = app;

@@ -94,7 +94,6 @@ router.get('/galaxy', function(req, res, next) {
 });
 
 router.get('/sector/:sectorId/stars', function(req, res, next) {
-    console.log(req.params.sectorId);
     try {
         res.json(galaxy.sectors[req.params.sectorId]);
     } catch(E) {
@@ -131,12 +130,14 @@ router.get('/system/:systemId/static', function(req, res) {
     var loc = locToCoordinates(req.params.systemId);
     if(!loc) {
         res.json({"status": "err", "reason": "wrong location"});
+        return;
     }
     var sys = galaxy.sectors[loc.sector][loc.y][loc.x];
     if(sys.discovered) {
         for(var i = 0; i < discoveredStars.length; i++) {
             if(discoveredStars[i].loc == sys.loc) {
                 res.json(discoveredStars[i]);
+                return;
             }
         }
     }
@@ -151,6 +152,7 @@ router.get('/system/:systemId/', function(req, res) {
     var loc = locToCoordinates(req.params.systemId);
     if(!loc) {
         res.json({"status": "err", "reason": "wrong location"});
+        return;
     }
     var sys = galaxy.sectors[loc.sector][loc.y][loc.x];
     if(sys.discovered) {

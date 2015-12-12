@@ -1,7 +1,9 @@
-<div ng-mouseover="highlightedStar.loc = system.loc" ng-mouseleave="highlightedStar.loc = undefined" ng-click="openStar(system.loc)">
-    <span style="float: left;" class="star-small star-small-{{system.type}}"></span>
+<div style="z-index: 2" ng-mouseover="$parent.highlightedStar.loc = sys.loc"
+     ng-mouseleave="$parent.highlightedStar.loc = undefined"
+     ng-click="$parent.openStar(sys.loc)">
+    <span class="bigstars halfstar {{sys.type}}"></span>
     Система: {{sys.loc}} <br/>
-    Тип: {{system.type | systype}} <br/>
-    Масса: {{system.mass}} <br/>
-    Температура: {{system.temp}}
+    Масса: {{sys.mass}} <br/>
+    Температура: {{sys.temp}} <br/>
+    Планет: {{sys.planets.length || "?"}}
 </div>

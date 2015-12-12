@@ -7,11 +7,17 @@ a {
   color: #00B7FF;
 }
 
+.halfstar {
+    z-index: -1; position: absolute; bottom: 0; right: 0; width: 74px !important; height: 74px !important;
+}
+
 .system-button-out {
-    width: 195px;
+    width: 98%;
     height: 95px;
     border: thin solid;
     margin-left: 1px;
+    position: relative;
+    z-index: 2;
 }
 
 .system-button-out div {

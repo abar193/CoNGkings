@@ -9,17 +9,12 @@
     <br/>
     <b>Под курсором:</b>
     <div class="system-button-out">
-        <div ng-mouseover="highlightedStar.loc = selectedStar.loc" ng-mouseleave="highlightedStar.loc = undefined" ng-click="openStar(selectedStar.loc)">
-            <div style="float: left;" class="star-small star-small-nebula"></div>
-            Система: {{selectedStar.name}} <br/>
-            Тип: {{selectedStar.type | systype}} <br/>
-            Масса: {{selectedStar.mass}} <br/>
-            Температура: {{selectedStar.temp}}
-        </div>
+        <system-button system="selectedStar">
+        </system-button>
     </div>
     <b>Были выбраны ранее:</b>
     <div ng-repeat="system in selectedSystems" class="system-button-out">
-        <system-button>
+        <system-button system="system">
         </system-button>
     </div>
 </div>

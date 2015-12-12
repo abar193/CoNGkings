@@ -45,8 +45,8 @@ uiControllers.controller('GalaxyController', function ($scope, $http, $location,
             }
         }
         $scope.selectedSystems.unshift(newStar); // insert new
-        if($scope.selectedSystems.length > 2)
-            $scope.selectedSystems = $scope.selectedSystems.slice(0, 3);
+        if($scope.selectedSystems.length > 3)
+            $scope.selectedSystems = $scope.selectedSystems.slice(0, 4);
     };
 
     $scope.openStar = function openStar(loc) {

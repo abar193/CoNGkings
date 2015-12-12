@@ -166,6 +166,11 @@ uiCanvas.directive('systemCanvas', ['resourcesHolder', function(resourcesHolder)
 
 uiCanvas.directive('systemButton', function() {
     return {
+        //restrict: 'EA',
+        transclude: true,
+        scope: {
+            sys: '=system'
+        },
         templateUrl: "/partials/system-button.html"
     };
 });

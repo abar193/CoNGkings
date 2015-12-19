@@ -5,6 +5,7 @@ var combined = require("../public/js/tilesets/combined.json");
 var smallStars = combined.src.tmp.smallstars;
 var resPlanets = combined.src.tmp.planets;
 var info = require("../public/data/info.json");
+var gameconfig = require("./gameconfig");
 var galaxy = {};
 
 var keys = Object.keys(smallStars);
@@ -61,15 +62,15 @@ for(var i = 0; i < discoveredStars.length; i++) {
         var planet = {id: id++, x: x, y: y, type: keys_planets[random(keys_planets.length)]};
         if (Math.random() > 0.55) {
             planet.data = {
-                mass: random(10), temp: random(99) + 5,
-                carbon: random(100),
-                silicon: random(100),
-                ore: random(100),
-                bean: random(100),
-                radiation: random(19)
+                mass: random(10) + 1, temp: random(99) + 5,
+                carbon: (random(5) <= 4) ? random(100) : undefined,
+                silicon: (random(5) <= 4) ? random(100) : undefined,
+                ore: (random(5) <= 4) ? random(100) : undefined,
+                bean: (random(5) <= 4) ? random(100) : undefined,
+                radiation: (random(5) <= 1) ? random(20) : undefined
             };
         }
-        planets.push(planet);
+        planets.push(gameconfig.planetMetaInfo(planet));
         sysPlanets.push(planet);
     }
     system.planets = sysPlanets;
@@ -99,7 +100,20 @@ router.get('/sector/:sectorId/stars', function(req, res, next) {
     } catch(E) {
         res.json({"status": "error", "reason": "wrong sector location"});
     }
+});
 
+router.get('/planets/:planetId', function(req, res, next) {
+    for(var i = 0; i < planets.length; i++) {
+        if(planets[i].id == req.params.planetId) {
+            res.json(planets[i]);
+            return;
+        }
+    }
+    res.json({"status": "error", "reason": "no planet found!"});
+});
+
+router.get('/planets/', function(req, res, next) {
+    res.json(planets.filter(function(planet) {return planet.alliance == 1}));
 });
 
 router.get('/tunnels', function(req, res) {

@@ -17,21 +17,26 @@
     <div ng-if='righttab == "planet"'>
         <b><a ng-click="toggleTab('systems')">Системы</a> / <u>Планета</u></b>
         <br/>
+        <b>Моя крутая планета</b>
         <div style="background-image: url('/images/planets/starsky.png'); width: 100%; height: 100px">
             <div style="height: 40px"></div>
 
         </div>
-        <div style="background-image: url('/images/planets/helium.png'); width: 100%; height: 185px; position: relative">
+        <div style="background-image: url('/images/planets/{{parsedPlanet.atm}}.png'); width: 100%; height: 185px; position: relative">
             <table class="smallbuildings">
                 <tr>
                     <td style="width: 56px">
                         <table class="full">
-                            <tr><td><div class="building buttonlink building12_small"><b>{{parsedPlanet.cities}}</b></div></td></tr>
+                            <tr style="height: 56px"><td>
+                                <button ng-if="parsedPlanet.secret.buildings" class="building buttonlink building12_small">
+                                    <b>{{parsedPlanet.cities}}</b>
+                                </button>
+                            </td></tr>
                             <tr>
                                 <td style="alignment: center">
-                                    <div class="building buttonlink building13_small">
-                                        <div ng-if="parsedPlanet.head" class="widgets unique_16" style="position: relative; float: right"></div>
-                                    </div>
+                                    <button ng-if="parsedPlanet.head" class="building buttonlink building13_small">
+                                        <div class="widgets unique_16"></div>
+                                    </button>
                                 </td></tr>
                         </table>
                     </td>
@@ -39,10 +44,10 @@
                         <table class="full">
                             <tr ng-repeat="row in parsedPlanet.buildings">
                                 <td ng-repeat="building in row">
-                                    <div ng-if="building.type && building.count != 0" class="building buttonlink building{{building.type}}_small">
-                                        <b ng-if="building.count > 0">{{building.count}}</b>
-                                        <div ng-if="building.count == -1" class="widgets unique_16" style="position: relative; float: right"></div>
-                                    </div>
+                                    <button ng-if="building.type && building.count != 0" class="building buttonlink building{{building.type}}_small">
+                                        <div ng-if="building.count == -1" class="widgets unique_16"></div>
+                                        <b ng-if="building.count != -1" >{{building.count}}</b>
+                                    </button>
                                     <div ng-if="building.count == 0" class="building buttonlink disabled building{{building.type}}_small">
                                     </div>
                                 </td>
@@ -60,7 +65,54 @@
                     <span class="widgets res{{r}}"></span>{{planet.data[r]}}
                 </span>
             </span>
+        </div>
+        <div style="float: left; position: relative">
+            <table>
+                <tr>
+                    <td><span class="widgets crime" style="display: inline-block"></span>45%</td>
+                </tr>
+                <tr ng-repeat="r in ['carbon', 'silicon', 'ore', 'bean', 'science', 'radiation']">
+                    <td class="{{r}}">
+                        <span class="widgets res{{r}}" style="display: inline-block"></span>+175
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>Население:</td>
+                </tr>
+                <tr>
+                    <td><b>12356(+0.7%)</b></td>
+                </tr>
+            </table>
+        </div>
+        <b style="float: left; position: relative">
+            <table>
+                <tr>
+                    <td><button class="widgets pl_build"></button></td>
+                    <td><button class="widgets pl_produce"></button></td>
+                    <td><button class="widgets pl_train"></button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="building buttonlink building1_small" style="display: inline-block; position: relative">
+                            <b>5</b>
+                        </span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="building buttonlink building7_small" style="display: inline-block; position: relative">
+                            <b>~17</b>
+                        </span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
 
+            </table>
         </div>
     </div>
 </div>

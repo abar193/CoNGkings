@@ -51,9 +51,25 @@ table.full {
 
 .buttonlink {
     text-align: right;
+    margin-bottom: 1px;
 }
 
-.buttonlink b {
+button {
+    color: white;
+    position: relative;
+    background-color:rgba(0,0,0,0.5);
+    border-radius: 35%;
+    border: 0px;
+    margin-top: 0;
+    margin-bottom: 1px;
+}
+
+button:active {
+    margin-top: 1px;
+    margin-bottom: 0;
+}
+
+.buttonlink b,.buttonlink div {
     text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
@@ -65,6 +81,9 @@ table.full {
     /* Rules below not implemented in browsers yet */
     -o-user-select: none;
     user-select: none;
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
 }
 
 .buttonlink.disabled {
@@ -76,13 +95,13 @@ table.full {
 }
 
 .buttonlink:hover {
-    background-color:rgba(0,0,0,0.5);
+    background-color:rgba(20,75,20,0.5);
     border-radius: 35%;
     border-width: 0;
 }
 
 .buttonlink:active {
-    background-color:rgba(1,1,1,0.5);
+    background-color:rgba(1,75,1,0.7);
     border-radius: 35%;
     border-width: 0;
 }
@@ -96,24 +115,26 @@ span.respanel {
     background-color: black;
 }
 
-span.respanel span.carbon {
+.carbon {
     color:#6f6f6f;
 }
 
-span.respanel span.silicon{
+.silicon {
     color:#a576d3;
 }
 
-span.respanel span.ore{
+.ore {
     color:#cfcfdf;
 }
 
-span.respanel span.bean{
+.bean{
     color:#5ee440;
 }
-span.respanel span.radiation{
+
+.radiation{
     color:#ff5500;
 }
+
 span.respanel span {
     display: inline-block;
 }

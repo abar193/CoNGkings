@@ -2,6 +2,7 @@
  * Created by Abar on 30-Oct-15.
  */
 var uiCanvas = angular.module('uiCanvas', ['uiServices']);
+var colors = ["green", '#AFAF00', '#00C6C6', '#AF0000', '#FF9100', '#11F'];
 
 function starCoordinates(event, offsetX, offsetY, cellWidth, cellHeight) {
     var x, y;
@@ -96,17 +97,6 @@ uiCanvas.directive('systemCanvas', ['resourcesHolder', function(resourcesHolder)
                 else
                     ctx.drawImage(imgRes.imgStars, coords.x, coords.y, coords.width, coords.height,
                         8 * 32, 8 * 32, coords.width, coords.height);
-                ctx.beginPath();
-                for(var y = 0; y < 20; y++) {
-                    for(var x = 0; x < 20; x++) {
-                        ctx.moveTo(x * 32, 0);
-                        ctx.lineTo(x * 32, ctx.canvas.height);
-                        ctx.moveTo(0, y * 32);
-                        ctx.lineTo(ctx.canvas.width, y * 32);
-                    }
-                }
-                ctx.strokeStyle="#3333BB";
-                //ctx.stroke();
                 for(var i = 0; i < scope.system.planets.length; i++) {
                     var planet = scope.system.planets[i];
                     coords = resourcesHolder.planets()[planet.type];
@@ -116,6 +106,14 @@ uiCanvas.directive('systemCanvas', ['resourcesHolder', function(resourcesHolder)
                             scope.dynamic.fog[planet.y][planet.x] = 0;
                         else
                             scope.dynamic.fog[planet.y][planet.x] = 1;
+
+                    if(planet.alliance) {
+                        ctx.beginPath();
+                        ctx.arc(planet.x * 32 + 16, planet.y * 32 + 16, 20, 0, 2 * Math.PI, false);
+                        ctx.fillStyle = colors[planet.alliance - 1];
+                        ctx.fill();
+                    }
+
                     planetsCtx.putImageData((planet.data) ? Filters.none(img, coords) : Filters.grayscaled(img, coords),
                         (coords.width > 32) ? planet.x * 32 - ((coords.width - 32) / 2) : planet.x * 32,
                         (coords.height > 32) ? planet.y * 32 - ((coords.height - 32) / 2) : planet.y * 32

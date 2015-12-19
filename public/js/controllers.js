@@ -75,36 +75,19 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
     $scope.selectedSystems = galaxyHolder.systems();
     $scope.righttab = "systems";
     $scope.planet = {
+    };
+    $scope.parsedPlanet = {atm: "unknown"};
 
-    };
-    $scope.parsedPlanet = {
-        cities: 10,
-        head: true  ,
-        buildings: [
-            [
-                {type: 1, count: 12},
-                {type: 2, count: 8},
-                {type: 3, count: 15},
-                {type: 18, count: 7}
-            ], [
-                {type: 10, count: 10},
-                {type: 8, count: 0},
-                {type: 7, count: 3},
-                {type: 9, count: -1}
-            ], [
-                {},
-                {type: 17, count: 0},
-                {type: 4, count: -1},
-                {}
-            ]
-        ]
-    };
     $scope.openPlanet  = function(coordinates) {
         for(var i = 0; i < $scope.system.planets.length; i++) {
             var planet = $scope.system.planets[i];
             if(planet.x == coordinates.x && planet.y == coordinates.y) {
                 $scope.planet = planet;
                 $scope.righttab = "planet";
+                $scope.parsedPlanet = {atm: "unknown"};
+                $http.get('api/planets/' + $scope.planet.id).success(function(data) {
+                    parsePlanet(data);
+                });
             }
         }
     };
@@ -122,6 +105,63 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
     };
     $scope.toggleTab = function toggleTab(value) {
         $scope.righttab = value;
+    };
+
+    function parsePlanet(data) {
+        var placementMap = {
+            "1":  {x: 1, y: 0},
+            "2":  {x: 0, y: 0},
+            "3":  {x: 2, y: 0},
+            "18": {x: 3, y: 0},
+            "10": {x: 0, y: 1},
+            "8":  {x: 1, y: 1},
+            "7":  {x: 2, y: 1},
+            "9":  {x: 3, y: 1},
+            "17": {x: 1, y: 2},
+            "4":  {x: 2, y: 2}
+        };
+        $scope.parsedPlanet = data;
+        $scope.parsedPlanet.atm = data.atm || "unknown";
+        $scope.parsedPlanet.cities = data.secret.cities;
+        $scope.parsedPlanet.head = false;
+        $scope.parsedPlanet.buildings =
+            [
+                [
+                    {}, {}, {}, {}
+                ], [
+                    {}, {}, {}, {}
+                ], [
+                    {}, {}, {}, {}
+                ]
+            ];
+        if(data.secret && data.secret.buildings) {
+            var i, other = false, unusedBuildings = [];
+            if(data.alliance == 1) {
+                for(i = 0; i < Object.keys(placementMap).length; i++) {
+                    if(placementMap.hasOwnProperty(Object.keys(placementMap)[i])) {
+                        var pl = placementMap[Object.keys(placementMap)[i]];
+                        console.log(Object.keys(placementMap)[i], pl);
+                        $scope.parsedPlanet.buildings[pl.y][pl.x] = {type: Object.keys(placementMap)[i], count: 0};
+                    }
+                }
+            } else other = true;
+            for(i = 0; i < data.secret.buildings.length; i++) {
+                var build = data.secret.buildings[i];
+                if(build.type == 13) $scope.parsedPlanet.head = true;
+                if(build.type in placementMap) {
+                    var pl = placementMap[build.type];
+                    $scope.parsedPlanet.buildings[pl.y][pl.x] = build;
+                } else if(other) unusedBuildings.push(build);
+            }
+            if(other) {
+                for(var y = 0; y < 3; y++) {
+                    for(var x = 0; x < 4; x++) {
+                        if(!$scope.parsedPlanet.buildings[y][x].type && unusedBuildings.length > 0)
+                            $scope.parsedPlanet.buildings[y][x] = unusedBuildings.pop();
+                    }
+                }
+            }
+        }
     }
 
 });

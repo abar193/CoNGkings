@@ -88,7 +88,11 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
                 //$http.get('api/planets/' + $scope.planet.id).success(function(data) {
                 //    parsePlanet(data);
                 //});asdsdsdsd
-                $http.get('http://conkings.com/game2/planet.php?location=2/15%289:20%294&rest=1').success(function(data) {
+                $http({
+                    method: 'GET',
+                    url: 'http://conkings.com/game2/planet.php?location=2/15%289:20%294&rest=1',
+                    withCredentials: true
+                }).success(function(data) {
                     console.log(data);
                     globala = data;
                     parsePlanet(data);

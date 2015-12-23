@@ -85,7 +85,12 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
                 $scope.planet = planet;
                 $scope.righttab = "planet";
                 $scope.parsedPlanet = {atm: "unknown"};
-                $http.get('api/planets/' + $scope.planet.id).success(function(data) {
+                //$http.get('api/planets/' + $scope.planet.id).success(function(data) {
+                //    parsePlanet(data);
+                //});
+                $http.get('http://conkings.com/game2/planet.php?location=2/4(7:19)9&rest=1').success(function(data) {
+                    console.log(data);
+                    globala = data;
                     parsePlanet(data);
                 });
             }

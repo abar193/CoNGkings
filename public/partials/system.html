@@ -48,8 +48,8 @@
                             <tr ng-repeat="row in parsedPlanet.parsedBuildings">
                                 <td ng-repeat="building in row">
                                     <button ng-if="building.typeid && building.cnt != 0" class="building buttonlink building{{building.typeid}}_small" uib-tooltip={{building.name}}>
-                                        <div ng-if="building.count == -1" class="widgets unique_16"></div>
-                                        <b ng-if="building.count != -1" >{{building.cnt}}</b>
+                                        <div ng-if="building.cnt == -1" class="widgets unique_16"></div>
+                                        <b ng-if="building.cnt != -1" >{{building.cnt}}</b>
                                     </button>
                                     <div ng-if="building.cnt == 0" class="building buttonlink disabled building{{building.typeid}}_small">
                                     </div>

@@ -91,7 +91,6 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
                     parsePlanet(data.data);
                 },function err(data) {
                     console.log("Err", arguments);
-                    lailai();
                 });
             }
         }

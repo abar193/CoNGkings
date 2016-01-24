@@ -6,7 +6,7 @@
 </div>
 <div class="rightview">
     <div ng-if='righttab == "systems"'>
-        <b><u>Системы</u> / <a ng-click="toggleTab('planet')">Планета</a></b>
+        <b><u uib-tooltip="Hello!">Системы</u> / <a ng-click="toggleTab('planet')" uib-tooltip="Hello!">Планета</a></b>
         <br/>
         <b>Были выбраны ранее:</b>
         <div ng-repeat="system in selectedSystems" class="system-button-out">
@@ -15,9 +15,12 @@
         </div>
     </div>
     <div ng-if='righttab == "planet"'>
-        <b><a ng-click="toggleTab('systems')">Системы</a> / <u>Планета</u></b>
+        <b><a ng-click="toggleTab('systems')" uib-tooltip="Hello!">Системы</a> / <u uib-tooltip="Hello!">Планета</u></b>
         <br/>
-        <b>Моя крутая планета</b>
+        <input ng-model="dev.planetpath" type="text" style="color: black"
+               uib-tooltip="Укажи путь до любой своей планеты, и кликни по любой планете на экране"
+               tooltip-placement="bottom">
+        {{dev.planetpath}}
         <div style="background-image: url('/images/planets/starsky.png'); width: 100%; height: 100px">
             <div style="height: 40px"></div>
 
@@ -28,7 +31,7 @@
                     <td style="width: 56px">
                         <table class="full">
                             <tr style="height: 56px"><td>
-                                <button ng-if="parsedPlanet.secret.buildings" class="building buttonlink building12_small">
+                                <button ng-if="parsedPlanet.parsedBuildings" class="building buttonlink building12_small">
                                     <b>{{parsedPlanet.cities}}</b>
                                 </button>
                             </td></tr>
@@ -42,13 +45,13 @@
                     </td>
                     <td>
                         <table class="full">
-                            <tr ng-repeat="row in parsedPlanet.buildings">
+                            <tr ng-repeat="row in parsedPlanet.parsedBuildings">
                                 <td ng-repeat="building in row">
-                                    <button ng-if="building.type && building.count != 0" class="building buttonlink building{{building.type}}_small">
+                                    <button ng-if="building.typeid && building.cnt != 0" class="building buttonlink building{{building.typeid}}_small" uib-tooltip={{building.name}}>
                                         <div ng-if="building.count == -1" class="widgets unique_16"></div>
-                                        <b ng-if="building.count != -1" >{{building.count}}</b>
+                                        <b ng-if="building.count != -1" >{{building.cnt}}</b>
                                     </button>
-                                    <div ng-if="building.count == 0" class="building buttonlink disabled building{{building.type}}_small">
+                                    <div ng-if="building.cnt == 0" class="building buttonlink disabled building{{building.typeid}}_small">
                                     </div>
                                 </td>
                             </tr>
@@ -57,37 +60,42 @@
                 </tr>
             </table>
             <span class="respanel" style="bottom: 16px">
-                <span class="ore"><span class="widgets temp"></span>{{planet.data.temp}}</span>
-                <span class="ore"><span class="widgets mass"></span>{{planet.data.mass}}</span>
+                <span class="ore"><span class="widgets temp"></span>42</span>
+                <span class="ore"><span class="widgets mass"></span>12</span>
             </span>
             <span class="respanel">
-                <span ng-repeat="r in ['carbon', 'silicon', 'ore', 'bean', 'radiation']" ng-if="planet.data[r]" class="{{r}}">
-                    <span class="widgets res{{r}}"></span>{{planet.data[r]}}
+                <span ng-repeat="r in ['carbon', 'silicon', 'ore', 'bean', 'radiation']" class="{{r}}">
+                    <span class="widgets res{{r}}"></span>44
                 </span>
             </span>
         </div>
-        <div style="float: left; position: relative" ng-if="parsedPlanet.alliance == 1">
+        <br/>
+        <div style="float: left; position: relative" ng-if="parsedPlanet.own == 1">
             <table>
                 <tr>
-                    <td><span class="widgets crime" style="display: inline-block"></span>45%</td>
+                    <td><span class="widgets crime" style="display: inline-block"></span>{{parsedPlanet.crime}}%</td>
                 </tr>
                 <tr ng-repeat="r in ['carbon', 'silicon', 'ore', 'bean', 'science', 'radiation']">
                     <td class="{{r}}">
                         <span class="widgets res{{r}}" style="display: inline-block"></span>+175
                     </td>
                 </tr>
-            </table>
-            <table>
                 <tr>
-                    <td>Население:</td>
+                    <td class="human">
+                        <span class="widgets reshuman" style="display: inline-block"></span>{{parsedPlanet.pop|bignumsshortener}}
+                    </td>
                 </tr>
                 <tr>
-                    <td><b>12356(+0.7%)</b></td>
+                    <td style="padding-left: 15px">(+{{parsedPlanet.pop_rate}}%)</td>
                 </tr>
             </table>
         </div>
-        <div style="float: left; position: relative" ng-if="parsedPlanet.alliance == 1">
+        <div style="float: right; position: relative" ng-if="parsedPlanet.own == 1">
             <table>
+                <tr>
+                    <td>{{parsedPlanet.const_rate}}</td>
+                    <td colspan="2">{{parsedPlanet.prod_rate}}</td>
+                </tr>
                 <tr>
                     <td><button class="widgets pl_build"></button></td>
                     <td><button class="widgets pl_produce"></button></td>

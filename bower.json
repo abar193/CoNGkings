@@ -4,8 +4,9 @@
   "directory": "./bower_components/",
   "dependencies": {
     "angular": "latest",
-    "angular-bootstrap": "~0.14.2",
+    "angular-bootstrap": "~0.14.3",
     "angular-mocks": "latest",
-    "angular-route": "latest"
+    "angular-route": "latest",
+    "bootstrap": "~3.3.6"
   }
 }

@@ -18,6 +18,19 @@ conkingsui.config(['$routeProvider',
     }
 ]);
 
+conkingsui.filter('bignumsshortener', function() {
+    return function(input) {
+        input = parseInt(input) || 0;
+        if(input >= 1000000) {
+            return Math.round(input / 1000000) + "M";
+        }
+        if(input >= 1000) {
+            return Math.round(input / 1000) + "k";
+        }
+        return out;
+    };
+});
+
 conkingsui.run(function(resourcesHolder) {
 
 });

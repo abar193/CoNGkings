@@ -69,33 +69,29 @@ function random(a) {
     return Math.floor(Math.random() * a);
 }
 
-uiControllers.controller('SystemController', function ($scope, $http, $routeParams, $location, galaxyHolder) {
+uiControllers.controller('SystemController', function ($scope, $http, $routeParams, $location, galaxyHolder, backendCommunicator) {
     $scope.system = undefined;
     $scope.dynamic = undefined;
     $scope.selectedSystems = galaxyHolder.systems();
     $scope.righttab = "systems";
+    $scope.dev = {planetpath: "2/15(9:20)4"};
     $scope.planet = {
     };
     $scope.parsedPlanet = {atm: "unknown"};
-
-    $scope.openPlanet  = function(coordinates) {
+    $scope.openPlanet = function(coordinates) {
         for(var i = 0; i < $scope.system.planets.length; i++) {
             var planet = $scope.system.planets[i];
             if(planet.x == coordinates.x && planet.y == coordinates.y) {
                 $scope.planet = planet;
                 $scope.righttab = "planet";
                 $scope.parsedPlanet = {atm: "unknown"};
-                //$http.get('api/planets/' + $scope.planet.id).success(function(data) {
-                //    parsePlanet(data);
-                //});asdsdsdsd
-                $http({
-                    method: 'GET',
-                    url: 'http://conkings.com/game2/planet.php?location=2/15%289:20%294&rest=1',
-                    withCredentials: true
-                }).success(function(data) {
-                    console.log(data);
+                backendCommunicator.getPlanet($scope.dev.planetpath)
+                .then(function ok(data) {
                     globala = data;
-                    parsePlanet(data);
+                    parsePlanet(data.data);
+                },function err(data) {
+                    console.log("Err", arguments);
+                    lailai();
                 });
             }
         }
@@ -130,10 +126,9 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
             "4":  {x: 2, y: 2}
         };
         $scope.parsedPlanet = data;
-        $scope.parsedPlanet.atm = data.atm || "unknown";
-        $scope.parsedPlanet.cities = data.secret.cities;
+        $scope.parsedPlanet.atm = data.atm.toLowerCase() || "unknown";
         $scope.parsedPlanet.head = false;
-        $scope.parsedPlanet.buildings =
+        $scope.parsedPlanet.parsedBuildings =
             [
                 [
                     {}, {}, {}, {}
@@ -143,30 +138,30 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
                     {}, {}, {}, {}
                 ]
             ];
-        if(data.secret && data.secret.buildings) {
+        if(data.buildings) {
             var i, other = false, unusedBuildings = [];
-            if(data.alliance == 1) {
+            if(data.own == 1) {
                 for(i = 0; i < Object.keys(placementMap).length; i++) {
                     if(placementMap.hasOwnProperty(Object.keys(placementMap)[i])) {
                         var pl = placementMap[Object.keys(placementMap)[i]];
-                        console.log(Object.keys(placementMap)[i], pl);
-                        $scope.parsedPlanet.buildings[pl.y][pl.x] = {type: Object.keys(placementMap)[i], count: 0};
+                        $scope.parsedPlanet.parsedBuildings[pl.y][pl.x] = {type: Object.keys(placementMap)[i], count: 0};
                     }
                 }
             } else other = true;
-            for(i = 0; i < data.secret.buildings.length; i++) {
-                var build = data.secret.buildings[i];
-                if(build.type == 13) $scope.parsedPlanet.head = true;
-                if(build.type in placementMap) {
-                    var pl = placementMap[build.type];
-                    $scope.parsedPlanet.buildings[pl.y][pl.x] = build;
+            for(i = 0; i < data.buildings.length; i++) {
+                var build = data.buildings[i];
+                if(build.typeid == 13) $scope.parsedPlanet.head = true;
+                if(build.typeid == 12) $scope.parsedPlanet.cities = data.buildings[i].cnt;
+                if(build.typeid in placementMap) {
+                    var pl = placementMap[build.typeid];
+                    $scope.parsedPlanet.parsedBuildings[pl.y][pl.x] = build;
                 } else if(other) unusedBuildings.push(build);
             }
             if(other) {
                 for(var y = 0; y < 3; y++) {
                     for(var x = 0; x < 4; x++) {
-                        if(!$scope.parsedPlanet.buildings[y][x].type && unusedBuildings.length > 0)
-                            $scope.parsedPlanet.buildings[y][x] = unusedBuildings.pop();
+                        if(!$scope.parsedPlanet.parsedBuildings[y][x].typeid && unusedBuildings.length > 0)
+                            $scope.parsedPlanet.parsedBuildings[y][x] = unusedBuildings.pop();
                     }
                 }
             }

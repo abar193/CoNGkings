@@ -70,3 +70,17 @@ uiServices.factory('resourcesHolder', ['$http', function($http) {
         }
     }
 }]);
+
+uiServices.factory('backendCommunicator', function($http, $httpParamSerializer) {
+    //var bakendUrl = 'http://localhost:6066/api/';
+    var bakendUrl = 'http://conkings.com/game2/';
+    return {
+        getPlanet: function(coords) {
+            return $http({
+                method: 'GET',
+                url: bakendUrl + 'planet.php?' + $httpParamSerializer({location: coords, rest: 1}),
+                withCredentials: true
+            });
+        }
+    }
+});

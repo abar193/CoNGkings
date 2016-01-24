@@ -28,6 +28,7 @@ table.smallbuildings {
     padding-top: 38px;
     width: 100%;
     height: 100px;
+    border-collapse: unset;
 }
 
 table.full {

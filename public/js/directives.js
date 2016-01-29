@@ -172,3 +172,22 @@ uiCanvas.directive('systemButton', function() {
         templateUrl: "/partials/system-button.html"
     };
 });
+
+uiCanvas.directive('buildingButton', function() {
+   return {
+       //restrict: 'EA',
+       transclude: true,
+       scope: {
+           building: "=building"
+       },
+       link: function(scope, el) {
+           scope.buildingClicked = scope.$parent.buildingClicked;
+       },
+       template:
+           '<button ng-if="building.typeid" ' +
+           'class="building buttonlink building{{building.typeid}}_small"' +
+           ' uib-tooltip={{building.name}} ng-click="buildingClicked(building.typeid)"> ' +
+           '<div ng-if="building.cnt == -1" class="widgets unique_16"></div>' +
+           '<b ng-if="building.cnt != -1" >{{building.cnt}}{{$parent.parsedPlanet.atm}}</b></button>'
+   }
+});

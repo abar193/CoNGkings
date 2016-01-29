@@ -69,7 +69,8 @@ function random(a) {
     return Math.floor(Math.random() * a);
 }
 
-uiControllers.controller('SystemController', function ($scope, $http, $routeParams, $location, galaxyHolder, backendCommunicator) {
+uiControllers.controller('SystemController', function ($scope, $http, $routeParams,
+                                                       $location, galaxyHolder, backendCommunicator, $uibModal) {
     $scope.system = undefined;
     $scope.dynamic = undefined;
     $scope.selectedSystems = galaxyHolder.systems();
@@ -110,6 +111,29 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
     $scope.toggleTab = function toggleTab(value) {
         $scope.righttab = value;
     };
+    $scope.buildingClicked = function buildingClicked(typeid) {
+        console.log("Building " + typeid + " clicked for planet " + $scope.parsedPlanet.id);
+    };
+
+    $scope.open = function () {
+
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'buildings.html',
+            controller: 'SystemController',
+            size: 'lg',
+            resolve: {
+                parsedPlanet: function () {
+                    return $scope.parsedPlanet;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+        }, function () {
+        });
+    };
 
     function parsePlanet(data) {
         var placementMap = {
@@ -143,14 +167,14 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
                 for(i = 0; i < Object.keys(placementMap).length; i++) {
                     if(placementMap.hasOwnProperty(Object.keys(placementMap)[i])) {
                         var pl = placementMap[Object.keys(placementMap)[i]];
-                        $scope.parsedPlanet.parsedBuildings[pl.y][pl.x] = {type: Object.keys(placementMap)[i], count: 0};
+                        $scope.parsedPlanet.parsedBuildings[pl.y][pl.x] = {typeid: Object.keys(placementMap)[i], cnt: 0};
                     }
                 }
             } else other = true;
             for(i = 0; i < data.buildings.length; i++) {
                 var build = data.buildings[i];
                 if(build.typeid == 13) $scope.parsedPlanet.head = true;
-                if(build.typeid == 12) $scope.parsedPlanet.cities = data.buildings[i].cnt;
+                if(build.typeid == 12) $scope.parsedPlanet.cities = data.buildings[i];
                 if(build.typeid in placementMap) {
                     var pl = placementMap[build.typeid];
                     $scope.parsedPlanet.parsedBuildings[pl.y][pl.x] = build;

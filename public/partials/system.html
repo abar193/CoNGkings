@@ -31,9 +31,7 @@
                     <td style="width: 56px">
                         <table class="full">
                             <tr style="height: 56px"><td>
-                                <button ng-if="parsedPlanet.parsedBuildings" class="building buttonlink building12_small">
-                                    <b>{{parsedPlanet.cities}}</b>
-                                </button>
+                                <building-button building="parsedPlanet.cities"></building-button>
                             </td></tr>
                             <tr>
                                 <td style="alignment: center">
@@ -47,12 +45,7 @@
                         <table class="full">
                             <tr ng-repeat="row in parsedPlanet.parsedBuildings">
                                 <td ng-repeat="building in row">
-                                    <button ng-if="building.typeid && building.cnt != 0" class="building buttonlink building{{building.typeid}}_small" uib-tooltip={{building.name}}>
-                                        <div ng-if="building.cnt == -1" class="widgets unique_16"></div>
-                                        <b ng-if="building.cnt != -1" >{{building.cnt}}</b>
-                                    </button>
-                                    <div ng-if="building.cnt == 0" class="building buttonlink disabled building{{building.typeid}}_small">
-                                    </div>
+                                    <building-button building="building"></building-button>
                                 </td>
                             </tr>
                         </table>
@@ -70,36 +63,19 @@
             </span>
         </div>
         <br/>
-        <div style="float: left; position: relative" ng-if="parsedPlanet.own == 1">
+        <span style="width: 80%; padding-left: 10%">Альвия XIV
+            <b uib-tooltip="Открывает ссылку на профиль владельца">(Tal-Darim)</b>
+        </span>
+        <div style="width: 90%; padding-left: 5%;  height: 150px; overflow-y: auto" ng-if="parsedPlanet.own == 1">
+            <span class="widgets pl_build" style="display: inline-block" uib-tooltip="Скорость постройки зданий"></span>
+            {{parsedPlanet.const_rate}}
+            <span class="widgets pl_train" style="display: inline-block" uib-tooltip="Скорость тренировки юнитов"></span>
+            {{parsedPlanet.prod_rate}}
             <table>
                 <tr>
-                    <td><span class="widgets crime" style="display: inline-block"></span>{{parsedPlanet.crime}}%</td>
-                </tr>
-                <tr ng-repeat="r in ['carbon', 'silicon', 'ore', 'bean', 'science', 'radiation']">
-                    <td class="{{r}}">
-                        <span class="widgets res{{r}}" style="display: inline-block"></span>+175
-                    </td>
-                </tr>
-                <tr>
-                    <td class="human">
-                        <span class="widgets reshuman" style="display: inline-block"></span>{{parsedPlanet.pop|bignumsshortener}}
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding-left: 15px">(+{{parsedPlanet.pop_rate}}%)</td>
-                </tr>
-            </table>
-        </div>
-        <div style="float: right; position: relative" ng-if="parsedPlanet.own == 1">
-            <table>
-                <tr>
-                    <td>{{parsedPlanet.const_rate}}</td>
-                    <td colspan="2">{{parsedPlanet.prod_rate}}</td>
-                </tr>
-                <tr>
-                    <td><button class="widgets pl_build"></button></td>
-                    <td><button class="widgets pl_produce"></button></td>
-                    <td><button class="widgets pl_train"></button></td>
+                    <td><button class="widgets pl_build" uib-tooltip="Заказать здание" ng-click="open()"></button></td>
+                    <td><button class="widgets pl_produce" uib-tooltip="Заказать корабль"></button></td>
+                    <td><button class="widgets pl_train" uib-tooltip="Заказать кого-то наземного"></button></td>
                 </tr>
                 <tr>
                     <td>
@@ -119,7 +95,56 @@
                     <td></td>
                     <td></td>
                 </tr>
+                <tr>
+                    <td>
+                        <span class="building buttonlink building7_small" style="display: inline-block; position: relative">
+                            <b>~17</b>
+                        </span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="building buttonlink building7_small" style="display: inline-block; position: relative">
+                            <b>~17</b>
+                        </span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div style="width: 95%; padding-left: 2%; padding-top: 25px" ng-if="parsedPlanet.own == 1">
+            <table>
+                <tr>
+                    <td><span class="widgets crime" style="display: inline-block"></span>
+                        {{parsedPlanet.crime}}%
+                    </td>
+                </tr>
+                <tr>
+                    <td ng-repeat="r in ['carbon', 'silicon', 'ore']" class="{{r}}">
+                        <span class="widgets res{{r}}" style="display: inline-block"></span>+17500
+                    </td>
+                </tr>
+                <tr>
+                    <td ng-repeat="r in ['bean', 'science', 'radiation']" class="{{r}}">
+                        <span class="widgets res{{r}}" style="display: inline-block"></span>+17
+                    </td>
+                </tr>
+                <tr>
+                    <td class="human">
+                        <span class="widgets reshuman" style="display: inline-block"></span>
+                        {{parsedPlanet.pop|bignumsshortener}}
+                    </td>
+                    <td style="padding-left: 15px">(+{{parsedPlanet.pop_rate}}%)</td>
+                    <td></td>
+                </tr>
             </table>
         </div>
     </div>
 </div>
+
+<script type=text/ng-template id=buildings.html>
+    Some cool markup
+</script>

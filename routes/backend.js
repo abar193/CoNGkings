@@ -104,7 +104,7 @@ router.get('/sector/:sectorId/stars', function(req, res, next) {
 
 router.get('/planet.php', function(req, res, next) {
     res.setHeader("Content-Type", "text/plain; charset=UTF-8");
-    res.write('{"id":"0000000","starid":"123456","atm":"Methane","own":1,"pop":5775,"pop_rate":3.92,"crime":0.36,"home":1,"storage":1,"const_rate":0.64,"prod_rate":0.64,"star_img":"star5_2.gif","buildings":[{"id":"69699","typeid":"12","img":"city_56.png","name":"Город","cnt":2},{"id":"69714","typeid":"18","img":"plants1_32.png","name":"Ферма","candelete":1,"cnt":2}],"resources":[{"typeid":"2","color":"#a576d3","name":"Кремний","img":"silicon.gif","val":28},{"typeid":"3","color":"#cfcfdf","name":"Руда","img":"ore.gif","val":41},{"typeid":"4","color":"#5ee440","name":"Био","img":"bean.gif","val":28},{"typeid":"5","color":"#ff5500","name":"Радиоактивность","img":"radiation.gif","val":1}]}');
+    res.write('{"id":"0000000","starid":"123456","atm":"Methane","own":1,"pop":5775,"pop_rate":3.92,"crime":0.36,"home":1,"storage":1,"const_rate":0.64,"prod_rate":0.64,"star_img":"star5_2.gif","buildings":[{"id":"69699","typeid":"12","img":"city_56.png","name":"Город","cnt":2},{"id":"69714","typeid":"18","img":"plants1_32.png","name":"Ферма","candelete":1,"cnt":2},{"id":"69715","typeid":"4","name":"Таможня","candelete":1,"cnt":1}],"resources":[{"typeid":"2","color":"#a576d3","name":"Кремний","img":"silicon.gif","val":28},{"typeid":"3","color":"#cfcfdf","name":"Руда","img":"ore.gif","val":41},{"typeid":"4","color":"#5ee440","name":"Био","img":"bean.gif","val":28},{"typeid":"5","color":"#ff5500","name":"Радиоактивность","img":"radiation.gif","val":1}]}');
     res.end();
     return;
 });

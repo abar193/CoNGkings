@@ -148,6 +148,10 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
             "4":  {x: 2, y: 2}
         };
         $scope.parsedPlanet = data;
+        if(!data.atm) {
+            data.atm = "unknown";
+            return;
+        }
         $scope.parsedPlanet.atm = data.atm.toLowerCase() || "unknown";
         $scope.parsedPlanet.head = false;
         $scope.parsedPlanet.parsedBuildings =
@@ -189,8 +193,9 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
             }
         }
     }
-
 });
+
+var uniqueBuildings = [4, 5, 6, 9, 13, 16, 17, 21, 22, 23];
 
 uiControllers.controller('PlanetModal', function($scope, backendCommunicator, path, data) {
     if(data) {
@@ -198,38 +203,17 @@ uiControllers.controller('PlanetModal', function($scope, backendCommunicator, pa
         $scope.buildingClicked = function buildingClicked(typeid) {
             console.log("Building " + typeid + " clicked for planet " + $scope.data.id);
         };
-        $scope.buildings = [
-            {typeid: 0, cnt: 0, candelete: 0},
-            {typeid: 1, cnt: 0},
-            {typeid: 2, cnt: 0},
-            {typeid: 3, cnt: 0},
-            {typeid: 4, cnt: 0},
-            {typeid: 5, cnt: 0},
-            {typeid: 6, cnt: 0},
-            {typeid: 7, cnt: 0},
-            {typeid: 8, cnt: 0},
-            {typeid: 9, cnt: 0},
-            {typeid: 10, cnt: 0},
-            {typeid: 11, cnt: 0},
-            {typeid: 12, cnt: 0},
-            {typeid: 13, cnt: 0},
-            {typeid: 14, cnt: 0},
-            {typeid: 15, cnt: 0},
-            {typeid: 16, cnt: 0},
-            {typeid: 17, cnt: 0},
-            {typeid: 18, cnt: 0},
-            {typeid: 19, cnt: 0},
-            {typeid: 20, cnt: 0},
-            {typeid: 21, cnt: 0},
-            {typeid: 22, cnt: 0},
-            {typeid: 23, cnt: 0},
-            {typeid: 24, cnt: 0},
-            {typeid: 25, cnt: 0},
-            {typeid: 26, cnt: 0},
-            {typeid: 27, cnt: 0}
-        ];
-        for(var i = 0; i < data.buildings.length; i++) {
-            $scope.buildings[data.buildings[i].typeid] = data.buildings[i];
+        $scope.buildings = [];
+        for(var i = 0; i <= 27; i++) {
+            $scope.buildings.push({typeid: i, cnt: 0});
+        }
+
+        for(i = 0; i < data.buildings.length; i++) {
+            var t = parseInt(data.buildings[i].typeid);
+            $scope.buildings[t] = data.buildings[i];
+            if(uniqueBuildings.indexOf(t) != -1 && data.buildings[i].cnt == 1) {
+                $scope.buildings[t].cnt = -1;
+            }
         }
     }
 });

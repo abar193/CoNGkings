@@ -1,0 +1,352 @@
+/*
+My cool template.
+
+*/
+.bigstars {
+    background-image: url('/img/tilesets/bigstars.png');
+}
+.nebula {
+    background-position: 0px 0px;
+    width: 128px;
+    height: 129px;
+}
+.nebula1 {
+    background-position: -128px 0px;
+    width: 128px;
+    height: 129px;
+}
+.nebula10 {
+    background-position: -256px 0px;
+    width: 128px;
+    height: 128px;
+}
+.nebula11 {
+    background-position: 0px -129px;
+    width: 128px;
+    height: 128px;
+}
+.nebula12 {
+    background-position: -128px -129px;
+    width: 128px;
+    height: 128px;
+}
+.nebula13 {
+    background-position: -256px -129px;
+    width: 128px;
+    height: 128px;
+}
+.nebula2 {
+    background-position: -384px 0px;
+    width: 128px;
+    height: 128px;
+}
+.nebula3 {
+    background-position: -384px -128px;
+    width: 128px;
+    height: 128px;
+}
+.nebula4 {
+    background-position: 0px -257px;
+    width: 128px;
+    height: 128px;
+}
+.nebula5 {
+    background-position: -128px -257px;
+    width: 128px;
+    height: 128px;
+}
+.nebula6 {
+    background-position: -256px -257px;
+    width: 128px;
+    height: 128px;
+}
+.nebula7 {
+    background-position: -384px -257px;
+    width: 128px;
+    height: 128px;
+}
+.nebula8 {
+    background-position: -512px 0px;
+    width: 128px;
+    height: 128px;
+}
+.nebula9 {
+    background-position: -512px -128px;
+    width: 128px;
+    height: 128px;
+}
+.nova {
+    background-position: -512px -256px;
+    width: 128px;
+    height: 128px;
+}
+.star10_1 {
+    background-position: 0px -385px;
+    width: 128px;
+    height: 128px;
+}
+.star10_2 {
+    background-position: -128px -385px;
+    width: 128px;
+    height: 128px;
+}
+.star10_3 {
+    background-position: -256px -385px;
+    width: 128px;
+    height: 128px;
+}
+.star11_2 {
+    background-position: -384px -385px;
+    width: 128px;
+    height: 128px;
+}
+.star11_3 {
+    background-position: -512px -385px;
+    width: 128px;
+    height: 128px;
+}
+.star11_4 {
+    background-position: -640px 0px;
+    width: 128px;
+    height: 128px;
+}
+.star12_1 {
+    background-position: -640px -128px;
+    width: 128px;
+    height: 128px;
+}
+.star12_2 {
+    background-position: -640px -256px;
+    width: 128px;
+    height: 128px;
+}
+.star12_4 {
+    background-position: -640px -384px;
+    width: 128px;
+    height: 128px;
+}
+.star13_2 {
+    background-position: 0px -513px;
+    width: 128px;
+    height: 128px;
+}
+.star13_3 {
+    background-position: -128px -513px;
+    width: 128px;
+    height: 128px;
+}
+.star14_2 {
+    background-position: -256px -513px;
+    width: 128px;
+    height: 128px;
+}
+.star14_3 {
+    background-position: -384px -513px;
+    width: 128px;
+    height: 128px;
+}
+.star14_4 {
+    background-position: -512px -513px;
+    width: 128px;
+    height: 128px;
+}
+.star15_2 {
+    background-position: -640px -513px;
+    width: 128px;
+    height: 128px;
+}
+.star15_3 {
+    background-position: -768px 0px;
+    width: 128px;
+    height: 128px;
+}
+.star15_4 {
+    background-position: -768px -128px;
+    width: 128px;
+    height: 128px;
+}
+.star16_2 {
+    background-position: -768px -256px;
+    width: 128px;
+    height: 128px;
+}
+.star16_3 {
+    background-position: -768px -384px;
+    width: 128px;
+    height: 128px;
+}
+.star17_2 {
+    background-position: -640px -897px;
+    width: 128px;
+    height: 128px;
+}
+.star17_3 {
+    background-position: 0px -641px;
+    width: 128px;
+    height: 128px;
+}
+.star17_4 {
+    background-position: -128px -641px;
+    width: 128px;
+    height: 128px;
+}
+.star18_1 {
+    background-position: -256px -641px;
+    width: 128px;
+    height: 128px;
+}
+.star18_2 {
+    background-position: -384px -641px;
+    width: 128px;
+    height: 128px;
+}
+.star18_3 {
+    background-position: -512px -641px;
+    width: 128px;
+    height: 128px;
+}
+.star18_4 {
+    background-position: -640px -641px;
+    width: 128px;
+    height: 128px;
+}
+.star19_3 {
+    background-position: -768px -641px;
+    width: 128px;
+    height: 128px;
+}
+.star19_4 {
+    background-position: -896px 0px;
+    width: 128px;
+    height: 128px;
+}
+.star19_5 {
+    background-position: -896px -128px;
+    width: 128px;
+    height: 128px;
+}
+.star1_2 {
+    background-position: -896px -256px;
+    width: 128px;
+    height: 128px;
+}
+.star1_3 {
+    background-position: -896px -384px;
+    width: 128px;
+    height: 128px;
+}
+.star2_0 {
+    background-position: -896px -512px;
+    width: 128px;
+    height: 128px;
+}
+.star2_1 {
+    background-position: -896px -640px;
+    width: 128px;
+    height: 128px;
+}
+.star3_1 {
+    background-position: 0px -769px;
+    width: 128px;
+    height: 128px;
+}
+.star4_0 {
+    background-position: -128px -769px;
+    width: 128px;
+    height: 128px;
+}
+.star4_1 {
+    background-position: -256px -769px;
+    width: 128px;
+    height: 128px;
+}
+.star5_1 {
+    background-position: -384px -769px;
+    width: 128px;
+    height: 128px;
+}
+.star5_2 {
+    background-position: -512px -769px;
+    width: 128px;
+    height: 128px;
+}
+.star5_3 {
+    background-position: -640px -769px;
+    width: 128px;
+    height: 128px;
+}
+.star5_4 {
+    background-position: -768px -769px;
+    width: 128px;
+    height: 128px;
+}
+.star6_1 {
+    background-position: -896px -769px;
+    width: 128px;
+    height: 128px;
+}
+.star6_2 {
+    background-position: -1024px 0px;
+    width: 128px;
+    height: 128px;
+}
+.star6_3 {
+    background-position: -1024px -128px;
+    width: 128px;
+    height: 128px;
+}
+.star7_2 {
+    background-position: -1024px -256px;
+    width: 128px;
+    height: 128px;
+}
+.star7_3 {
+    background-position: -1024px -384px;
+    width: 128px;
+    height: 128px;
+}
+.star8_1 {
+    background-position: -1024px -512px;
+    width: 128px;
+    height: 128px;
+}
+.star8_2 {
+    background-position: -1024px -640px;
+    width: 128px;
+    height: 128px;
+}
+.star8_3 {
+    background-position: -1024px -768px;
+    width: 128px;
+    height: 128px;
+}
+.star8_4 {
+    background-position: 0px -897px;
+    width: 128px;
+    height: 128px;
+}
+.star9_1 {
+    background-position: -128px -897px;
+    width: 128px;
+    height: 128px;
+}
+.star9_2 {
+    background-position: -256px -897px;
+    width: 128px;
+    height: 128px;
+}
+.star9_3 {
+    background-position: -384px -897px;
+    width: 128px;
+    height: 128px;
+}
+.supernova {
+    background-position: -512px -897px;
+    width: 128px;
+    height: 128px;
+}
+.swirl {
+    background-position: -768px -512px;
+    width: 128px;
+    height: 128px;
+}

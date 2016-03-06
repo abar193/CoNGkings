@@ -1,0 +1,417 @@
+{
+    "nebula": {
+        "x": 20,
+        "y": 0,
+        "width": 20,
+        "height": 20
+    },
+    "nebula1": {
+        "x": 80,
+        "y": 100,
+        "width": 20,
+        "height": 20
+    },
+    "nebula10": {
+        "x": 0,
+        "y": 20,
+        "width": 20,
+        "height": 20
+    },
+    "nebula11": {
+        "x": 20,
+        "y": 20,
+        "width": 20,
+        "height": 20
+    },
+    "nebula12": {
+        "x": 40,
+        "y": 0,
+        "width": 20,
+        "height": 20
+    },
+    "nebula13": {
+        "x": 40,
+        "y": 20,
+        "width": 20,
+        "height": 20
+    },
+    "nebula2": {
+        "x": 0,
+        "y": 40,
+        "width": 20,
+        "height": 20
+    },
+    "nebula3": {
+        "x": 20,
+        "y": 40,
+        "width": 20,
+        "height": 20
+    },
+    "nebula4": {
+        "x": 40,
+        "y": 40,
+        "width": 20,
+        "height": 20
+    },
+    "nebula5": {
+        "x": 60,
+        "y": 0,
+        "width": 20,
+        "height": 20
+    },
+    "nebula6": {
+        "x": 60,
+        "y": 20,
+        "width": 20,
+        "height": 20
+    },
+    "nebula7": {
+        "x": 60,
+        "y": 40,
+        "width": 20,
+        "height": 20
+    },
+    "nebula8": {
+        "x": 0,
+        "y": 60,
+        "width": 20,
+        "height": 20
+    },
+    "nebula9": {
+        "x": 20,
+        "y": 60,
+        "width": 20,
+        "height": 20
+    },
+    "nova": {
+        "x": 40,
+        "y": 60,
+        "width": 20,
+        "height": 20
+    },
+    "star10_1": {
+        "x": 60,
+        "y": 60,
+        "width": 20,
+        "height": 20
+    },
+    "star10_2": {
+        "x": 80,
+        "y": 0,
+        "width": 20,
+        "height": 20
+    },
+    "star10_3": {
+        "x": 80,
+        "y": 20,
+        "width": 20,
+        "height": 20
+    },
+    "star11_2": {
+        "x": 80,
+        "y": 40,
+        "width": 20,
+        "height": 20
+    },
+    "star11_3": {
+        "x": 80,
+        "y": 60,
+        "width": 20,
+        "height": 20
+    },
+    "star11_4": {
+        "x": 0,
+        "y": 80,
+        "width": 20,
+        "height": 20
+    },
+    "star12_1": {
+        "x": 20,
+        "y": 80,
+        "width": 20,
+        "height": 20
+    },
+    "star12_2": {
+        "x": 40,
+        "y": 80,
+        "width": 20,
+        "height": 20
+    },
+    "star12_4": {
+        "x": 60,
+        "y": 80,
+        "width": 20,
+        "height": 20
+    },
+    "star13_2": {
+        "x": 80,
+        "y": 80,
+        "width": 20,
+        "height": 20
+    },
+    "star13_3": {
+        "x": 100,
+        "y": 0,
+        "width": 20,
+        "height": 20
+    },
+    "star14_2": {
+        "x": 100,
+        "y": 20,
+        "width": 20,
+        "height": 20
+    },
+    "star14_3": {
+        "x": 100,
+        "y": 40,
+        "width": 20,
+        "height": 20
+    },
+    "star14_4": {
+        "x": 100,
+        "y": 60,
+        "width": 20,
+        "height": 20
+    },
+    "star15_2": {
+        "x": 100,
+        "y": 80,
+        "width": 20,
+        "height": 20
+    },
+    "star15_3": {
+        "x": 0,
+        "y": 100,
+        "width": 20,
+        "height": 20
+    },
+    "star15_4": {
+        "x": 20,
+        "y": 100,
+        "width": 20,
+        "height": 20
+    },
+    "star16_2": {
+        "x": 40,
+        "y": 100,
+        "width": 20,
+        "height": 20
+    },
+    "star16_3": {
+        "x": 60,
+        "y": 100,
+        "width": 20,
+        "height": 20
+    },
+    "star17_2": {
+        "x": 0,
+        "y": 0,
+        "width": 20,
+        "height": 20
+    },
+    "star17_3": {
+        "x": 100,
+        "y": 100,
+        "width": 20,
+        "height": 20
+    },
+    "star17_4": {
+        "x": 120,
+        "y": 0,
+        "width": 20,
+        "height": 20
+    },
+    "star18_1": {
+        "x": 120,
+        "y": 20,
+        "width": 20,
+        "height": 20
+    },
+    "star18_2": {
+        "x": 120,
+        "y": 40,
+        "width": 20,
+        "height": 20
+    },
+    "star18_3": {
+        "x": 120,
+        "y": 60,
+        "width": 20,
+        "height": 20
+    },
+    "star18_4": {
+        "x": 120,
+        "y": 80,
+        "width": 20,
+        "height": 20
+    },
+    "star19_3": {
+        "x": 120,
+        "y": 100,
+        "width": 20,
+        "height": 20
+    },
+    "star19_4": {
+        "x": 0,
+        "y": 120,
+        "width": 20,
+        "height": 20
+    },
+    "star19_5": {
+        "x": 20,
+        "y": 120,
+        "width": 20,
+        "height": 20
+    },
+    "star1_2": {
+        "x": 40,
+        "y": 120,
+        "width": 20,
+        "height": 20
+    },
+    "star1_3": {
+        "x": 60,
+        "y": 120,
+        "width": 20,
+        "height": 20
+    },
+    "star2_0": {
+        "x": 80,
+        "y": 120,
+        "width": 20,
+        "height": 20
+    },
+    "star2_1": {
+        "x": 100,
+        "y": 120,
+        "width": 20,
+        "height": 20
+    },
+    "star3_1": {
+        "x": 120,
+        "y": 120,
+        "width": 20,
+        "height": 20
+    },
+    "star4_0": {
+        "x": 140,
+        "y": 0,
+        "width": 20,
+        "height": 20
+    },
+    "star4_1": {
+        "x": 140,
+        "y": 20,
+        "width": 20,
+        "height": 20
+    },
+    "star5_1": {
+        "x": 140,
+        "y": 40,
+        "width": 20,
+        "height": 20
+    },
+    "star5_2": {
+        "x": 140,
+        "y": 60,
+        "width": 20,
+        "height": 20
+    },
+    "star5_3": {
+        "x": 140,
+        "y": 80,
+        "width": 20,
+        "height": 20
+    },
+    "star5_4": {
+        "x": 140,
+        "y": 100,
+        "width": 20,
+        "height": 20
+    },
+    "star6_1": {
+        "x": 140,
+        "y": 120,
+        "width": 20,
+        "height": 20
+    },
+    "star6_2": {
+        "x": 0,
+        "y": 140,
+        "width": 20,
+        "height": 20
+    },
+    "star6_3": {
+        "x": 20,
+        "y": 140,
+        "width": 20,
+        "height": 20
+    },
+    "star7_2": {
+        "x": 40,
+        "y": 140,
+        "width": 20,
+        "height": 20
+    },
+    "star7_3": {
+        "x": 60,
+        "y": 140,
+        "width": 20,
+        "height": 20
+    },
+    "star8_1": {
+        "x": 80,
+        "y": 140,
+        "width": 20,
+        "height": 20
+    },
+    "star8_2": {
+        "x": 100,
+        "y": 140,
+        "width": 20,
+        "height": 20
+    },
+    "star8_3": {
+        "x": 120,
+        "y": 140,
+        "width": 20,
+        "height": 20
+    },
+    "star8_4": {
+        "x": 140,
+        "y": 140,
+        "width": 20,
+        "height": 20
+    },
+    "star9_1": {
+        "x": 160,
+        "y": 0,
+        "width": 20,
+        "height": 20
+    },
+    "star9_2": {
+        "x": 160,
+        "y": 20,
+        "width": 20,
+        "height": 20
+    },
+    "star9_3": {
+        "x": 160,
+        "y": 40,
+        "width": 20,
+        "height": 20
+    },
+    "supernova": {
+        "x": 160,
+        "y": 60,
+        "width": 20,
+        "height": 20
+    },
+    "swirl": {
+        "x": 160,
+        "y": 80,
+        "width": 20,
+        "height": 20
+    }
+
+}

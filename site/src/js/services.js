@@ -49,7 +49,7 @@ uiServices.factory('resourcesHolder', ['$http', function($http) {
     var bigstars, fog, planets, smallstars;
 
     $http.get('/js/tilesets/combined.json').success(function(data){
-        var root = data.src.tmp;
+        var root = data.tmp;
         bigstars = root.bigstars;
         fog = root.fog;
         planets = root.planets;
@@ -72,13 +72,15 @@ uiServices.factory('resourcesHolder', ['$http', function($http) {
 }]);
 
 uiServices.factory('backendCommunicator', function($http, $httpParamSerializer) {
-    //var bakendUrl = 'http://localhost:6066/api/';
-    var bakendUrl = 'http://conkings.com/game2/';
+    var backendUrl = '%BACKEND_URL%';
+    //'http://conkings.com/game2/';
+    //'http://localhost:6066/api/'
+    // ASD?
     return {
         getPlanet: function(coords) {
             return $http({
                 method: 'GET',
-                url: bakendUrl + 'planet.php?' + $httpParamSerializer({location: coords, rest: 1}),
+                url: backendUrl + 'planet.php?' + $httpParamSerializer({location: coords, rest: 1}),
                 withCredentials: true
             });
         }

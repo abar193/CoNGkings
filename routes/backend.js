@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-var combined = require("../public/js/tilesets/combined.json");
-var smallStars = combined.src.tmp.smallstars;
-var resPlanets = combined.src.tmp.planets;
-var info = require("../public/data/info.json");
+var combined = require("../site/dest/public/js/tilesets/combined.json");
+var smallStars = combined.tmp.smallstars;
+var resPlanets = combined.tmp.planets;
+var info = require("../site/dest/public/data/info.json");
 var gameconfig = require("./gameconfig");
 var galaxy = {};
 
@@ -104,7 +104,7 @@ router.get('/sector/:sectorId/stars', function(req, res, next) {
 
 router.get('/planet.php', function(req, res, next) {
     res.setHeader("Content-Type", "text/plain; charset=UTF-8");
-    res.write('{"id":"1030001730","starid":"1030001700","atm":"Ammonia","own":1,"pop":128380,"pop_rate":0,"crime":0,"home":1,"storage":1,"const_rate":1.2,"prod_rate":2.21,"star_img":"star18_3.png","buildings":[{"id":"67822","typeid":"12","img":"city_56.png","name":"Город","cnt":10},{"id":"67823","typeid":"1","img":"siliconext_32.png","name":"Песчаный карьер","candelete":1,"cnt":7},{"id":"67824","typeid":"2","img":"carbonext_32.gif","name":"Нефтяная вышка","candelete":1,"cnt":6},{"id":"67825","typeid":"3","img":"oreext_32.gif","name":"Рудник","candelete":1,"cnt":9},{"id":"67826","typeid":"13","img":"castle_32.gif","name":"Резиденция","candelete":1,"once":1,"cnt":1},{"id":"67827","typeid":"6","img":"storage_32.gif","name":"Склад","candelete":1,"once":1,"cnt":1},{"id":"67828","typeid":"10","img":"solarpower_32.gif","name":"Солнечная батарея","candelete":1,"cnt":12},{"id":"67829","typeid":"18","img":"plants1_32.png","name":"Ферма","candelete":1,"cnt":7},{"id":"67929","typeid":"8","img":"factory_32.png","name":"Фабрика","candelete":1,"cnt":1},{"id":"67944","typeid":"9","img":"lab_32.png","name":"Лаборатория","candelete":1,"once":1,"cnt":1},{"id":"67963","typeid":"17","img":"academy_32.gif","name":"Казармы","candelete":1,"once":1,"cnt":1},{"id":"67978","typeid":"7","img":"works_32.png","name":"Завод","candelete":1,"cnt":7},{"id":"68329","typeid":"4","img":"customs_32.gif","name":"Таможня","candelete":1,"once":1,"cnt":1},{"id":"68426","typeid":"15","img":"bunker_32.gif","name":"Бункер","candelete":1,"cnt":1},{"id":"68427","typeid":"14","img":"turret_32a.gif","name":"Турель","candelete":1,"cnt":2},{"id":"68746","typeid":"16","img":"radar_32.gif","name":"Радар","candelete":1,"once":1,"cnt":1},{"id":"68828","typeid":"21","img":"office_32.gif","name":"Диспетчерская","candelete":1,"once":1,"cnt":1}]}');
+    res.write('{"id":"0000000","starid":"123456","atm":"Methane","own":1,"pop":5775,"pop_rate":3.92,"crime":0.36,"home":1,"storage":1,"const_rate":0.64,"prod_rate":0.64,"star_img":"star5_2.gif","buildings":[{"id":"69699","typeid":"12","img":"city_56.png","name":"Город","cnt":2},{"id":"69714","typeid":"18","img":"plants1_32.png","name":"Ферма","candelete":1,"cnt":2}],"resources":[{"typeid":"2","color":"#a576d3","name":"Кремний","img":"silicon.gif","val":28},{"typeid":"3","color":"#cfcfdf","name":"Руда","img":"ore.gif","val":41},{"typeid":"4","color":"#5ee440","name":"Био","img":"bean.gif","val":28},{"typeid":"5","color":"#ff5500","name":"Радиоактивность","img":"radiation.gif","val":1}]}');
     res.end();
     return;
 });

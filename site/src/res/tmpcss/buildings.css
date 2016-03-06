@@ -1,0 +1,142 @@
+/*
+My cool template.
+
+*/
+.building {
+    background-image: url('/img/tilesets/buildings.png');
+}
+.building10_small {
+    background-position: -152px 0px;
+    width: 32px;
+    height: 32px;
+}
+.building11_small {
+    background-position: 0px -120px;
+    width: 32px;
+    height: 32px;
+}
+.building12_small {
+    background-position: 0px 0px;
+    width: 56px;
+    height: 56px;
+}
+.building13_small {
+    background-position: -152px -32px;
+    width: 32px;
+    height: 32px;
+}
+.building14_small {
+    background-position: -152px -64px;
+    width: 32px;
+    height: 32px;
+}
+.building15_small {
+    background-position: -152px -96px;
+    width: 32px;
+    height: 32px;
+}
+.building16_small {
+    background-position: 0px -152px;
+    width: 32px;
+    height: 32px;
+}
+.building17_small {
+    background-position: -32px -152px;
+    width: 32px;
+    height: 32px;
+}
+.building18_small {
+    background-position: -64px -120px;
+    width: 32px;
+    height: 32px;
+}
+.building19_small {
+    background-position: -56px -32px;
+    width: 32px;
+    height: 32px;
+}
+.building1_small {
+    background-position: -56px -64px;
+    width: 32px;
+    height: 32px;
+}
+.building20_small {
+    background-position: -64px -152px;
+    width: 32px;
+    height: 32px;
+}
+.building21_small {
+    background-position: -96px -152px;
+    width: 32px;
+    height: 32px;
+}
+.building22_small {
+    background-position: -88px 0px;
+    width: 32px;
+    height: 32px;
+}
+.building23_small {
+    background-position: -88px -32px;
+    width: 32px;
+    height: 32px;
+}
+.building24_small {
+    background-position: -88px -64px;
+    width: 32px;
+    height: 32px;
+}
+.building25_small {
+    background-position: -120px 0px;
+    width: 32px;
+    height: 32px;
+}
+.building26_small {
+    background-position: -120px -32px;
+    width: 32px;
+    height: 32px;
+}
+.building27_small {
+    background-position: -184px -64px;
+    width: 31px;
+    height: 31px;
+}
+.building2_small {
+    background-position: -128px -152px;
+    width: 32px;
+    height: 32px;
+}
+.building3_small {
+    background-position: -184px 0px;
+    width: 32px;
+    height: 32px;
+}
+.building4_small {
+    background-position: -120px -64px;
+    width: 32px;
+    height: 32px;
+}
+.building5_small {
+    background-position: 0px -56px;
+    width: 32px;
+    height: 64px;
+}
+.building6_small {
+    background-position: -184px -32px;
+    width: 32px;
+    height: 32px;
+}
+.building7_small {
+    background-position: -32px -120px;
+    width: 32px;
+    height: 32px;
+}
+.building8_small {
+    background-position: -56px 0px;
+    width: 32px;
+    height: 32px;
+}
+.building9_small {
+    background-position: -96px -120px;
+    width: 32px;
+    height: 32px;
+}

@@ -9,6 +9,46 @@ var debug = require('debug')('untitled:server');
 var http = require('http');
 var request = require('request');
 
+//function random(a) {
+//  return Math.floor(Math.random() * a);
+//}
+//
+//var url = 'http://conkings.com/game2/research_info.php?action=show&researchid=';
+//
+//var options = {
+//  url: 'http://conkings.com/game2/research_info.php?action=show&researchid=',
+//  headers: {
+//    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:42.0) Gecko/20100101 Firefox/42.0',
+//    'Cookie': 'XGAME_sid='
+//  }
+//};
+//
+//function performRequest(id) {
+//  var myopt = JSON.parse(JSON.stringify(options));
+//  myopt.url = url + id;
+//  var ts = id + '';
+//  request(myopt, function (error, response, body) {
+//    if (!error && response.statusCode == 200) {
+//      var r = /td>Название<\/td><td>([\W]+)<\/td>/g.exec(body);
+//      var m = /Уровень<\/td><td>([\d]+)<\/td>/g.exec(body);
+//      var p = />([^<]+)<\/a>/g.exec(body);
+//      //console.log(JSON.stringify(p));
+//      if (r) console.log(r[1] + " " + ((m) ? m[1] : "no lvl!") + " " + ((p) ? p[1] : "-"));
+//      //else console.log(ts + ": undefined");
+//    }
+//  });
+//}
+//console.log("Requests");
+//for(var i = 73235; i < 76500; i++) {
+//  performRequest(i);
+//  for(var j = 1; j < 10000; j++) {
+//    Math.pow(Math.PI, 5);
+//  }
+//}
+//
+//return;
+
+
 /**
  * Get port from environment and store in Express.
  */
@@ -29,6 +69,8 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+
 
 /**
  * Normalize a port into a number, string, or false.

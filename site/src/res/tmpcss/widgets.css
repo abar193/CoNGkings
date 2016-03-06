@@ -1,0 +1,117 @@
+/*
+My cool template.
+
+*/
+.widgets {
+    background-image: url('/img/tilesets/widgets.png');
+}
+.capital {
+    background-position: 0px 0px;
+    width: 32px;
+    height: 32px;
+}
+.capital_16 {
+    background-position: -85px 0px;
+    width: 16px;
+    height: 16px;
+}
+.crime {
+    background-position: -32px -56px;
+    width: 16px;
+    height: 16px;
+}
+.mass {
+    background-position: 0px -56px;
+    width: 16px;
+    height: 16px;
+}
+.pl_build {
+    background-position: -28px -32px;
+    width: 26px;
+    height: 24px;
+}
+.pl_produce {
+    background-position: -32px 0px;
+    width: 28px;
+    height: 24px;
+}
+.pl_train {
+    background-position: 0px -32px;
+    width: 28px;
+    height: 24px;
+}
+.planet_construction {
+    background-position: -60px 0px;
+    width: 25px;
+    height: 25px;
+}
+.planet_production {
+    background-position: -60px -25px;
+    width: 25px;
+    height: 25px;
+}
+.question {
+    background-position: -101px 0px;
+    width: 15px;
+    height: 16px;
+}
+.resbean {
+    background-position: -64px -56px;
+    width: 16px;
+    height: 16px;
+}
+.rescapacity {
+    background-position: -85px -32px;
+    width: 16px;
+    height: 16px;
+}
+.rescarbon {
+    background-position: -85px -48px;
+    width: 16px;
+    height: 16px;
+}
+.reshuman {
+    background-position: 0px -72px;
+    width: 16px;
+    height: 16px;
+}
+.resiridium {
+    background-position: -16px -72px;
+    width: 16px;
+    height: 16px;
+}
+.resore {
+    background-position: -32px -72px;
+    width: 16px;
+    height: 16px;
+}
+.respower {
+    background-position: -48px -72px;
+    width: 16px;
+    height: 16px;
+}
+.resradiation {
+    background-position: -64px -72px;
+    width: 16px;
+    height: 16px;
+}
+.resscience {
+    background-position: -48px -56px;
+    width: 16px;
+    height: 16px;
+}
+.ressilicon {
+    background-position: -16px -56px;
+    width: 16px;
+    height: 16px;
+}
+.temp {
+    background-position: -80px -72px;
+    width: 16px;
+    height: 16px;
+}
+.unique_16 {
+    background-position: -85px -16px;
+    width: 16px;
+    height: 16px;
+}

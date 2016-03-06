@@ -188,6 +188,6 @@ uiCanvas.directive('buildingButton', function() {
            'class="building buttonlink building{{building.typeid}}_small"' +
            ' uib-tooltip={{building.name}} ng-click="buildingClicked(building.typeid)"> ' +
            '<div ng-if="building.cnt == -1" class="widgets unique_16"></div>' +
-           '<b ng-if="building.cnt != -1" >{{building.cnt}}{{$parent.parsedPlanet.atm}}</b></button>'
+           '<b ng-if="building.cnt != -1" style="color:white">{{building.cnt}}</b></button>'
    }
 });

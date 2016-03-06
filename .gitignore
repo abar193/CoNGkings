@@ -1,9 +1,8 @@
 bower_components
 node_modules
 .idea
-ConKingsUI.iml
+*.iml
 *.log
-**/tilesets/
-src/tmp/
-src/tmpcss/
+tmp/
 logs.txt
+site/dest/

@@ -1,0 +1,457 @@
+/*
+My cool template.
+
+*/
+.planets {
+    background-image: url('/img/tilesets/planets.png');
+}
+.anomaly {
+    background-position: -96px -288px;
+    width: 32px;
+    height: 32px;
+}
+.asteroids {
+    background-position: -224px -128px;
+    width: 32px;
+    height: 32px;
+}
+.gasgiant {
+    background-position: -128px -288px;
+    width: 32px;
+    height: 32px;
+}
+.gasgiant2 {
+    background-position: -160px -288px;
+    width: 32px;
+    height: 32px;
+}
+.gasgiant3 {
+    background-position: -192px -288px;
+    width: 32px;
+    height: 32px;
+}
+.gasgiant4 {
+    background-position: -128px -32px;
+    width: 32px;
+    height: 32px;
+}
+.moon1 {
+    background-position: -160px -32px;
+    width: 32px;
+    height: 32px;
+}
+.moon2 {
+    background-position: -96px -64px;
+    width: 32px;
+    height: 32px;
+}
+.moon3 {
+    background-position: -128px -64px;
+    width: 32px;
+    height: 32px;
+}
+.moon4 {
+    background-position: -160px -64px;
+    width: 32px;
+    height: 32px;
+}
+.moon5 {
+    background-position: 0px -96px;
+    width: 32px;
+    height: 32px;
+}
+.moon6 {
+    background-position: -32px -96px;
+    width: 32px;
+    height: 32px;
+}
+.moon7 {
+    background-position: -64px -96px;
+    width: 32px;
+    height: 32px;
+}
+.moon8 {
+    background-position: -96px -96px;
+    width: 32px;
+    height: 32px;
+}
+.moon9 {
+    background-position: -128px -96px;
+    width: 32px;
+    height: 32px;
+}
+.pl1_1 {
+    background-position: -160px -96px;
+    width: 32px;
+    height: 32px;
+}
+.pl1_10 {
+    background-position: 0px -128px;
+    width: 32px;
+    height: 32px;
+}
+.pl1_11 {
+    background-position: -32px -128px;
+    width: 32px;
+    height: 32px;
+}
+.pl1_12 {
+    background-position: -64px -128px;
+    width: 32px;
+    height: 32px;
+}
+.pl1_14 {
+    background-position: -96px -128px;
+    width: 32px;
+    height: 32px;
+}
+.pl1_15 {
+    background-position: -128px -128px;
+    width: 32px;
+    height: 32px;
+}
+.pl1_2 {
+    background-position: -160px -128px;
+    width: 32px;
+    height: 32px;
+}
+.pl1_3 {
+    background-position: 0px -160px;
+    width: 32px;
+    height: 32px;
+}
+.pl1_4 {
+    background-position: -32px -160px;
+    width: 32px;
+    height: 32px;
+}
+.pl1_5 {
+    background-position: -64px -160px;
+    width: 32px;
+    height: 32px;
+}
+.pl1_6 {
+    background-position: -96px -160px;
+    width: 32px;
+    height: 32px;
+}
+.pl1_7 {
+    background-position: -128px -160px;
+    width: 32px;
+    height: 32px;
+}
+.pl1_8 {
+    background-position: -160px -160px;
+    width: 32px;
+    height: 32px;
+}
+.pl1_9 {
+    background-position: -192px 0px;
+    width: 32px;
+    height: 32px;
+}
+.pl2_1 {
+    background-position: -192px -32px;
+    width: 32px;
+    height: 32px;
+}
+.pl2_10 {
+    background-position: -192px -64px;
+    width: 32px;
+    height: 32px;
+}
+.pl2_11 {
+    background-position: -192px -96px;
+    width: 32px;
+    height: 32px;
+}
+.pl2_12 {
+    background-position: -192px -128px;
+    width: 32px;
+    height: 32px;
+}
+.pl2_14 {
+    background-position: -192px -160px;
+    width: 32px;
+    height: 32px;
+}
+.pl2_15 {
+    background-position: 0px -192px;
+    width: 32px;
+    height: 32px;
+}
+.pl2_2 {
+    background-position: -32px -192px;
+    width: 32px;
+    height: 32px;
+}
+.pl2_3 {
+    background-position: -64px -192px;
+    width: 32px;
+    height: 32px;
+}
+.pl2_4 {
+    background-position: -96px -192px;
+    width: 32px;
+    height: 32px;
+}
+.pl2_5 {
+    background-position: -128px -192px;
+    width: 32px;
+    height: 32px;
+}
+.pl2_6 {
+    background-position: -160px -192px;
+    width: 32px;
+    height: 32px;
+}
+.pl2_7 {
+    background-position: -192px -192px;
+    width: 32px;
+    height: 32px;
+}
+.pl2_8 {
+    background-position: -224px 0px;
+    width: 32px;
+    height: 32px;
+}
+.pl2_9 {
+    background-position: -224px -32px;
+    width: 32px;
+    height: 32px;
+}
+.pl3_1 {
+    background-position: -224px -64px;
+    width: 32px;
+    height: 32px;
+}
+.pl3_10 {
+    background-position: -224px -96px;
+    width: 32px;
+    height: 32px;
+}
+.pl3_11 {
+    background-position: -96px -32px;
+    width: 32px;
+    height: 32px;
+}
+.pl3_12 {
+    background-position: -224px -160px;
+    width: 32px;
+    height: 32px;
+}
+.pl3_14 {
+    background-position: -224px -192px;
+    width: 32px;
+    height: 32px;
+}
+.pl3_15 {
+    background-position: 0px -224px;
+    width: 32px;
+    height: 32px;
+}
+.pl3_2 {
+    background-position: -32px -224px;
+    width: 32px;
+    height: 32px;
+}
+.pl3_3 {
+    background-position: -64px -224px;
+    width: 32px;
+    height: 32px;
+}
+.pl3_4 {
+    background-position: -96px -224px;
+    width: 32px;
+    height: 32px;
+}
+.pl3_5 {
+    background-position: -128px -224px;
+    width: 32px;
+    height: 32px;
+}
+.pl3_6 {
+    background-position: -160px -224px;
+    width: 32px;
+    height: 32px;
+}
+.pl3_7 {
+    background-position: -192px -224px;
+    width: 32px;
+    height: 32px;
+}
+.pl3_8 {
+    background-position: -224px -224px;
+    width: 32px;
+    height: 32px;
+}
+.pl3_9 {
+    background-position: -256px 0px;
+    width: 32px;
+    height: 32px;
+}
+.pl4_1 {
+    background-position: -256px -32px;
+    width: 32px;
+    height: 32px;
+}
+.pl4_10 {
+    background-position: -256px -64px;
+    width: 32px;
+    height: 32px;
+}
+.pl4_11 {
+    background-position: -256px -96px;
+    width: 32px;
+    height: 32px;
+}
+.pl4_12 {
+    background-position: -256px -128px;
+    width: 32px;
+    height: 32px;
+}
+.pl4_14 {
+    background-position: -256px -160px;
+    width: 32px;
+    height: 32px;
+}
+.pl4_15 {
+    background-position: -256px -192px;
+    width: 32px;
+    height: 32px;
+}
+.pl4_2 {
+    background-position: -256px -224px;
+    width: 32px;
+    height: 32px;
+}
+.pl4_3 {
+    background-position: 0px -256px;
+    width: 32px;
+    height: 32px;
+}
+.pl4_4 {
+    background-position: -32px -256px;
+    width: 32px;
+    height: 32px;
+}
+.pl4_5 {
+    background-position: -64px -256px;
+    width: 32px;
+    height: 32px;
+}
+.pl4_6 {
+    background-position: -96px -256px;
+    width: 32px;
+    height: 32px;
+}
+.pl4_7 {
+    background-position: -128px -256px;
+    width: 32px;
+    height: 32px;
+}
+.pl4_8 {
+    background-position: -160px -256px;
+    width: 32px;
+    height: 32px;
+}
+.pl4_9 {
+    background-position: -192px -256px;
+    width: 32px;
+    height: 32px;
+}
+.rainbow {
+    background-position: -224px -256px;
+    width: 32px;
+    height: 32px;
+}
+.rainbow_1 {
+    background-position: -256px -256px;
+    width: 32px;
+    height: 32px;
+}
+.rainbow_2 {
+    background-position: -288px 0px;
+    width: 32px;
+    height: 32px;
+}
+.rainbow_3 {
+    background-position: -288px -32px;
+    width: 32px;
+    height: 32px;
+}
+.rainbow_4 {
+    background-position: -288px -64px;
+    width: 32px;
+    height: 32px;
+}
+.rainbow_5 {
+    background-position: -288px -96px;
+    width: 32px;
+    height: 32px;
+}
+.rainbow_6 {
+    background-position: -288px -128px;
+    width: 32px;
+    height: 32px;
+}
+.rainbow_7 {
+    background-position: -288px -160px;
+    width: 32px;
+    height: 32px;
+}
+.rainbow_8 {
+    background-position: -288px -192px;
+    width: 32px;
+    height: 32px;
+}
+.rainbow_9 {
+    background-position: -288px -224px;
+    width: 32px;
+    height: 32px;
+}
+.rings {
+    background-position: -288px -256px;
+    width: 32px;
+    height: 32px;
+}
+.rings2 {
+    background-position: 0px -288px;
+    width: 32px;
+    height: 32px;
+}
+.rings3 {
+    background-position: -32px -288px;
+    width: 32px;
+    height: 32px;
+}
+.rings4 {
+    background-position: -64px -288px;
+    width: 32px;
+    height: 32px;
+}
+.ringsb {
+    background-position: 0px 0px;
+    width: 96px;
+    height: 32px;
+}
+.ringsb2 {
+    background-position: 0px -32px;
+    width: 96px;
+    height: 32px;
+}
+.ringsb3 {
+    background-position: 0px -64px;
+    width: 96px;
+    height: 32px;
+}
+.ringsb4 {
+    background-position: -96px 0px;
+    width: 96px;
+    height: 32px;
+}
+.steelplanet1 {
+    background-position: -224px -288px;
+    width: 32px;
+    height: 32px;
+}

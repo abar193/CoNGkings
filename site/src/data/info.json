@@ -9,10 +9,10 @@
   "rating": 100500,
   "state": {},
   "diplomacy": {
-    "allies": ["Alfa", "Betta", "Slowpoke"],
+    "allies": ["Alfa", "Betta"],
     "citizens": ["Zetta"],
-    "enemies": ["Rafis"],
+    "enemies": ["Etta"],
     "unknown": ["Кириллица"],
-    "neutral": ["Beaglez", "Marsiano4ka"]
+    "neutral": ["alien", "predator"]
   }
 }

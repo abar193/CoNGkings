@@ -21,7 +21,7 @@ function locToCoordinates(loc) {
 }
 
 uiControllers.controller('GalaxyController', function ($scope, $http, $location, galaxyHolder) {
-    $scope.selectedStar = {  };
+    $scope.selectedStar = { };
     $scope.highlightedStar = { };
     $scope.tmpsectors = [0, 1, 2, 3, 4];
     $scope.selectedSystems = galaxyHolder.systems();
@@ -119,13 +119,12 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
 
         var modalInstance = $uibModal.open({
             animation: true,
-            templateUrl: 'buildings.html',
-            controller: 'SystemController',
+            templateUrl: 'buildings.html', // part of system.html
+            controller: 'PlanetModal',
             size: 'lg',
             resolve: {
-                parsedPlanet: function () {
-                    return $scope.parsedPlanet;
-                }
+                data: $scope.parsedPlanet,
+                path: undefined
             }
         });
 
@@ -193,11 +192,59 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
 
 });
 
+uiControllers.controller('PlanetModal', function($scope, backendCommunicator, path, data) {
+    if(data) {
+        $scope.data = data;
+        $scope.buildingClicked = function buildingClicked(typeid) {
+            console.log("Building " + typeid + " clicked for planet " + $scope.data.id);
+        };
+        $scope.buildings = [
+            {typeid: 0, cnt: 0, candelete: 0},
+            {typeid: 1, cnt: 0},
+            {typeid: 2, cnt: 0},
+            {typeid: 3, cnt: 0},
+            {typeid: 4, cnt: 0},
+            {typeid: 5, cnt: 0},
+            {typeid: 6, cnt: 0},
+            {typeid: 7, cnt: 0},
+            {typeid: 8, cnt: 0},
+            {typeid: 9, cnt: 0},
+            {typeid: 10, cnt: 0},
+            {typeid: 11, cnt: 0},
+            {typeid: 12, cnt: 0},
+            {typeid: 13, cnt: 0},
+            {typeid: 14, cnt: 0},
+            {typeid: 15, cnt: 0},
+            {typeid: 16, cnt: 0},
+            {typeid: 17, cnt: 0},
+            {typeid: 18, cnt: 0},
+            {typeid: 19, cnt: 0},
+            {typeid: 20, cnt: 0},
+            {typeid: 21, cnt: 0},
+            {typeid: 22, cnt: 0},
+            {typeid: 23, cnt: 0},
+            {typeid: 24, cnt: 0},
+            {typeid: 25, cnt: 0},
+            {typeid: 26, cnt: 0},
+            {typeid: 27, cnt: 0}
+        ];
+        for(var i = 0; i < data.buildings.length; i++) {
+            $scope.buildings[data.buildings[i].typeid] = data.buildings[i];
+        }
+    }
+});
+
 uiControllers.filter('systype', function() {
     return function(input) {
         if(!input) return;
         var r = /[a-z]+/;
         var a = r.exec(input)[0];
         return a.charAt(0).toUpperCase() + a.slice(1);
+    };
+});
+
+uiControllers.filter('cutext', function() {
+    return function(input) {
+        return input.split(".")[0];
     };
 });

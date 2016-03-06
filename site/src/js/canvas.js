@@ -6,8 +6,7 @@ function fog_name(fog, x, y) {
     return 'f' + top + right + bottom + left;
 }
 
-
-SectorCanvas = {}
+SectorCanvas = {};
 SectorCanvas.drawStars = function drawStars(ctx, stars, highlightedStar, small_stars) {
     ctx.clearRect(0, 0, 651, 651);
     if(stars) {

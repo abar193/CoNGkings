@@ -72,7 +72,8 @@ uiServices.factory('resourcesHolder', ['$http', function($http) {
 }]);
 
 uiServices.factory('backendCommunicator', function($http, $httpParamSerializer) {
-    var backendUrl = '%BACKEND_URL%';
+    //var backendUrl = '%BACKEND_URL%';
+    var backendUrl = 'http://conkings.com/game2/';
     //'http://conkings.com/game2/';
     //'http://localhost:6066/api/'
     // ASD?

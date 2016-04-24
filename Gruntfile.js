@@ -106,7 +106,7 @@ module.exports = function(grunt) {
                     {
                         expand: true,
                         cwd: 'site/src/',
-                        src: ['js/*', 'css/*', 'data/*', 'img/**', 'partials/*', 'index.html', 'favicon.ico'],
+                        src: ['js/*', 'css/*', 'data/*', 'img/**', 'partials/*', 'index.html', 'science.html', 'favicon.ico'],
                         dest: 'site/dest/public/',
                         flatten: false,
                         filter: 'isFile'
@@ -120,7 +120,7 @@ module.exports = function(grunt) {
                     {
                         expand: true,
                         cwd: 'site/src/',
-                        src: ['js/*', 'css/*', 'data/*', 'img/**', 'partials/*', 'index.html', 'favicon.ico'],
+                        src: ['js/*', 'css/*', 'data/*', 'img/**', 'partials/*', 'index.html', 'science.html', 'favicon.ico'],
                         dest: 'site/dest/public/',
                         flatten: false,
                         filter: 'isFile',
@@ -159,7 +159,7 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
-                files: ['site/src/js/*', 'site/src/css/*', 'site/src/partials/*'],
+                files: ['site/src/js/*', 'site/src/css/*', 'site/src/partials/*', 'site/src/science.html'],
                 tasks: ['sync', 'replace:dev'],
                 options: {
                     spawn: false

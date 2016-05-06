@@ -1,6 +1,8 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  margin: 0;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: black;
+    color: white;
+    margin: 0;
 }
 
 a {
@@ -36,6 +38,18 @@ table.full {
     height: 100%;
 }
 
+.planetview {
+    width: 215px;
+    height: 651px;
+    float: left;
+}
+
+.bookmarkspanel {
+    width: 30px;
+    height: 651px;
+    float: left;
+}
+
 .globalview {
     width: 870px;
     height: 651px;
@@ -50,6 +64,23 @@ table.full {
     width: 219px; height: 651px; background-color: black; color: white; float: left
 }
 
+.nav li a {
+    padding: 7px 5px!important;
+}
+
+.button {
+    -ms-touch-action:manipulation;
+    touch-action:manipulation;
+    cursor:pointer;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    padding: 3px;
+    border:1px solid transparent;
+    border-radius:4px;
+}
+
 .buttonlink {
     text-align: right;
     margin-bottom: 1px;
@@ -61,12 +92,10 @@ button {
     background-color:rgba(0,0,0,0.5);
     border-radius: 35%;
     border: 0;
-    padding-top: 0;
-    padding-bottom: 1px;
 }
 
 button:active {
-    padding-top: 1px;
+    padding-top: 0px;
     padding-bottom: 0;
 }
 
@@ -151,4 +180,13 @@ span.respanel span {
     -moz-user-select: none; /* mozilla browsers */
     -khtml-user-select: none; /* webkit (konqueror) browsers */
     -ms-user-select: none; /* IE10+ */
+}
+
+.planet_box {
+    width: 210px;
+    height: 78px;
+    border: 1px solid #99F;
+    margin-top: 3px;
+    padding: 7px 5px;
+    position: relative;
 }

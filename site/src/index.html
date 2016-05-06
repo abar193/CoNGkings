@@ -3,11 +3,12 @@
 <head>
     <meta charset="utf-8">
     <title>CoNGkings</title>
-    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/tilesets/tiles.min.css">
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <script src="angular/angular.js"></script>
+    <script src="angular-animate/angular-animate.min.js"></script>
     <script src="angular-route/angular-route.js"></script>
     <script src="angular-bootstrap/ui-bootstrap-tpls.js"></script>
 
@@ -20,21 +21,196 @@
 </head>
 <body ng-cloak>
     <br/>
-    <div style="background-color: gray">
+
+    <div class="planetview">
+        <uib-tabset active="active">
+            <uib-tab style="padding: 0" index="0" heading="P">
+                <div style="position: relative">
+                    Группы | Системы
+                </div>
+                <div class="planet_box">
+                    <div style="float: left" class="planets asteroids"></div> Умное название <br />
+                    <a style="color: red; float: left">2%</a>
+                    <table><tr>
+                        <td><img src="http://conkings.com/game2/images/units/small/king.png" width="20px" height="20px" style="z-index: 1"/>0</td>
+                        <td><img src="http://conkings.com/game2/images/units/small/duke.png" width="20px" height="20px" style="z-index: 1"/>1</td>
+                        <td><img src="http://conkings.com/game2/images/units/small/count.png" width="20px" height="20px" style="z-index: 1"/>3</td>
+                    </tr></table>
+                    <table style="width: 100%; position: absolute; bottom: 5px">
+                        <tr>
+                            <td width="30%">
+                                <button class="widgets pl_build" uib-tooltip="Заказать здание" ng-click=""></button>
+                                <img src="http://conkings.com/game2/images/buildings/oreext_32.gif" width="16px" height="18px"/>5
+                            </td>
+                            <td width="30%">
+                                <button class="widgets pl_produce" uib-tooltip="Заказать корабль"></button>
+                                <img src="http://conkings.com/game2/images/units/small/rocket.png" width="16px" height="18px"/>7
+                            </td>
+                            <td width="40%">
+                                <button class="widgets pl_train" uib-tooltip="Заказать кого-то наземного"></button>
+                                <img src="http://conkings.com/game2/images/units/small/count.png" width="16px" height="18px"/>14
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="planet_box">
+                    <div style="float: left" class="planets pl2_3"></div> Глупое название <br />
+                    <a style="font-size: 20px; color: red; font-weight: bold; position: absolute; right: 10px; top: 10px" uib-tooltip="Нет связи со складом!">!</a>
+                    <a style="color: red; float: left">42%</a>
+                    <table><tr>
+                        <td><img src="http://conkings.com/game2/images/units/small/king.png" width="20px" height="20px" style="z-index: 1"/>0</td>
+                        <td><img src="http://conkings.com/game2/images/units/small/duke.png" width="20px" height="20px" style="z-index: 1"/>0</td>
+                        <td><img src="http://conkings.com/game2/images/units/small/count.png" width="20px" height="20px" style="z-index: 1"/>0</td>
+                    </tr></table>
+                    <table style="width: 100%; position: absolute; bottom: 5px">
+                        <tr>
+                            <td width="30%">
+                                <button class="widgets pl_build" uib-tooltip="Заказать здание" ng-click=""></button>
+                                <img src="http://conkings.com/game2/images/buildings/factory_32.png" width="16px" height="18px"/>16
+                            </td>
+                            <td width="30%">
+                                <button class="widgets pl_produce" uib-tooltip="Заказать корабль" disabled="true"></button>
+                            </td>
+                            <td width="40%">
+                                <button class="widgets pl_train" uib-tooltip="Заказать кого-то наземного" disabled></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </uib-tab>
+            <uib-tab style="padding: 0" index="1" heading="T">
+                Lalala
+            </uib-tab>
+            <uib-tab style="padding: 0" index="2" heading="F">
+                <input type="text" style="color: black" value="Typeahead с именами флотов и названиями кораблей" />
+            </uib-tab>
+            <uib-tab style="padding: 0" index="3" heading="MSG">
+                Lalala
+            </uib-tab>
+        </uib-tabset>
+    </div>
+
+    <div style="position: absolute; left: 220px; width: 900px">
+
+        <uib-tabset active="active">
+            <uib-tab index="0" heading="Космос">
+                <div class="bookmarkspanel">
+                    <table>
+                        <tr><td><button class="button widgets book_unknown" uncheckable></button></td></tr>
+                        <tr><td><button class="button widgets book_planet" uib-uncheckable="uncheckable"></button></td></tr>
+                        <tr><td><button class="button widgets book_star" uib-uncheckable="uncheckable"></button></td></tr>
+                        <tr><td><button class="button widgets book_planetimp" uib-uncheckable="uncheckable"></button></td></tr>
+                        <tr><td><button class="button widgets book_starimp"></button></td></tr>
+                        <tr><td><button class="button widgets book_war"></button></td></tr>
+                        <tr><td><button class="button widgets book_hub"></button></td></tr>
+                        <tr><td><button class="button widgets book_res"></button></td></tr>
+                        <tr><td><button class="button widgets book_dig"></button></td></tr>
+                        <tr><td><button class="button widgets book_col"></button></td></tr>
+                        <tr><td style="height: 35px"></td></tr>
+                        <tr><td><img src="http://conkings.com/game2/images/units/small/driller.gif" width="20px" height="20px" style="z-index: 1"/>5</td></tr>
+                        <tr><td><img src="http://conkings.com/game2/images/units/small/colony.png" width="20px" height="20px" style="z-index: 1"/>1</td></tr>
+                        <tr><td><img src="http://conkings.com/game2/images/units/small/orbit.gif" width="20px" height="20px" style="z-index: 1"/>2</td></tr>
+                        <tr><td><img src="http://conkings.com/game2/images/units/small/portal_on.gif" width="20px" height="20px" style="z-index: 1"/>1</td></tr>
+                        <tr><td><img src="http://conkings.com/game2/images/units/small/portal.png" width="20px" height="20px" style="z-index: 1"/>3</td></tr>
+                        <tr><td><img src="http://conkings.com/game2/images/units/small/king.png" width="20px" height="20px" style="z-index: 1"/>0</td></tr>
+                        <tr><td><img src="http://conkings.com/game2/images/units/small/duke.png" width="20px" height="20px" style="z-index: 1"/>1</td></tr>
+                        <tr><td><img src="http://conkings.com/game2/images/units/small/count.png" width="20px" height="20px" style="z-index: 1"/>3</td></tr>
+                    </table>
+                </div>
+                <div class="globalview" ng-cloak ng-view></div>
+            </uib-tab>
+            <uib-tab index="1" heading="Экономика">
+                <uib-accordion>
+                    <uib-accordion-group heading="Планеты" is-open="true">
+                        <table style="background-color: black; width: 100%">
+                            <tr>
+                                <td>Планета</td>
+                                <td>Адрес</td>
+                                <td><span class="widgets crime" style="display: inline-block"></span></td>
+                                <td><span class="widgets rescarbon" style="display: inline-block"></span></td>
+                                <td><span class="widgets ressilicion" style="display: inline-block"></span></td>
+                                <td><span class="widgets resore" style="display: inline-block"></span></td>
+                                <td><span class="widgets resbean" style="display: inline-block"></span></td>
+                                <td><span class="widgets resscience" style="display: inline-block"></span></td>
+                                <td><span class="widgets resradiation" style="display: inline-block"></span></td>
+                                <td><span class="widgets respower" style="display: inline-block"></span></td>
+                                <td><span class="widgets reshuman" style="display: inline-block"></span></td>
+                                <td><span class="widgets rescapacity" style="display: inline-block"></span></td>
+                                <td>B</td>
+                                <td>S</td>
+                                <td>U</td>
+                            </tr>
+                            <tr>
+                                <td>Умное название</td>
+                                <td>1/1(6:6)6</td>
+                                <td>2%</td>
+                                <td>+15k</td>
+                                <td>+11</td>
+                                <td>+175</td>
+                                <td>-1150</td>
+                                <td>+42</td>
+                                <td>0</td>
+                                <td>+900</td>
+                                <td>14576</td>
+                                <td>22</td>
+                                <td><img src="http://conkings.com/game2/images/buildings/oreext_32.gif" width="16px" height="18px"/>5</td>
+                                <td><img src="http://conkings.com/game2/images/units/small/rocket.png" width="16px" height="18px"/>7</td>
+                                <td><img src="http://conkings.com/game2/images/units/small/count.png" width="16px" height="18px"/>3</td>
+                            </tr><tr>
+                                <td>Глупое название</td>
+                                <td>1/2(3:5)8</td>
+                                <td>42%</td>
+                                <td>-7500</td>
+                                <td>-350</td>
+                                <td>0</td>
+                                <td>-3980</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>34</td>
+                                <td>5</td>
+                                <td><img src="http://conkings.com/game2/images/buildings/factory_32.png" width="16px" height="18px"/>16</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </uib-accordion-group>
+                    <uib-accordion-group heading="Флоты">
+                        <Флоты></Флоты>
+                    </uib-accordion-group>
+            </uib-tab>
+            <uib-tab index="2" heading="Наука">
+                Lala
+            </uib-tab>
+            <uib-tab index="3" heading="Политика">
+                <div style="background-color: midnightblue; color: white; float: left" ng-controller="InfoCtrl">
+                    Игрок: {{info.player}} <br/>
+                    Раса: {{info.race}} <br/>
+                    Созвездия: {{info.constellation}} <br/>
+                    Планеты:	{{info.planets}} <br/>
+                    Туннели:	{{info.tunnels}} <br/>
+                    Население:	{{info.population}} <br/>
+                    Домашний мир:	{{info.homeworld}} <br/>
+                    Рейтинг:	{{info.rating}}
+                </div>
+                <div style="float: left">
+                    Округ:	Золотая Армада <br/>
+                    Состояние:	State <br />
+                    Игроков:	5 <br />
+                    Рейтинг:	1000000 <br />
+                    Покровитель:	- <br />
+                </div>
+            </uib-tab>
+            <uib-tab index="4" heading="Конструктор">
+                Lala
+            </uib-tab>
+            <uib-tab index="5" heading="Коммуникатор">
+                Lala
+            </uib-tab>
+        </uib-tabset>
 
     </div>
 
-    <div class="globalview" ng-cloak ng-view></div>
-    <div style="background-color: midnightblue; color: white; float: left" ng-controller="InfoCtrl">
-        Игрок: {{info.player}} <br/>
-        Раса: {{info.race}} <br/>
-        Созвездия: {{info.constellation}} <br/>
-        Планеты:	{{info.planets}} <br/>
-        Туннели:	{{info.tunnels}} <br/>
-        Население:	{{info.population}} <br/>
-        Домашний мир:	{{info.homeworld}} <br/>
-        Рейтинг:	{{info.rating}}
-    </div>
 </body>
 <script>
     var backendBasePath = "localhost:8080";

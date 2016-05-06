@@ -4,9 +4,13 @@
   "directory": "./bower_components/",
   "dependencies": {
     "angular": "latest",
-    "angular-bootstrap": "~0.14.3",
+    "angular-animate": "latest",
+    "angular-bootstrap": "latest",
     "angular-mocks": "latest",
     "angular-route": "latest",
     "bootstrap": "~3.3.6"
+  },
+  "resolutions": {
+    "angular": "1.5.5"
   }
 }

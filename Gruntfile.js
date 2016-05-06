@@ -159,7 +159,7 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
-                files: ['site/src/js/*', 'site/src/css/*', 'site/src/partials/*', 'site/src/science.html'],
+                files: ['site/src/js/*', 'site/src/css/*', 'site/src/partials/*', 'site/src/*.html'],
                 tasks: ['sync', 'replace:dev'],
                 options: {
                     spawn: false

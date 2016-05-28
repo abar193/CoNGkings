@@ -20,11 +20,12 @@
     <script src="js/controllers.js"></script>
 </head>
 <body ng-controller="MainCtrl">
-    Turn: {{container.turn}}
+    Turn: {{container.turn}} {{active00}}
+    {{active01}}
     <br/>
 
     <div class="planetview">
-        <uib-tabset active="active">
+        <uib-tabset container0 id="tabset00" type="pills">
             <uib-tab style="padding: 0; " index="0" heading="P">
                 <div style="position: relative">
                     <a ng-click="planetsGroup = container['controllerPlanets']">Все</a> |
@@ -97,8 +98,7 @@
     </div>
 
     <div style="position: absolute; left: 260px; width: 900px">
-
-        <uib-tabset active="active">
+        <uib-tabset container1 id="tabset01" type="pills">
             <uib-tab index="0" heading="Космос">
                 <div class="globalview" ng-cloak ng-view></div>
             </uib-tab>

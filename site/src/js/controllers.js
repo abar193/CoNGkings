@@ -258,7 +258,7 @@ var uniqueBuildings = [4, 5, 6, 9, 13, 16, 17, 21, 22, 23];
 
 uiControllers.controller('PlanetModal', function($scope, backendCommunicator, container, data) {
     if(data) {
-        $scope.data = data;
+        applyData(data);
         $scope.container = container;
         $scope.buildingClicked = function buildingClicked(typeid) {
             console.log("Building " + typeid + " clicked for planet " + $scope.data.id);
@@ -270,6 +270,7 @@ uiControllers.controller('PlanetModal', function($scope, backendCommunicator, co
             backendCommunicator.getPlanet($scope.container.myPlanetsCoords['p'+$scope.container.myPlanets[i]])
                 .then(function ok(data) {
                     $scope.data = data.data;
+                    applyData(data.data);
                 }, function err(data) { console.log(data); });
         };
         $scope.prevPlanet = function() {
@@ -279,18 +280,22 @@ uiControllers.controller('PlanetModal', function($scope, backendCommunicator, co
             backendCommunicator.getPlanet($scope.container.myPlanetsCoords['p'+$scope.container.myPlanets[i]])
                 .then(function ok(data) {
                     $scope.data = data.data;
+                    applyData(data.data);
                 }, function err(data) { console.log(data); });
         };
-        $scope.buildings = [];
-        for(var i = 0; i <= 27; i++) {
-            $scope.buildings.push({typeid: i, cnt: 0});
-        }
+        function applyData(data) {
+            $scope.data = data;
+            $scope.buildings = [];
+            for (var i = 0; i <= 27; i++) {
+                $scope.buildings.push({typeid: i, cnt: 0});
+            }
 
-        for(i = 0; i < data.buildings.length; i++) {
-            var t = parseInt(data.buildings[i].typeid);
-            $scope.buildings[t] = data.buildings[i];
-            if(uniqueBuildings.indexOf(t) != -1 && data.buildings[i].cnt == 1) {
-                $scope.buildings[t].cnt = -1;
+            for (i = 0; i < data.buildings.length; i++) {
+                var t = parseInt(data.buildings[i].typeid);
+                $scope.buildings[t] = data.buildings[i];
+                if (uniqueBuildings.indexOf(t) != -1 && data.buildings[i].cnt == 1) {
+                    $scope.buildings[t].cnt = -1;
+                }
             }
         }
     }

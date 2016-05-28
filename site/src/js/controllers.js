@@ -9,7 +9,6 @@ uiControllers.controller('MainCtrl', function ($scope, $http, $uibModal, backend
     $scope.container = {};
     $scope.planetsGrouping = 'loc';
     backendCommunicator.getReqData().then(function ok(data) {
-        console.log(data);
         eval(data.data);
         $scope.container = {
             turn: turn,
@@ -267,7 +266,7 @@ uiControllers.controller('PlanetModal', function($scope, backendCommunicator, co
         $scope.nextPlanet = function() {
             var i = $scope.container.myPlanets.indexOf($scope.data.id);
             if(++i >= $scope.container.myPlanets.length) i = 0;
-            console.log("Planet #", $scope.container.myPlanets[i]);
+            console.log("Planet #", $scope.container.myPlanets[i], $scope.container.myPlanetsCoords['p'+$scope.container.myPlanets[i]]);
             backendCommunicator.getPlanet($scope.container.myPlanetsCoords['p'+$scope.container.myPlanets[i]])
                 .then(function ok(data) {
                     $scope.data = data.data;
@@ -276,7 +275,7 @@ uiControllers.controller('PlanetModal', function($scope, backendCommunicator, co
         $scope.prevPlanet = function() {
             var i = $scope.container.myPlanets.indexOf($scope.data.id);
             if(--i < $scope.container.myPlanets.length) i = $scope.container.myPlanets.length - 1;
-            console.log("Planet #", $scope.container.myPlanets[i]);
+            console.log("Planet #", $scope.container.myPlanets[i], $scope.container.myPlanetsCoords['p'+$scope.container.myPlanets[i]]);
             backendCommunicator.getPlanet($scope.container.myPlanetsCoords['p'+$scope.container.myPlanets[i]])
                 .then(function ok(data) {
                     $scope.data = data.data;

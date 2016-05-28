@@ -204,7 +204,7 @@
             <span class="widgets arror_right" style="display: inline-block" ng-click="prevPlanet()"></span>
         </div>
     </div>
-    <div style="background-image: url('/img/planets/{{data.atm}}.png'); width: 100%; height: 250px; position: relative; border: 2px solid wheat; border-bottom: none; border-top: none"">
+    <div style="background-image: url('/img/planets/{{data.atm | lowercase}}.png'); width: 100%; height: 250px; position: relative; border: 2px solid wheat; border-bottom: none; border-top: none"">
         <div style="position:absolute; margin-top: 65px; margin-left: 5px; width: 56px">
             <building-button building="buildings[12]"></building-button>
         </div>

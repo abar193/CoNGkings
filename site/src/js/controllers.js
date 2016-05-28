@@ -5,6 +5,65 @@
 
 var uiControllers = angular.module('UIControllers', ['uiServices']);
 
+uiControllers.controller('MainCtrl', function ($scope, $http, $uibModal, backendCommunicator) {
+    $scope.container = {};
+    $scope.planetsGrouping = 'loc';
+    backendCommunicator.getReqData().then(function ok(data) {
+        eval(data.data);
+        $scope.container = {
+            turn: turn,
+            timeStart: time_start,
+            timeLeft: time_left,
+            myPlanets: myplanets,
+            myPlanetsCoords: myplanetsCoords,
+            controllerPlanets: [["all", myplanetsCoords]],
+            resources: resources,
+            myRoutes: my_routes,
+            myFleets: myfleets,
+            portals: portals
+        };
+        var systems = {};
+        console.log('Grouping planets...');
+        for(var pid in $scope.container.myPlanetsCoords) {
+            var k = $scope.container.myPlanetsCoords[pid].slice(0, $scope.container.myPlanetsCoords[pid].indexOf(")") + 1);
+            if(!systems[k]) {
+                systems[k] = {};
+            }
+            systems[k][pid] = $scope.container.myPlanetsCoords[pid];
+        }
+        var retData = [];
+        for(var sysName in systems) {
+            retData.push([sysName, systems[sysName]]);
+        }
+        $scope.container['myPlanetsGrouped'] = retData;
+        $scope.planetsGroup = $scope.container['myPlanetsGrouped'];
+        console.log('Done!');
+    }, function err(data) {
+        alert("Failed to load reqData, message: " + data);
+    });
+    $scope.planetModal = function (location) {
+        backendCommunicator.getPlanet(location).then(
+            function ok(data) {
+                var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: 'buildings.html', // part of system.html
+                    controller: 'PlanetModal',
+                    size: 'lg',
+                    resolve: {
+                        data: data.data,
+                        container: $scope.container
+                    }
+                });
+                modalInstance.result.then(function (selectedItem) {
+                    $scope.selected = selectedItem;
+                }, function () {
+                });
+            }, function err(data) {console.log(data)});
+
+    };
+
+});
+
 uiControllers.controller('InfoCtrl', function ($scope, $http) {
     $scope.info = {"player": "unknown"};
     $http.get('/api/info').success(function(data){ $scope.info = data; });
@@ -124,7 +183,7 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
             size: 'lg',
             resolve: {
                 data: $scope.parsedPlanet,
-                path: undefined
+                container: $scope.container
             }
         });
 
@@ -197,11 +256,30 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
 
 var uniqueBuildings = [4, 5, 6, 9, 13, 16, 17, 21, 22, 23];
 
-uiControllers.controller('PlanetModal', function($scope, backendCommunicator, path, data) {
+uiControllers.controller('PlanetModal', function($scope, backendCommunicator, container, data) {
     if(data) {
         $scope.data = data;
+        $scope.container = container;
         $scope.buildingClicked = function buildingClicked(typeid) {
             console.log("Building " + typeid + " clicked for planet " + $scope.data.id);
+        };
+        $scope.nextPlanet = function() {
+            var i = $scope.container.myPlanets.indexOf($scope.data.id);
+            if(++i >= $scope.container.myPlanets.length) i = 0;
+            console.log("Planet #", $scope.container.myPlanets[i]);
+            backendCommunicator.getPlanet($scope.container.myPlanetsCoords['p'+$scope.container.myPlanets[i]])
+                .then(function ok(data) {
+                    $scope.data = data.data;
+                }, function err(data) { console.log(data); });;
+        };
+        $scope.prevPlanet = function() {
+            var i = $scope.container.myPlanets.indexOf($scope.data.id);
+            if(--i < $scope.container.myPlanets.length) i = $scope.container.myPlanets.length - 1;
+            console.log("Planet #", $scope.container.myPlanets[i]);
+            backendCommunicator.getPlanet($scope.container.myPlanetsCoords['p'+$scope.container.myPlanets[i]])
+                .then(function ok(data) {
+                    $scope.data = data.data;
+                }, function err(data) { console.log(data); });
         };
         $scope.buildings = [];
         for(var i = 0; i <= 27; i++) {
@@ -230,5 +308,14 @@ uiControllers.filter('systype', function() {
 uiControllers.filter('cutext', function() {
     return function(input) {
         return input.split(".")[0];
+    };
+});
+uiControllers.filter('groupPlanets', function() {
+    return function(input, type) {
+        console.log("[Filter for planets in ng-repeat]");
+        if(!type || type == 'none') return input['controllerPlanets'];
+        else if(type == 'loc') {
+            return input['myPlanetsGrouped'];
+        }
     };
 });

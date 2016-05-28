@@ -39,9 +39,10 @@ table.full {
 }
 
 .planetview {
-    width: 215px;
-    height: 651px;
+    width: 250px;
+    height: 661px;
     float: left;
+    overflow-y: auto;
 }
 
 .bookmarkspanel {
@@ -51,7 +52,7 @@ table.full {
 }
 
 .globalview {
-    width: 870px;
+    width: 900px;
     height: 651px;
     float: left;
 }
@@ -66,6 +67,10 @@ table.full {
 
 .nav li a {
     padding: 7px 5px!important;
+}
+
+.panel {
+    background-color: #000;
 }
 
 .button {

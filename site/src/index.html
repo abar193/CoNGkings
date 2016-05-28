@@ -19,40 +19,46 @@
     <script src="js/directives.js"></script>
     <script src="js/controllers.js"></script>
 </head>
-<body ng-cloak>
+<body ng-controller="MainCtrl">
+    Turn: {{container.turn}}
     <br/>
 
     <div class="planetview">
         <uib-tabset active="active">
-            <uib-tab style="padding: 0" index="0" heading="P">
+            <uib-tab style="padding: 0; " index="0" heading="P">
                 <div style="position: relative">
-                    Группы | Системы
+                    <a ng-click="planetsGroup = container['controllerPlanets']">Все</a> |
+                    <a ng-click="planetsGroup = container['myPlanetsGrouped']">По системам</a>
                 </div>
-                <div class="planet_box">
-                    <div style="float: left" class="planets asteroids"></div> Умное название <br />
-                    <a style="color: red; float: left">2%</a>
-                    <table><tr>
-                        <td><img src="http://conkings.com/game2/images/units/small/king.png" width="20px" height="20px" style="z-index: 1"/>0</td>
-                        <td><img src="http://conkings.com/game2/images/units/small/duke.png" width="20px" height="20px" style="z-index: 1"/>1</td>
-                        <td><img src="http://conkings.com/game2/images/units/small/count.png" width="20px" height="20px" style="z-index: 1"/>3</td>
-                    </tr></table>
-                    <table style="width: 100%; position: absolute; bottom: 5px">
-                        <tr>
-                            <td width="30%">
-                                <button class="widgets pl_build" uib-tooltip="Заказать здание" ng-click=""></button>
-                                <img src="http://conkings.com/game2/images/buildings/oreext_32.gif" width="16px" height="18px"/>5
-                            </td>
-                            <td width="30%">
-                                <button class="widgets pl_produce" uib-tooltip="Заказать корабль"></button>
-                                <img src="http://conkings.com/game2/images/units/small/rocket.png" width="16px" height="18px"/>7
-                            </td>
-                            <td width="40%">
-                                <button class="widgets pl_train" uib-tooltip="Заказать кого-то наземного"></button>
-                                <img src="http://conkings.com/game2/images/units/small/count.png" width="16px" height="18px"/>14
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                <uib-accordion close-others="false">
+                    <uib-accordion-group is-open="true" ng-repeat="k in planetsGroup" heading="{{k[0]}}">
+                        <div class="planet_box" ng-repeat="name in k[1]" >
+                            <div style="float: left" class="planets asteroids"></div> {{name}}<br/>
+                            <a style="color: red; float: left">2%</a>
+                            <table><tr>
+                                <td><img src="http://conkings.com/game2/images/units/small/king.png" width="20px" height="20px" style="z-index: 1"/>0</td>
+                                <td><img src="http://conkings.com/game2/images/units/small/duke.png" width="20px" height="20px" style="z-index: 1"/>1</td>
+                                <td><img src="http://conkings.com/game2/images/units/small/count.png" width="20px" height="20px" style="z-index: 1"/>3</td>
+                            </tr></table>
+                            <table style="width: 100%; position: absolute; bottom: 5px">
+                                <tr>
+                                    <td width="30%">
+                                        <button class="widgets pl_build" uib-tooltip="Заказать здание" ng-click="planetModal(name)"></button>
+                                        <img src="http://conkings.com/game2/images/buildings/oreext_32.gif" width="16px" height="18px"/>5
+                                    </td>
+                                    <td width="30%">
+                                        <button class="widgets pl_produce" uib-tooltip="Заказать корабль"></button>
+                                        <img src="http://conkings.com/game2/images/units/small/rocket.png" width="16px" height="18px"/>7
+                                    </td>
+                                    <td width="40%">
+                                        <button class="widgets pl_train" uib-tooltip="Заказать кого-то наземного"></button>
+                                        <img src="http://conkings.com/game2/images/units/small/count.png" width="16px" height="18px"/>14
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </uib-accordion-group>
+                </uib-accordion>
                 <div class="planet_box">
                     <div style="float: left" class="planets pl2_3"></div> Глупое название <br />
                     <a style="font-size: 20px; color: red; font-weight: bold; position: absolute; right: 10px; top: 10px" uib-tooltip="Нет связи со складом!">!</a>
@@ -90,33 +96,10 @@
         </uib-tabset>
     </div>
 
-    <div style="position: absolute; left: 220px; width: 900px">
+    <div style="position: absolute; left: 260px; width: 900px">
 
         <uib-tabset active="active">
             <uib-tab index="0" heading="Космос">
-                <div class="bookmarkspanel">
-                    <table>
-                        <tr><td><button class="button widgets book_unknown" uncheckable></button></td></tr>
-                        <tr><td><button class="button widgets book_planet" uib-uncheckable="uncheckable"></button></td></tr>
-                        <tr><td><button class="button widgets book_star" uib-uncheckable="uncheckable"></button></td></tr>
-                        <tr><td><button class="button widgets book_planetimp" uib-uncheckable="uncheckable"></button></td></tr>
-                        <tr><td><button class="button widgets book_starimp"></button></td></tr>
-                        <tr><td><button class="button widgets book_war"></button></td></tr>
-                        <tr><td><button class="button widgets book_hub"></button></td></tr>
-                        <tr><td><button class="button widgets book_res"></button></td></tr>
-                        <tr><td><button class="button widgets book_dig"></button></td></tr>
-                        <tr><td><button class="button widgets book_col"></button></td></tr>
-                        <tr><td style="height: 35px"></td></tr>
-                        <tr><td><img src="http://conkings.com/game2/images/units/small/driller.gif" width="20px" height="20px" style="z-index: 1"/>5</td></tr>
-                        <tr><td><img src="http://conkings.com/game2/images/units/small/colony.png" width="20px" height="20px" style="z-index: 1"/>1</td></tr>
-                        <tr><td><img src="http://conkings.com/game2/images/units/small/orbit.gif" width="20px" height="20px" style="z-index: 1"/>2</td></tr>
-                        <tr><td><img src="http://conkings.com/game2/images/units/small/portal_on.gif" width="20px" height="20px" style="z-index: 1"/>1</td></tr>
-                        <tr><td><img src="http://conkings.com/game2/images/units/small/portal.png" width="20px" height="20px" style="z-index: 1"/>3</td></tr>
-                        <tr><td><img src="http://conkings.com/game2/images/units/small/king.png" width="20px" height="20px" style="z-index: 1"/>0</td></tr>
-                        <tr><td><img src="http://conkings.com/game2/images/units/small/duke.png" width="20px" height="20px" style="z-index: 1"/>1</td></tr>
-                        <tr><td><img src="http://conkings.com/game2/images/units/small/count.png" width="20px" height="20px" style="z-index: 1"/>3</td></tr>
-                    </table>
-                </div>
                 <div class="globalview" ng-cloak ng-view></div>
             </uib-tab>
             <uib-tab index="1" heading="Экономика">
@@ -212,6 +195,128 @@
     </div>
 
 </body>
+
+<script type=text/ng-template id=buildings.html>
+    <div style="background-image: url('/img/planets/starsky.png'); width: 100%; height: 100px; border: 2px solid wheat; border-bottom: none">
+        <div style="height: 40px; color: white">
+            <span class="widgets arror_left" style="display: inline-block" ng-click="nextPlanet()"></span>
+            <span style="display: inline-block">{{data.id}}</span>
+            <span class="widgets arror_right" style="display: inline-block" ng-click="prevPlanet()"></span>
+        </div>
+    </div>
+    <div style="background-image: url('/img/planets/{{data.atm}}.png'); width: 100%; height: 250px; position: relative; border: 2px solid wheat; border-bottom: none; border-top: none"">
+        <div style="position:absolute; margin-top: 65px; margin-left: 5px; width: 56px">
+            <building-button building="buildings[12]"></building-button>
+        </div>
+        <div style="position:absolute; margin-top: 130px; margin-left: 17px; width: 32px">
+            <building-button building="buildings[24]"></building-button>
+            <building-button building="buildings[13]"></building-button>
+        </div>
+        <div style="position:absolute; margin-top: 45px; margin-left: 86px; width: 150px">
+            <table>
+                <tr class="buildingrow">
+                    <td><building-button building="buildings[2]"></building-button></td>
+                    <td><building-button building="buildings[1]"></building-button></td>
+                    <td><building-button building="buildings[3]"></building-button></td>
+                    <td><building-button building="buildings[18]"></building-button></td>
+                </tr>
+                <tr class="buildingrow">
+                    <td><building-button building="buildings[25]"></building-button></td>
+                    <td><building-button building="buildings[26]"></building-button></td>
+                    <td><building-button building="buildings[27]"></building-button></td>
+                    <td><building-button building="buildings[20]"></building-button></td>
+                </tr>
+            </table>
+        </div>
+        <div style="position: absolute; margin-top: 120px; margin-left: 84px; width: 68px">
+            <table>
+                <tr class="buildingrow">
+                    <td><building-button building="buildings[8]"></building-button></td>
+                    <td><building-button building="buildings[7]"></building-button></td>
+                </tr>
+                <tr class="buildingrow">
+                    <td><building-button building="buildings[9]"></building-button></td>
+                    <td><building-button building="buildings[23]"></building-button></td>
+                </tr>
+            </table>
+        </div>
+        <div style="position: absolute; margin-top: 120px; margin-left: 155px; width: 68px">
+            <table>
+                <tr>
+                    <td>
+                        <table>
+                            <tr class="buildingrow">
+                                <td><building-button building="buildings[4]"></building-button></td>
+                            </tr>
+                            <tr class="buildingrow">
+                                <td><building-button building="buildings[6]"></building-button></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td><building-button building="buildings[5]"></building-button></td>
+                </tr>
+            </table>
+        </div>
+        <div style="position: absolute; margin-top: 195px; margin-left: 84px; width: 68px">
+            <building-button building="buildings[21]"></building-button>
+            <building-button building="buildings[22]"></building-button>
+        </div>
+        <div style="position: absolute; margin-top: 45px; margin-left: 235px; width: 32px">
+            <building-button building="buildings[10]"></building-button>
+            <building-button building="buildings[11]"></building-button>
+            <building-button building="buildings[19]"></building-button>
+        </div>
+        <div style="position: absolute; margin-top: 45px; margin-left: 275px; width: 32px">
+            <building-button building="buildings[17]"></building-button>
+            <building-button building="buildings[15]"></building-button>
+            <building-button building="buildings[14]"></building-button>
+            <building-button building="buildings[16]"></building-button>
+        </div>
+    </div>
+    <div style="width: 100%; padding-left: 2%; height: 87px; background-color: black; border: 1px solid wheat; border-top: none">
+        <table style="float: left;">
+            <tr>
+                <td><span class="widgets crime" style="display: inline-block"></span>
+                    {{data.crime * 100}}%
+                </td>
+            </tr>
+            <tr>
+                <td ng-repeat="r in ['carbon', 'silicon', 'ore']" class="{{r}}">
+                    <span class="widgets res{{r}}" style="display: inline-block"></span>+17500
+                </td>
+            </tr>
+            <tr>
+                <td ng-repeat="r in ['bean', 'science', 'radiation']" class="{{r}}">
+                    <span class="widgets res{{r}}" style="display: inline-block"></span>+17
+                </td>
+            </tr>
+            <tr>
+                <td class="human">
+                    <span class="widgets reshuman" style="display: inline-block"></span>
+                    {{data.pop|bignumsshortener}}
+                </td>
+                <td style="padding-left: 15px">(+{{data.pop_rate}}%)</td>
+                <td></td>
+            </tr>
+        </table>
+        <div style="float:left; color: white; padding-left: 25px">
+            Очереди:
+            <br/>
+            <span class="building buttonlink building1_small" style="display: inline-block; position: relative">
+                <b>5</b>
+            </span>
+            <span class="building buttonlink building7_small" style="display: inline-block; position: relative">
+                <b>~17</b>
+            </span>
+            <span class="building buttonlink building7_small" style="display: inline-block; position: relative">
+                <b>~27</b>
+            </span>
+            <br/>
+        </div>
+    </div>
+</script>
+
+
 <script>
     var backendBasePath = "localhost:8080";
     var imgRes = {

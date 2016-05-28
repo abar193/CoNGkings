@@ -3,7 +3,10 @@ var conkingsui = angular.module('conkingsui', ['ngRoute', 'ui.bootstrap', 'UICon
 conkingsui.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-            when('/sector', {
+            when('/main', {
+                templateUrl: 'partials/main.html',
+                controller: 'InfoCtrl'
+            }).when('/sector', {
                 templateUrl: 'partials/sector.html',
                 controller: 'GalaxyController'
             }).when('/system/:systemId', {
@@ -31,6 +34,6 @@ conkingsui.filter('bignumsshortener', function() {
     };
 });
 
-conkingsui.run(function(resourcesHolder) {
+    conkingsui.run(function(resourcesHolder) {
 
-});
+    });

@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var fileSystem = require('fs'),
+    path = require('path');
 
 var combined = require("../site/dest/public/js/tilesets/combined.json");
 var smallStars = combined.tmp.smallstars;
@@ -115,6 +117,25 @@ router.get('/planets/', function(req, res, next) {
 
 router.get('/tunnels', function(req, res) {
     res.json(galaxy.tunnels);
+});
+
+router.get('/reqdata.php', function(req, res) {
+    console.log("hi!");
+    var filePath = path.join(__dirname, '..\\bower_components\\reqdata.php');
+    console.log("hi2");
+    var stat = fileSystem.statSync(filePath);
+    console.log("hi3");
+    res.writeHead(200, {
+        'Content-Type': 'text/plain',
+        'Content-Length': stat.size
+    });
+
+    console.log("hi4");
+    var readStream = fileSystem.createReadStream(filePath);
+
+    console.log("hi5");
+    // We replaced all the event handlers with a simple call to readStream.pipe()
+    readStream.pipe(res);
 });
 
 function random(a) {

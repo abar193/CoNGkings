@@ -199,9 +199,9 @@
 <script type=text/ng-template id=buildings.html>
     <div style="background-image: url('/img/planets/starsky.png'); width: 100%; height: 100px; border: 2px solid wheat; border-bottom: none">
         <div style="height: 40px; color: white">
-            <span class="widgets arror_left" style="display: inline-block" ng-click="nextPlanet()"></span>
+            <span class="widgets arror_left" style="display: inline-block" ng-click="prevPlanet()"></span>
             <span style="display: inline-block">{{data.id}}</span>
-            <span class="widgets arror_right" style="display: inline-block" ng-click="prevPlanet()"></span>
+            <span class="widgets arror_right" style="display: inline-block" ng-click="nextPlanet()"></span>
         </div>
     </div>
     <div style="background-image: url('/img/planets/{{data.atm | lowercase}}.png'); width: 100%; height: 250px; position: relative; border: 2px solid wheat; border-bottom: none; border-top: none"">

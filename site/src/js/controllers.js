@@ -264,16 +264,16 @@ uiControllers.controller('PlanetModal', function($scope, backendCommunicator, co
             console.log("Building " + typeid + " clicked for planet " + $scope.data.id);
         };
         $scope.nextPlanet = function() {
-            var i = $scope.container.myPlanets.indexOf($scope.data.id);
+            var i = $scope.container.myPlanets.indexOf(parseInt($scope.data.id));
             if(++i >= $scope.container.myPlanets.length) i = 0;
             console.log("Planet #", $scope.container.myPlanets[i], $scope.container.myPlanetsCoords['p'+$scope.container.myPlanets[i]]);
             backendCommunicator.getPlanet($scope.container.myPlanetsCoords['p'+$scope.container.myPlanets[i]])
                 .then(function ok(data) {
                     $scope.data = data.data;
-                }, function err(data) { console.log(data); });;
+                }, function err(data) { console.log(data); });
         };
         $scope.prevPlanet = function() {
-            var i = $scope.container.myPlanets.indexOf($scope.data.id);
+            var i = $scope.container.myPlanets.indexOf(parseInt($scope.data.id));
             if(--i < $scope.container.myPlanets.length) i = $scope.container.myPlanets.length - 1;
             console.log("Planet #", $scope.container.myPlanets[i], $scope.container.myPlanetsCoords['p'+$scope.container.myPlanets[i]]);
             backendCommunicator.getPlanet($scope.container.myPlanetsCoords['p'+$scope.container.myPlanets[i]])

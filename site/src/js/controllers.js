@@ -9,6 +9,7 @@ uiControllers.controller('MainCtrl', function ($scope, $http, $uibModal, backend
     $scope.container = {};
     $scope.planetsGrouping = 'loc';
     backendCommunicator.getReqData().then(function ok(data) {
+        console.log(data);
         eval(data.data);
         $scope.container = {
             turn: turn,

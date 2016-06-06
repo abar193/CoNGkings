@@ -171,6 +171,7 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
         $scope.righttab = value;
     };
     $scope.buildingClicked = function buildingClicked(typeid) {
+        $http.post("http://conkings.com/game2/planet_actions.php", "action=enqueue&build=" + typeid + "&planetid=" + $scope.parsedPlanet.id);
         console.log("Building " + typeid + " clicked for planet " + $scope.parsedPlanet.id);
     };
 
@@ -256,11 +257,12 @@ uiControllers.controller('SystemController', function ($scope, $http, $routePara
 
 var uniqueBuildings = [4, 5, 6, 9, 13, 16, 17, 21, 22, 23];
 
-uiControllers.controller('PlanetModal', function($scope, backendCommunicator, container, data) {
+uiControllers.controller('PlanetModal', function($scope, $http, backendCommunicator, container, data) {
     if(data) {
         applyData(data);
         $scope.container = container;
         $scope.buildingClicked = function buildingClicked(typeid) {
+            $http.post("http://conkings.com/game2/planet_actions.php", "action=enqueue&build=" + typeid + "&planetid=" + $scope.data.id);
             console.log("Building " + typeid + " clicked for planet " + $scope.data.id);
         };
         $scope.nextPlanet = function() {
@@ -275,7 +277,7 @@ uiControllers.controller('PlanetModal', function($scope, backendCommunicator, co
         };
         $scope.prevPlanet = function() {
             var i = $scope.container.myPlanets.indexOf(parseInt($scope.data.id));
-            if(--i < $scope.container.myPlanets.length) i = $scope.container.myPlanets.length - 1;
+            if(--i < 0) i = $scope.container.myPlanets.length - 1;
             console.log("Planet #", $scope.container.myPlanets[i], $scope.container.myPlanetsCoords['p'+$scope.container.myPlanets[i]]);
             backendCommunicator.getPlanet($scope.container.myPlanetsCoords['p'+$scope.container.myPlanets[i]])
                 .then(function ok(data) {

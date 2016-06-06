@@ -24,6 +24,7 @@
     "grunt-spritesmith": "^6.1.0",
     "grunt-sync": "^0.5.2",
     "morgan": "~1.6.1",
+    "request": "^2.72.0",
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {

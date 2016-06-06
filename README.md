@@ -17,9 +17,10 @@ How to start
 
 Typically you would need to fork/download the repo and run 
 
+    npm install 
     npm start
  
-Projet separates source files and the compiled tilesets and minimied libraries. To update project for production run
+Projet separates source files and the compiled tile sets and minimized libraries. To update project for production run
  
     grunt
     

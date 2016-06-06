@@ -158,9 +158,16 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            scripts: {
+            "default": {
                 files: ['site/src/js/*', 'site/src/css/*', 'site/src/partials/*', 'site/src/*.html'],
                 tasks: ['sync', 'replace:dev'],
+                options: {
+                    spawn: false
+                }
+            },
+            "prd": {
+                files: ['site/src/js/*', 'site/src/css/*', 'site/src/partials/*', 'site/src/*.html'],
+                tasks: ['sync', 'replace:prod'],
                 options: {
                     spawn: false
                 }
@@ -178,4 +185,5 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', ['sprite', 'concat-json', 'cssmin', 'copy', 'replace:prod']);
     grunt.registerTask('dev', ['sprite', 'concat-json', 'cssmin', 'sync', 'replace:dev', 'watch']);
+    grunt.registerTask('prd', ['sprite', 'concat-json', 'cssmin', 'sync', 'replace:prod', 'watch:prd']);
 };
